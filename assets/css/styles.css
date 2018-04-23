@@ -1,0 +1,39 @@
+/* ---------------------------------- Initial Test Styles */
+body {
+  text-align: center; }
+
+.container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%; }
+
+button {
+  margin: 20px 10px;
+  max-width: 200px; }
+
+h1 {
+  font-size: 50px; }
+
+.game-button {
+  width: 30%;
+  height: 70px;
+  border-radius: 100% 40% 100% 40%; }
+
+/*-----------------------------------  Page functionality*/
+#game-area {
+  display: none; }
+
+.button-color1 {
+  background-color: #38d639; }
+
+.button-color2 {
+  background-color: #d5393a; }
+
+.button-color3 {
+  background-color: #d9d82e; }
+
+.button-color4 {
+  background-color: #3130d3; }
+
+/*# sourceMappingURL=styles.css.map */
