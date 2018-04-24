@@ -2,6 +2,8 @@
 
 body {
     text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 .container {
@@ -17,7 +19,7 @@ button {
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .game-button {
@@ -28,9 +30,9 @@ h1 {
 
 /*-----------------------------------  Page functionality*/
 
-#game-area {
-    display: none;
-}
+// #game-area {
+//     display: none;
+// }
 
 .button-color1 {
     background-color: #38d639;
@@ -46,4 +48,19 @@ h1 {
 
 .button-color4 {
     background-color: #3130d3; 
+}
+
+.gameover-button-color {
+    background-color: #000;
+}
+
+button:focus {
+    outline: none;
+}
+
+#feedback-text {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
 }
