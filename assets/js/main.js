@@ -47,6 +47,34 @@ function removeCurrentColor(currentColor) {
 
 // Gameplay Functions    
 
+// Step 1 - When start is clicked, all game parameters are set to zero and a new game begins...
+
+function resetGame() {
+
+    // Reset Colors to default
+    $(".game-button").removeClass("gameover-button-color");
+    $(".game-button").unbind('click').click(
+        function() {
+            console.log('I will unbind click so it doesnt fire twice');
+        }
+    );
+    randomlyGeneratedNumbers = [];
+    clickedButtons = [];
+    gameLevel = 1;
+    currentIndex = 0;
+    checkanswerIndex = 0;
+    intervalOn = 2000;
+    intervalOff = 2500;
+    intervalSpeed = 1000;
+    correctAnswers = 0;
+    getReadyMessage();
+    createANumber(difficulty);
+    highlightButtonsSequence(gameLevel, currentIndex);
+    console.log("Game Reset");
+}
+
+// Step 2 - this creates your new numbers array with the correct sequence
+
 function createANumber(difficulty) {
     for (i = 1; i <= difficulty; i++) {
         var randomNumber = Math.round(Math.random() * 3) + 1;
@@ -54,6 +82,9 @@ function createANumber(difficulty) {
     }
     console.log(randomlyGeneratedNumbers);
 }
+
+// Step 3 - this will highlight a color based on the array, more colors will be highlighted dependant on level
+//  After all colors are highlighted, the player can play the game
 
 function highlightButtonsSequence(currentLevel, index) {
     colorOneButton(index);
@@ -69,99 +100,7 @@ function highlightButtonsSequence(currentLevel, index) {
     }
 }
 
-function recordButtonAndEvaluate(buttonClicked, answerIndex) {
-    var clickedButton = buttonClicked;
-
-    clickedButtons.push(clickedButton);
-
-    console.log("clickedButton =" + clickedButton);
-    console.log("Answer Index =" + answerIndex);
-    console.log("checkanswerIndex =" + checkanswerIndex);
-    console.log("clickedButtons =" + clickedButtons);
-    console.log("currentIndex =" + currentIndex);
-    console.log("randomlyGeneratedNumbers =" + randomlyGeneratedNumbers);
-    console.log("correctAnswers =" + correctAnswers);
-    console.log("-----------------------------------------------");
-
-    if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
-        correctAnswers++;
-
-        if (correctAnswers === difficulty) {
-            console.log("you won the game");
-            $("#feedback-text").html(`<h2>Congratulations! You won the game!</h2>`);
-            $(".game-start").show(1000);
-        }
-
-        else if (correctAnswers < gameLevel) {
-            if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
-                checkanswerIndex++;
-            }
-        }
-        else if (correctAnswers === gameLevel) {
-            $("#feedback-text").html(`<h2>Well done! Time for level ${gameLevel + 1}!</h2>`);
-            console.log("next level!");
-            correctAnswers = 0;
-            gameLevel++;
-            clickedButtons = [];
-            currentIndex = 0;
-            checkanswerIndex = 0;
-            intervalOn = 1000;
-            intervalOff = 1500;
-            intervalSpeed = 1000;
-            highlightButtonsSequence(gameLevel, currentIndex);
-            $(".game-button").unbind('click').click(
-                function() {
-                    console.log('I will unbind click so it doesnt fire twice');
-                }
-            );
-        }
-    }
-    else {
-        console.log("Game Over!");
-        randomlyGeneratedNumbers = [];
-        gameOverMessage();
-        $(".game-start").show(1000);
-        $(".game-button").unbind('click').click(
-            function() {
-                console.log('I will unbind click so it doesnt fire twice');
-            }
-        );
-    }
-
-}
-
-function playSinglePlayerGame(answerIndex) {
-    $(".game-button").click(function() {
-        recordButtonAndEvaluate(this.id, checkanswerIndex);
-    });
-}
-
-function resetGame() {
-
-
-    // Reset Colors to default
-    $(".game-button").removeClass("gameover-button-color");
-    $(".game-button").unbind('click').click(
-        function() {
-            console.log('I will unbind click so it doesnt fire twice');
-        }
-    );
-    randomlyGeneratedNumbers = [];
-    clickedButtons = [];
-    gameLevel = 1;
-    currentIndex = 0;
-    checkanswerIndex = 0;
-    intervalOn = 1000;
-    intervalOff = 1500;
-    intervalSpeed = 1000;
-    correctAnswers = 0;
-    getReadyMessage();
-    createANumber(difficulty);
-    highlightButtonsSequence(gameLevel, currentIndex);
-    console.log("Game Reset");
-}
-
-// Timer Function
+// Timer Function - this ensures the player cannot play until the color sequence is complete
 
 var timeLeft = 0;
 
@@ -182,16 +121,123 @@ function timerBeforeClickingStarts(countFrom) {
     }
 }
 
+// This records the button the player has clicked in order
+
+function playSinglePlayerGame(answerIndex) {
+    $(".game-button").click(function() {
+        recordButtonAndEvaluate(this.id, checkanswerIndex);
+    });
+}
+
+// Step 4 - Once player has clicked a button it is pushed into an array and then the logic begins dependant on the outcome
+
+function recordButtonAndEvaluate(buttonClicked, answerIndex) {
+    var clickedButton = buttonClicked;
+
+    clickedButtons.push(clickedButton);
+
+    console.log("clickedButton =" + clickedButton);
+    console.log("Answer Index =" + answerIndex);
+    console.log("checkanswerIndex =" + checkanswerIndex);
+    console.log("clickedButtons =" + clickedButtons);
+    console.log("currentIndex =" + currentIndex);
+    console.log("randomlyGeneratedNumbers =" + randomlyGeneratedNumbers);
+    console.log("correctAnswers =" + correctAnswers);
+    console.log("-----------------------------------------------");
+
+    // Check 1a - if the answer is correct we move on to evaluate what we need to do next in the game
+
+    if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
+        correctAnswers++;
+
+        // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
+
+        if (correctAnswers === difficulty) {
+            console.log("you won the game");
+            $("#feedback-text").html(`<h2>Congratulations! You won the game!</h2>`);
+
+            // Insert play again here...
+            $(".sb3").fadeIn(2000).show();
+        }
+
+        // Check 2a - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
+
+        else if (correctAnswers < gameLevel) {
+            if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
+                checkanswerIndex++;
+            }
+        }
+
+        // Check 2a - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
+
+        else if (correctAnswers === gameLevel) {
+            $("#feedback-text").html(`<h2>Well done! Time for level ${gameLevel + 1}!</h2>`);
+            console.log("next level!");
+            correctAnswers = 0;
+            gameLevel++;
+            clickedButtons = [];
+            currentIndex = 0;
+            checkanswerIndex = 0;
+            intervalOn = 2000;
+            intervalOff = 2500;
+            intervalSpeed = 1000;
+            highlightButtonsSequence(gameLevel, currentIndex);
+            $(".game-button").unbind('click').click(
+                function() {
+                    console.log('I will unbind click so it doesnt fire twice');
+                }
+            );
+        }
+    }
+
+    // Check 1b - if the answer is incorrect the game ends
+
+    else {
+        console.log("Game Over!");
+        randomlyGeneratedNumbers = [];
+        gameOverMessage();
+        $(".sb3").show(1000);
+        $(".game-button").unbind('click').click(
+            function() {
+                console.log('I will unbind click so it doesnt fire twice');
+            }
+        );
+    }
+}
+
 // Script 
 
 $(document).ready(function() {
     console.log("ready!");
 
-    // Play the sequence in the array
+    // Glide through the set up menus...
+
+    // Welcome message menu...
+
+    $(".play").click(function() {
+        $(".sb1").fadeOut(2000).hide(2000);
+        setTimeout(function() {
+            $(".sb2").fadeIn(2000).show();
+        }, 1000);
+    });
+
+    $("#single-player").click(function() {
+        $(".sb2").fadeOut(2000).hide(2000);
+        setTimeout(function() {
+            $(".sb3").fadeIn(2000).show();
+        }, 1000);
+    });
+
+    // Start the play sequence....
 
     $("#start").click(function() {
-        resetGame();
-        $(".game-start").hide(1000);
+        $(".sb3").fadeOut(2000).hide(2000);
+        setTimeout(function() {
+            $(".sb4").fadeIn(2000).show();    
+        }, 1000);
+        
+        setTimeout(resetGame, 2000);    
+        
     });
 
 });

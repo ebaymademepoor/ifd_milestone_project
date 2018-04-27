@@ -2,15 +2,9 @@
 
 body {
     text-align: center;
-    padding: 0;
+    padding: 0 10px;
     margin: 0;
-}
-
-.container {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
+    overflow: hidden;
 }
 
 button {
@@ -32,11 +26,45 @@ h2 {
     border-radius: 100% 40% 100% 40%;
 }
 
-/*-----------------------------------  Page functionality*/
+.uppercase {
+    text-transform: uppercase;
+}
 
-// #game-area {
-//     display: none;
-// }
+.sliding-box {
+    position: absolute;
+    left:0;
+    width: 100%;
+    min-height: 150px;
+    min-width: 320px;
+}
+
+.welcome-area, .game-area, .start-area, .feedback-area {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.sliding-game-box {
+    padding: 220px 0 0;
+    min-height: 250px;
+}
+
+.sb1 {
+    z-index: 10;
+}
+
+.sb3 {
+    z-index: 5;
+}
+
+.sb2, .sb3, .sb4 {
+    display: none;
+}
+
+.start-area {
+    padding: 80px 0 0 0;
+}
+
+/*-----------------------------------  Page functionality*/
 
 .button-color1 {
     background-color: #38d639;
@@ -61,3 +89,4 @@ h2 {
 button:focus {
     outline: none;
 }
+
