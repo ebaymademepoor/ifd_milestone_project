@@ -9,11 +9,16 @@ button {
   margin: 20px 10px;
   max-width: 200px; }
 
+.game-mode {
+  margin: 10px 10px; }
+
 h1 {
-  font-size: 30px; }
+  font-size: 30px;
+  margin: 10px; }
 
 h2 {
-  font-size: 25px; }
+  font-size: 25px;
+  margin: 5px; }
 
 .game-button {
   width: 30%;
@@ -31,7 +36,7 @@ h2 {
   min-width: 320px; }
 
 .welcome-area, .game-area, .start-area, .feedback-area {
-  width: 80%;
+  width: 90%;
   margin: 0 auto; }
 
 .sliding-game-box {

@@ -196,7 +196,7 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
         console.log("Game Over!");
         randomlyGeneratedNumbers = [];
         gameOverMessage();
-        $(".sb3").show(1000);
+        $(".sb3").fadeIn(2000).show();
         $(".game-button").unbind('click').click(
             function() {
                 console.log('I will unbind click so it doesnt fire twice');
