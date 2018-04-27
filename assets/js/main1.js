@@ -54,7 +54,7 @@ $(document).ready(
         // Choose a game mode
 
         $("#single-player").click(function() {
-            $("#game-area").show(interval);
+            $("#game-start").show(interval);
         });
 
 

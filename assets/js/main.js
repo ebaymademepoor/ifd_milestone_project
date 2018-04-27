@@ -4,24 +4,27 @@ var randomlyGeneratedNumbers = [];
 var clickedButtons = [];
 var gameLevel = 1;
 var currentIndex = 0; // where we are in the randomlyGeneratedNumbers array
-var checkAnswerIndex = 0; // where we are in the clickedButtons array
+var checkanswerIndex = 0; // where we are in the clickedButtons array
 var intervalOn = 0;
 var intervalOff = 0;
 var intervalSpeed = 0;
-var difficulty = 5; // Could also be max level
+var difficulty = 7; // Could also be max level
 var correctAnswers = 0;
 
 //Aesthetic Functions
 
 function getReadyMessage() {
     $("#feedback-text").html(`<h2>Get Ready for level ${gameLevel}!</h2>`);
-    setTimeout(letsPlayMessage, intervalOn - 500);
+    setTimeout(letsPlayMessage, intervalOn);
 }
 
 function letsPlayMessage() {
     return $("#feedback-text").html("<h2>Memorise!</h2>");
 }
 
+function repeatMessage() {
+    $("#feedback-text").html(`<h2>Repeat!!!!!!!</h2>`);
+}
 
 function gameOverMessage() {
     $(".game-button").addClass("gameover-button-color");
@@ -29,7 +32,6 @@ function gameOverMessage() {
 }
 
 function colorOneButton(num) {
-
     //apply color once
     var applyColor = `$('#button${randomlyGeneratedNumbers[num]}').addClass('button-color${randomlyGeneratedNumbers[num]}')`;
     setTimeout(applyColor, intervalOn);
@@ -62,91 +64,121 @@ function highlightButtonsSequence(currentLevel, index) {
         colorOneButton(currentIndex);
         highlightButtonsSequence(gameLevel, currentIndex);
     }
+    else {
+        timerBeforeClickingStarts((intervalOff / 1000) + 1);
+    }
 }
 
-function recordClickedButton(buttonClicked) {
+function recordButtonAndEvaluate(buttonClicked, answerIndex) {
     var clickedButton = buttonClicked;
+
     clickedButtons.push(clickedButton);
-}
 
-function evaluatePlayerInputs(AnswerIndex) {
-    if (clickedButtons[AnswerIndex]) {
-            if (clickedButtons[AnswerIndex].id === "button" + randomlyGeneratedNumbers[AnswerIndex]) {
-                console.log("okay so far");
-                checkAnswerIndex++;
-                correctAnswers++;
-            } else {
-                console.log("Game Over!");
-                randomlyGeneratedNumbers = [];
-                gameOverMessage();
-            }
-        } else {
-            console.log("remember the is a possible evaluate error here! Do i need a promise?"); // never happens on the last click?!
-        }
-}
+    console.log("clickedButton =" + clickedButton);
+    console.log("Answer Index =" + answerIndex);
+    console.log("checkanswerIndex =" + checkanswerIndex);
+    console.log("clickedButtons =" + clickedButtons);
+    console.log("currentIndex =" + currentIndex);
+    console.log("randomlyGeneratedNumbers =" + randomlyGeneratedNumbers);
+    console.log("correctAnswers =" + correctAnswers);
+    console.log("-----------------------------------------------");
 
-function playSinglePlayerGame() {
-    $(".game-button").click(function() {
-        recordClickedButton(this);
-        evaluatePlayerInputs(checkAnswerIndex);
-
+    if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
+        correctAnswers++;
 
         if (correctAnswers === difficulty) {
             console.log("you won the game");
             $("#feedback-text").html(`<h2>Congratulations! You won the game!</h2>`);
+            $(".game-start").show(1000);
         }
 
         else if (correctAnswers < gameLevel) {
-            evaluatePlayerInputs(checkAnswerIndex);
+            if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
+                checkanswerIndex++;
+            }
         }
-
-        else {
+        else if (correctAnswers === gameLevel) {
             $("#feedback-text").html(`<h2>Well done! Time for level ${gameLevel + 1}!</h2>`);
             console.log("next level!");
             correctAnswers = 0;
             gameLevel++;
             clickedButtons = [];
             currentIndex = 0;
-            checkAnswerIndex = 0;
+            checkanswerIndex = 0;
             intervalOn = 1000;
             intervalOff = 1500;
             intervalSpeed = 1000;
             highlightButtonsSequence(gameLevel, currentIndex);
+            $(".game-button").unbind('click').click(
+                function() {
+                    console.log('I will unbind click so it doesnt fire twice');
+                }
+            );
         }
+    }
+    else {
+        console.log("Game Over!");
+        randomlyGeneratedNumbers = [];
+        gameOverMessage();
+        $(".game-start").show(1000);
+        $(".game-button").unbind('click').click(
+            function() {
+                console.log('I will unbind click so it doesnt fire twice');
+            }
+        );
+    }
+
+}
+
+function playSinglePlayerGame(answerIndex) {
+    $(".game-button").click(function() {
+        recordButtonAndEvaluate(this.id, checkanswerIndex);
     });
 }
 
 function resetGame() {
+
+
+    // Reset Colors to default
+    $(".game-button").removeClass("gameover-button-color");
+    $(".game-button").unbind('click').click(
+        function() {
+            console.log('I will unbind click so it doesnt fire twice');
+        }
+    );
     randomlyGeneratedNumbers = [];
     clickedButtons = [];
     gameLevel = 1;
     currentIndex = 0;
-    checkAnswerIndex = 0;
+    checkanswerIndex = 0;
     intervalOn = 1000;
     intervalOff = 1500;
     intervalSpeed = 1000;
     correctAnswers = 0;
-    // Reset Colors to default
-    $(".game-button").removeClass("gameover-button-color");
+    getReadyMessage();
+    createANumber(difficulty);
+    highlightButtonsSequence(gameLevel, currentIndex);
+    console.log("Game Reset");
 }
 
 // Timer Function
 
 var timeLeft = 0;
 
-function repeat(){
+function repeat() {
     timerBeforeClickingStarts(timeLeft);
 }
 
-function timerBeforeClickingStarts(countFrom){
+function timerBeforeClickingStarts(countFrom) {
     timeLeft = countFrom;
-    console.log(timeLeft);
-    if(timeLeft < 1){
+    if (timeLeft < 1) {
         clearTimeout(timeLeft);
-        playSinglePlayerGame();
-    } else {
-    timeLeft--;
-    setTimeout(repeat,1000);
+        repeatMessage();
+        playSinglePlayerGame(checkanswerIndex);
+    }
+    else {
+        timeLeft--;
+        setTimeout(repeat, 1000);
     }
 }
 
@@ -159,9 +191,7 @@ $(document).ready(function() {
 
     $("#start").click(function() {
         resetGame();
-        getReadyMessage();
-        createANumber(difficulty);
-        highlightButtonsSequence(gameLevel, currentIndex);
-    })
-    timerBeforeClickingStarts(1 + (gameLevel * 5)); //this is in the wrong place, needs to run after sequence
+        $(".game-start").hide(1000);
+    });
+
 });

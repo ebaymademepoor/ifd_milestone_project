@@ -17,6 +17,9 @@ button {
 h1 {
   font-size: 30px; }
 
+h2 {
+  font-size: 25px; }
+
 .game-button {
   width: 30%;
   height: 70px;
@@ -40,11 +43,5 @@ h1 {
 
 button:focus {
   outline: none; }
-
-#feedback-text {
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0; }
 
 /*# sourceMappingURL=styles.css.map */
