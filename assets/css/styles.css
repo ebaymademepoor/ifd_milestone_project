@@ -3,7 +3,8 @@ body {
   text-align: center;
   padding: 0 10px;
   margin: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: 'Do Hyeon', sans-serif; }
 
 button {
   margin: 20px 10px;
@@ -43,13 +44,13 @@ h2 {
   padding: 220px 0 0;
   min-height: 250px; }
 
-.sb1 {
+.welcome-box {
   z-index: 10; }
 
-.sb3 {
+.start-box {
   z-index: 5; }
 
-.sb2, .sb3, .sb4 {
+.mode-box, .start-box, .feedback-box {
   display: none; }
 
 .start-area {
@@ -67,6 +68,9 @@ h2 {
 
 .button-color4 {
   background-color: #3130d3; }
+
+.button-color5 {
+  background-color: #129cd6; }
 
 .gameover-button-color {
   background-color: #000; }

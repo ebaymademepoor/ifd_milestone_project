@@ -5,6 +5,7 @@ body {
     padding: 0 10px;
     margin: 0;
     overflow: hidden;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 button {
@@ -54,15 +55,15 @@ h2 {
     min-height: 250px;
 }
 
-.sb1 {
+.welcome-box {
     z-index: 10;
 }
 
-.sb3 {
+.start-box {
     z-index: 5;
 }
 
-.sb2, .sb3, .sb4 {
+.mode-box, .start-box, .feedback-box {
     display: none;
 }
 
@@ -86,6 +87,10 @@ h2 {
 
 .button-color4 {
     background-color: #3130d3; 
+}
+
+.button-color5 {
+    background-color: #129cd6; 
 }
 
 .gameover-button-color {

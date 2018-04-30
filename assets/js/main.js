@@ -14,15 +14,31 @@ var correctAnswers = 0;
 //Aesthetic Functions
 
 function getReadyMessage() {
+        playSound("assets/sounds/get-ready.mp3");
     $("#feedback-text").html(`<h2>Get Ready for level ${gameLevel}!</h2>`);
-    setTimeout(letsPlayMessage, intervalOn);
 }
 
-function letsPlayMessage() {
+function threeMessage() {
+    playSound("assets/sounds/three.mp3");
+    $("#feedback-text").html(`<h2>3</h2>`);
+}
+
+function twoMessage() {
+    playSound("assets/sounds/two.mp3");
+    $("#feedback-text").html(`<h2>2</h2>`);
+}
+
+function oneMessage() {
+    playSound("assets/sounds/one.mp3");
+    $("#feedback-text").html(`<h2>1</h2>`);
+}
+
+function memoriseMessage() {
     return $("#feedback-text").html("<h2>Memorise!</h2>");
 }
 
 function repeatMessage() {
+    playSound("assets/sounds/go.mp3");
     $("#feedback-text").html(`<h2>Repeat!!!!!!!</h2>`);
 }
 
@@ -45,6 +61,17 @@ function removeCurrentColor(currentColor) {
     setTimeout(removeColor, intervalOff);
 }
 
+// Starting sequence - feedback messages before start
+
+function startSequence(){
+    setTimeout(getReadyMessage, 2000);
+    setTimeout(threeMessage, 4000);
+    setTimeout(twoMessage, 5000);
+    setTimeout(oneMessage, 6000);
+    setTimeout(memoriseMessage, 7000);
+    timerBeforeSequenceStarts(7);
+}
+
 // Gameplay Functions    
 
 // Step 1 - When start is clicked, all game parameters are set to zero and a new game begins...
@@ -58,6 +85,7 @@ function resetGame() {
             console.log('I will unbind click so it doesnt fire twice');
         }
     );
+
     randomlyGeneratedNumbers = [];
     clickedButtons = [];
     gameLevel = 1;
@@ -67,9 +95,8 @@ function resetGame() {
     intervalOff = 2500;
     intervalSpeed = 1000;
     correctAnswers = 0;
-    getReadyMessage();
     createANumber(difficulty);
-    highlightButtonsSequence(gameLevel, currentIndex);
+    startSequence();
     console.log("Game Reset");
 }
 
@@ -100,7 +127,7 @@ function highlightButtonsSequence(currentLevel, index) {
     }
 }
 
-// Timer Function - this ensures the player cannot play until the color sequence is complete
+// Click timer Function - this ensures the player cannot play until the color sequence is complete
 
 var timeLeft = 0;
 
@@ -112,12 +139,32 @@ function timerBeforeClickingStarts(countFrom) {
     timeLeft = countFrom;
     if (timeLeft < 1) {
         clearTimeout(timeLeft);
-        repeatMessage();
         playSinglePlayerGame(checkanswerIndex);
+        repeatMessage();
     }
     else {
         timeLeft--;
         setTimeout(repeat, 1000);
+    }
+}
+
+// Sequence timer Function - this ensures the player cannot play until the color sequence is complete
+
+var seqTimeLeft = 0;
+
+function repeat2() {
+    timerBeforeSequenceStarts(seqTimeLeft);
+}
+
+function timerBeforeSequenceStarts(countFrom) {
+    seqTimeLeft = countFrom;
+    if (seqTimeLeft < 1) {
+        clearTimeout(seqTimeLeft);
+        highlightButtonsSequence(gameLevel, currentIndex);
+    }
+    else {
+        seqTimeLeft--;
+        setTimeout(repeat2, 1000);
     }
 }
 
@@ -126,7 +173,13 @@ function timerBeforeClickingStarts(countFrom) {
 function playSinglePlayerGame(answerIndex) {
     $(".game-button").click(function() {
         recordButtonAndEvaluate(this.id, checkanswerIndex);
+        $(this).addClass("button-color5");
+        setTimeout(rC, 200);
     });
+}
+
+function rC(){
+    return $(".game-button").removeClass("button-color5");
 }
 
 // Step 4 - Once player has clicked a button it is pushed into an array and then the logic begins dependant on the outcome
@@ -149,6 +202,7 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
 
     if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
         correctAnswers++;
+        
 
         // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
 
@@ -157,7 +211,7 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
             $("#feedback-text").html(`<h2>Congratulations! You won the game!</h2>`);
 
             // Insert play again here...
-            $(".sb3").fadeIn(2000).show();
+            $(".start-box").fadeIn(2000).show();
         }
 
         // Check 2a - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
@@ -165,12 +219,14 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
         else if (correctAnswers < gameLevel) {
             if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
                 checkanswerIndex++;
+                playSound("assets/sounds/correct-beep.mp3");
             }
         }
 
         // Check 2a - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
 
         else if (correctAnswers === gameLevel) {
+            playSound("assets/sounds/next-level.mp3");
             $("#feedback-text").html(`<h2>Well done! Time for level ${gameLevel + 1}!</h2>`);
             console.log("next level!");
             correctAnswers = 0;
@@ -193,16 +249,25 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
     // Check 1b - if the answer is incorrect the game ends
 
     else {
+        playSound("assets/sounds/game-over.mp3");
         console.log("Game Over!");
         randomlyGeneratedNumbers = [];
         gameOverMessage();
-        $(".sb3").fadeIn(2000).show();
+        $(".start-box").fadeIn(2000).show();
         $(".game-button").unbind('click').click(
             function() {
                 console.log('I will unbind click so it doesnt fire twice');
             }
         );
     }
+}
+
+// Play music
+
+function playSound(path) {
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', path);
+    audioElement.play();
 }
 
 // Script 
@@ -215,29 +280,29 @@ $(document).ready(function() {
     // Welcome message menu...
 
     $(".play").click(function() {
-        $(".sb1").fadeOut(2000).hide(2000);
+        $(".welcome-box").fadeOut(2000).hide(2000);
         setTimeout(function() {
-            $(".sb2").fadeIn(2000).show();
+            $(".mode-box").fadeIn(2000).show();
         }, 1000);
     });
 
     $("#single-player").click(function() {
-        $(".sb2").fadeOut(2000).hide(2000);
+        $(".mode-box").fadeOut(2000).hide(2000);
         setTimeout(function() {
-            $(".sb3").fadeIn(2000).show();
+            $(".start-box").fadeIn(2000).show();
         }, 1000);
     });
 
     // Start the play sequence....
 
     $("#start").click(function() {
-        $(".sb3").fadeOut(2000).hide(2000);
+        $(".start-box").fadeOut(2000).hide();
         setTimeout(function() {
-            $(".sb4").fadeIn(2000).show();    
+            $(".feedback-box").fadeIn(2000).show();
         }, 1000);
-        
-        setTimeout(resetGame, 2000);    
-        
+
+        setTimeout(resetGame, 2000);
+
     });
 
 });
