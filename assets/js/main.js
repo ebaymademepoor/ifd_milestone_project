@@ -8,7 +8,7 @@ var checkanswerIndex = 0; // where we are in the clickedButtons array
 var intervalOn = 0;
 var intervalOff = 0;
 var intervalSpeed = 0;
-var difficulty = 7; // Could also be max level
+var difficulty = 2; // Could also be max level
 var correctAnswers = 0;
 
 //Aesthetic Functions
@@ -207,9 +207,12 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
         // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
 
         if (correctAnswers === difficulty) {
+            playSound("assets/sounds/winner.mp3");
             console.log("you won the game");
             $("#feedback-text").html(`<h2>Congratulations! You won the game!</h2>`);
-
+            $("#start").text("Play again?");
+            
+            
             // Insert play again here...
             $(".start-box").fadeIn(2000).show();
         }
@@ -250,10 +253,11 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
 
     else {
         playSound("assets/sounds/game-over.mp3");
+        $("#start").text("Try again?");
         console.log("Game Over!");
         randomlyGeneratedNumbers = [];
         gameOverMessage();
-        $(".start-box").fadeIn(2000).show();
+        $(".start-box").fadeIn(8000).show();
         $(".game-button").unbind('click').click(
             function() {
                 console.log('I will unbind click so it doesnt fire twice');
@@ -297,6 +301,7 @@ $(document).ready(function() {
 
     $("#start").click(function() {
         $(".start-box").fadeOut(2000).hide();
+        $("#feedback-text").text("Are you ready?");
         setTimeout(function() {
             $(".feedback-box").fadeIn(2000).show();
         }, 1000);

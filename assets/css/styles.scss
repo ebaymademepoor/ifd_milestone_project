@@ -9,8 +9,8 @@ body {
 }
 
 button {
-    margin: 20px 10px;
-    max-width: 200px;
+    margin: 10px;
+    max-width: 120px;
 }
 
 .game-mode {
@@ -28,9 +28,32 @@ h2 {
 }
 
 .game-button {
-    width: 30%;
-    height: 70px;
+    width: 40%;
+    height: 100px;
+}
+
+#button1, #button4 {
     border-radius: 100% 40% 100% 40%;
+}
+
+#button2, #button3 {
+    border-radius: 40% 100% 40% 100%;
+}
+
+.bt1 {
+    background-color: #38d639;
+}
+
+.bt2 {
+    background-color: #d5393a;
+}
+
+.bt3 {
+    background-color: #d9d82e;
+}
+
+.bt4 {
+    background-color: #3130d3;
 }
 
 .uppercase {
@@ -71,22 +94,26 @@ h2 {
     padding: 80px 0 0 0;
 }
 
+header {
+    margin-bottom: 40px;
+}
+
 /*-----------------------------------  Page functionality*/
 
 .button-color1 {
-    background-color: #38d639;
+    background-color: #00ff00;
 }
 
 .button-color2 {
-    background-color: #d5393a; 
+    background-color: #ff0000; 
 }
 
 .button-color3 {
-    background-color: #d9d82e; 
+    background-color: #ffff00; 
 }
 
 .button-color4 {
-    background-color: #3130d3; 
+    background-color: #0000ff; 
 }
 
 .button-color5 {
