@@ -8,7 +8,7 @@ var checkanswerIndex = 0; // where we are in the clickedButtons array
 var intervalOn = 0;
 var intervalOff = 0;
 var intervalSpeed = 0;
-var difficulty = 2; // Could also be max level
+var difficulty = 8; // Could also be max level
 var correctAnswers = 0;
 
 //Aesthetic Functions
@@ -227,6 +227,26 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
         }
 
         // Check 2a - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
+
+        else if (correctAnswers === gameLevel && difficulty -1 === gameLevel) {
+            playSound("assets/sounds/next-level.mp3");
+            $("#feedback-text").html(`<h2>FINAL STAGE!</h2>`);
+            console.log("next level!");
+            correctAnswers = 0;
+            gameLevel++;
+            clickedButtons = [];
+            currentIndex = 0;
+            checkanswerIndex = 0;
+            intervalOn = 2000;
+            intervalOff = 2500;
+            intervalSpeed = 1000;
+            highlightButtonsSequence(gameLevel, currentIndex);
+            $(".game-button").unbind('click').click(
+                function() {
+                    console.log('I will unbind click so it doesnt fire twice');
+                }
+            );
+        }
 
         else if (correctAnswers === gameLevel) {
             playSound("assets/sounds/next-level.mp3");
