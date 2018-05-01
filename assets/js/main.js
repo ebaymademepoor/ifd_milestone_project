@@ -62,7 +62,7 @@ var soundsLibrary = {
         sound: new Howl({
             src: ['assets/sounds/play-music.mp3'],
             loop: true,
-            volume: 0.5
+            volume: 0.5,
         })
     },
     11: {
@@ -76,7 +76,7 @@ var soundsLibrary = {
 
 function getReadyMessage() {
     soundsLibrary[1].sound.play();
-    $("#feedback-text").html(`<h2>Get Ready for level ${gameLevel}!</h2>`);
+    $("#feedback-text").html(`<h2>Get Ready for LEVEL ${gameLevel} !</h2>`);
 }
 
 function threeMessage() {
@@ -360,6 +360,7 @@ $(document).ready(function() {
     // Welcome message menu...
 
     $(".play").click(function() {
+        soundsLibrary[6].sound.play();
         $(".welcome-box").fadeOut(2000).hide(2000);
         setTimeout(function() {
             $(".mode-box").fadeIn(2000).show();
