@@ -72,11 +72,13 @@ var soundsLibrary = {
     }
 };
 
+Howler._enableMobileAudio();
+
 //Aesthetic Functions
 
 function getReadyMessage() {
     soundsLibrary[1].sound.play();
-    $("#feedback-text").html(`<h2>Get Ready for LEVEL ${gameLevel} !</h2>`);
+    $("#feedback-text").html(`<h2>Get Ready for <br>LEVEL ${gameLevel}!</h2>`);
 }
 
 function threeMessage() {
@@ -313,7 +315,7 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
 
         else if (correctAnswers === gameLevel) {
             soundsLibrary[7].sound.play();
-            $("#feedback-text").html(`<h2>Well done! Time for LEVEL ${gameLevel + 1} !</h2>`);
+            $("#feedback-text").html(`<h2>Well done!<br>Time for LEVEL ${gameLevel + 1}!</h2>`);
             console.log("next level!");
             correctAnswers = 0;
             gameLevel++;
@@ -368,6 +370,7 @@ $(document).ready(function() {
     });
 
     $("#single-player").click(function() {
+        soundsLibrary[6].sound.play();
         $(".mode-box").fadeOut(2000).hide(2000);
         setTimeout(function() {
             $(".start-box").fadeIn(2000).show();
@@ -377,6 +380,7 @@ $(document).ready(function() {
     // Start the play sequence....
 
     $("#start").click(function() {
+        soundsLibrary[6].sound.play();
         $(".start-box").fadeOut(2000).hide();
         $("#feedback-text").text("Are you ready?");
         setTimeout(function() {
