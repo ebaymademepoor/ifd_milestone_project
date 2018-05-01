@@ -1,7 +1,7 @@
 /* ---------------------------------- Initial Test Styles */
 body {
   text-align: center;
-  padding: 0 10px;
+  padding: 0;
   margin: 0;
   overflow: hidden;
   font-family: 'Do Hyeon', sans-serif; }
@@ -11,10 +11,14 @@ button {
   max-width: 120px; }
 
 .game-mode {
-  margin: 10px 10px;
   width: 95px;
   height: 35px;
-  border-radius: 25%; }
+  border-radius: 25%;
+  position: relative; }
+
+.start-btn {
+  position: relative;
+  top: 50px; }
 
 h1 {
   font-size: 30px;
@@ -28,10 +32,12 @@ h2 {
   width: 40%;
   height: 100px; }
 
-#button1, #button4 {
+#button1,
+#button4 {
   border-radius: 100% 40% 100% 40%; }
 
-#button2, #button3 {
+#button2,
+#button3 {
   border-radius: 40% 100% 40% 100%; }
 
 .bt1 {
@@ -56,13 +62,12 @@ h2 {
   min-height: 150px;
   min-width: 320px; }
 
-.welcome-area, .game-area, .start-area, .feedback-area {
+.welcome-area,
+.game-area,
+.start-area,
+.feedback-area {
   width: 90%;
   margin: 0 auto; }
-
-.sliding-game-box {
-  padding: 220px 0 0;
-  min-height: 250px; }
 
 .welcome-box {
   z-index: 10; }
@@ -70,14 +75,67 @@ h2 {
 .start-box {
   z-index: 5; }
 
-.mode-box, .start-box, .feedback-box {
+.mode-box,
+.start-box,
+.feedback-box,
+.sgb2 {
   display: none; }
 
 .start-area {
-  padding: 80px 0 0 0; }
+  margin-bottom: 50px;
+  padding: 20px 0 0 0; }
 
 header {
-  margin-bottom: 40px; }
+  margin-bottom: 30px; }
+
+.section1-container {
+  position: relative;
+  min-height: 220px;
+  min-width: 320px; }
+
+.section2-container {
+  position: relative;
+  min-height: 250px; }
+
+.sliding-game-box {
+  width: 100%;
+  position: absolute;
+  padding: 0 0 0; }
+
+.sgb1 {
+  z-index: 2;
+  background-color: #fff; }
+
+.sgb2 {
+  z-index: 1;
+  background-color: #fff; }
+
+.results-para {
+  font-size: 20px; }
+
+.results-image {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 30%; }
+
+.patrick {
+  background-image: url("../pictures/patrick.jpg"); }
+
+.einstein {
+  background-image: url("../pictures/einstein.jpg"); }
+
+.prescott {
+  background-image: url("../pictures/prescott.jpg"); }
+
+.clever {
+  background-image: url("../pictures/clever.png"); }
 
 /*-----------------------------------  Page functionality*/
 .button-color1 {

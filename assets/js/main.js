@@ -143,15 +143,17 @@ function startSequence() {
 function resetGame() {
 
     // Reset Colors to default
-    $(".game-button").removeClass("gameover-button-color");
     $(".game-button").unbind('click').click(
         function() {
             console.log('I will unbind click so it doesnt fire twice');
         }
     );
-
+    
+    $(".results-image").hide();
+    
     randomlyGeneratedNumbers = [];
     clickedButtons = [];
+    removePictures();
     gameLevel = 1;
     currentIndex = 0;
     checkanswerIndex = 0;
@@ -277,9 +279,16 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
             $("#feedback-text").html(`<h2>Congratulations! You won the game!</h2>`);
             $("#start").text("Play again?");
 
+            appraisalOfPerformance();
+
+            $(".sgb1").fadeOut(2000).hide();
+            setTimeout(function() {
+                $(".sgb2").fadeIn(2000).show();
+            }, 2000);
+
 
             // Insert play again here...
-            $(".start-box").fadeIn(2000).show();
+            $(".start-box").fadeIn(8000).show();
         }
 
         // Check 2a - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
@@ -339,7 +348,17 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
     else {
         soundsLibrary[10].sound.stop();
         soundsLibrary[8].sound.play();
+
+        $(".sgb1").fadeOut(2000).hide();
+        setTimeout(function() {
+            $(".sgb2").fadeIn(2000).show();
+        }, 2000);
+
+
         $("#start").text("Try again?");
+
+        appraisalOfPerformance();
+
         console.log("Game Over!");
         randomlyGeneratedNumbers = [];
         gameOverMessage();
@@ -350,6 +369,38 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
             }
         );
     }
+}
+
+// Game performance evaluator
+
+function appraisalOfPerformance() {
+    if (gameLevel / difficulty < 0.5) {
+        $(".results-para").text("You are worse than stupid! xD");
+        $(".results-image").addClass("patrick");
+        $(".results-image").fadeIn(2000);
+    }
+    else if (gameLevel / difficulty < 0.76) {
+        $(".results-para").text("You are just OKAY at this..! :p");
+        $(".results-image").addClass("prescott");
+        $(".results-image").fadeIn(2000);
+    }
+    else if (gameLevel / difficulty < 0.99) {
+        $(".results-para").text("Not bad, keep trying! :D");
+        $(".results-image").addClass("clever");
+        $(".results-image").fadeIn(2000);
+    }
+    else {
+        $(".results-para").text("You are the brainiest guy I know! xD");
+        $(".results-image").addClass("einstein");
+        $(".results-image").fadeIn(2000);
+    }
+}
+
+function removePictures() {
+    $(".results-image").removeClass("patrick");
+    $(".results-image").removeClass("prescott");
+    $(".results-image").removeClass("clever");
+    $(".results-image").removeClass("einstein");
 }
 
 // Script 
@@ -380,13 +431,14 @@ $(document).ready(function() {
     // Start the play sequence....
 
     $("#start").click(function() {
+        $(".sgb1").fadeIn(2000).show();
         soundsLibrary[6].sound.play();
         $(".start-box").fadeOut(2000).hide();
         $("#feedback-text").text("Are you ready?");
         setTimeout(function() {
             $(".feedback-box").fadeIn(2000).show();
         }, 1000);
-
+        $(".game-button").removeClass("gameover-button-color");
         setTimeout(resetGame, 2000);
         soundsLibrary[10].sound.play();
     });

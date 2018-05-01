@@ -8,7 +8,7 @@
     <title>TOTALLY RECALLED - The Ultimate Memory Game</title>
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
-    
+
     <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="assets/js/howler.js/dist/howler.min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
@@ -19,7 +19,7 @@
     <header>
         <h1 class="uppercase">Totally Recalled</h1>
     </header>
-    <div class="settings-container">
+    <div class="section1-container">
         <div class="sliding-box welcome-box">
             <section class="welcome-area">
                 <h2 class="opening-header">Welcome to the ultimate memory game!</h2>
@@ -37,7 +37,7 @@
         </div>
         <div class="sliding-box start-box">
             <section class="start-area">
-                <button id="start" class="game-mode" type="button">Start Game!</button>
+                <button id="start" class="game-mode start-btn" type="button">Start Game!</button>
             </section>
         </div>
         <div class="sliding-box feedback-box">
@@ -46,27 +46,28 @@
             </section>
         </div>
     </div>
-    <div class="sliding-game-box sgb1">
-        <section id="game-area">
-            <div class="button-pair-1">
-                <button id="button1" class="game-button bt1 quarter quarter1"></button>
-                <button id="button2" class="game-button bt2"></button>
-            </div>
-            <div class="button-pair-2">
-                <button id="button3" class="game-button bt3"></button>
-                <button id="button4" class="game-button bt4"></button>
-            </div>
-        </section>
-    </div>
-    <div class="sliding-game-box sg2">
-        <section class="results-section">
-            <div class="results-image">
-
-            </div>
-            <div class="results-text">
-                <p class="results-para">Your result is...</p>
-            </div>
-        </section>
+    <div class="section2-container">
+        <div class="sliding-game-box sgb1">
+            <section id="game-area">
+                <div class="button-pair-1">
+                    <button id="button1" class="game-button bt1 quarter quarter1"></button>
+                    <button id="button2" class="game-button bt2"></button>
+                </div>
+                <div class="button-pair-2">
+                    <button id="button3" class="game-button bt3"></button>
+                    <button id="button4" class="game-button bt4"></button>
+                </div>
+            </section>
+        </div>
+        <div class="sliding-game-box sgb2">
+            <section class="results-section">
+                <div class="results-text">
+                    <p>Your result is...</p>
+                    <p class="results-para"></p>
+                </div>
+                <div class="results-image"></div>
+            </section>
+        </div>
     </div>
 </body>
 
