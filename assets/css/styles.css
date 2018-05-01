@@ -11,7 +11,10 @@ button {
   max-width: 120px; }
 
 .game-mode {
-  margin: 10px 10px; }
+  margin: 10px 10px;
+  width: 95px;
+  height: 35px;
+  border-radius: 25%; }
 
 h1 {
   font-size: 30px;
@@ -87,7 +90,7 @@ header {
   background-color: #ffff00; }
 
 .button-color4 {
-  background-color: #0000ff; }
+  background-color: #8200ff; }
 
 .button-color5 {
   background-color: #129cd6; }
