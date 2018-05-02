@@ -11,8 +11,6 @@ var intervalSpeed = 0;
 var difficulty = 10; // Could also be max level
 var correctAnswers = 0;
 
-Howler._enableMobileAudio();
-
 var soundsLibrary = {
     aa1: {
         sound: new Howl({
@@ -381,7 +379,7 @@ function appraisalOfPerformance() {
     }
     else if (gameLevel / difficulty < 0.76) {
         $(".results-para").text("You are just OKAY at this..! :p");
-        $(".results-image").addClass("prescott");
+        $(".results-image").addClass("trump");
         $(".results-image").show();
     }
     else if (gameLevel / difficulty < 0.99) {
@@ -398,7 +396,7 @@ function appraisalOfPerformance() {
 
 function removePictures() {
     $(".results-image").removeClass("patrick");
-    $(".results-image").removeClass("prescott");
+    $(".results-image").removeClass("trump");
     $(".results-image").removeClass("clever");
     $(".results-image").removeClass("einstein");
 }

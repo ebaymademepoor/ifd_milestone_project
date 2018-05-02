@@ -123,8 +123,7 @@ header {
   -o-background-size: contain;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 45%; }
+  background-position: center; }
 
 .patrick {
   background-image: url("../pictures/patrick.jpg"); }
@@ -132,8 +131,8 @@ header {
 .einstein {
   background-image: url("../pictures/einstein.jpg"); }
 
-.prescott {
-  background-image: url("../pictures/prescott.jpg"); }
+.trump {
+  background-image: url("../pictures/trump.jpg"); }
 
 .clever {
   background-image: url("../pictures/clever.png"); }
