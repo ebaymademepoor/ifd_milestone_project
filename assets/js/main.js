@@ -8,92 +8,92 @@ var checkanswerIndex = 0; // where we are in the clickedButtons array
 var intervalOn = 0;
 var intervalOff = 0;
 var intervalSpeed = 0;
-var difficulty = 8; // Could also be max level
+var difficulty = 10; // Could also be max level
 var correctAnswers = 0;
 
+Howler._enableMobileAudio();
+
 var soundsLibrary = {
-    1: {
+    aa1: {
         sound: new Howl({
-            src: ['assets/sounds/get-ready.mp3']
+            src: ['assets/sounds/get-ready.mp3','assets/sounds/correct-beep.mp3']
         })
     },
-    2: {
+    aa2: {
         sound: new Howl({
-            src: ['assets/sounds/three.mp3']
+            src: ['assets/sounds/three.mp3','assets/sounds/correct-beep.mp3']
         })
     },
-    3: {
+    aa3: {
         sound: new Howl({
-            src: ['assets/sounds/two.mp3']
+            src: ['assets/sounds/two.mp3','assets/sounds/correct-beep.mp3']
         })
     },
-    4: {
+    aa4: {
         sound: new Howl({
-            src: ['assets/sounds/one.mp3']
+            src: ['assets/sounds/one.mp3','assets/sounds/correct-beep.mp3']
         })
     },
-    5: {
+    aa5: {
         sound: new Howl({
-            src: ['assets/sounds/go.mp3']
+            src: ['assets/sounds/go.mp3','assets/sounds/correct-beep.mp3']
         })
     },
-    6: {
+    aa6: {
         sound: new Howl({
-            src: ['assets/sounds/correct-beep.mp3']
+            src: ['assets/sounds/correct-beep.mp3','assets/sounds/correct-beep.mp3']
         })
     },
-    7: {
+    aa7: {
         sound: new Howl({
-            src: ['assets/sounds/next-level.mp3']
+            src: ['assets/sounds/next-level.mp3','assets/sounds/correct-beep.mp3']
         })
     },
-    8: {
+    aa8: {
         sound: new Howl({
-            src: ['assets/sounds/game-over.mp3'],
+            src: ['assets/sounds/game-over.mp3','assets/sounds/correct-beep.mp3'],
             volume: 0.5
         })
     },
-    9: {
+    aa9: {
         sound: new Howl({
-            src: ['assets/sounds/winner.mp3']
+            src: ['assets/sounds/winner.mp3','assets/sounds/correct-beep.mp3']
         })
     },
-    10: {
+    aa10: {
         sound: new Howl({
-            src: ['assets/sounds/play-music.mp3'],
+            src: ['assets/sounds/play-music.mp3','assets/sounds/correct-beep.mp3'],
             loop: true,
-            volume: 0.5,
+            volume: 0.5
         })
     },
-    11: {
+    aa11: {
         sound: new Howl({
-            src: ['assets/sounds/final-stage.mp3'],
+            src: ['assets/sounds/final-stage.mp3','assets/sounds/correct-beep.mp3']
         })
     }
 };
 
-Howler._enableMobileAudio();
-
 //Aesthetic Functions
 
 function getReadyMessage() {
-    soundsLibrary[1].sound.play();
-    $("#feedback-text").html(`<h2>Get Ready for <br>LEVEL ${gameLevel}!</h2>`);
+    soundsLibrary.aa1.sound.play();
+    $("#feedback-text").html("<h2>Get Ready for <br>LEVEL " + gameLevel + " !</h2>");
 }
 
 function threeMessage() {
-    soundsLibrary[2].sound.play();
-    $("#feedback-text").html(`<h2>3</h2>`);
+    soundsLibrary.aa2.sound.play();
+    $("#feedback-text").html("<h2>3</h2>");
 }
 
 function twoMessage() {
-    soundsLibrary[3].sound.play();
-    $("#feedback-text").html(`<h2>2</h2>`);
+    soundsLibrary.aa3.sound.play();
+    $("#feedback-text").html("<h2>2</h2>");
 }
 
 function oneMessage() {
-    soundsLibrary[4].sound.play();
-    $("#feedback-text").html(`<h2>1</h2>`);
+    soundsLibrary.aa4.sound.play();
+    $("#feedback-text").html("<h2>1</h2>");
 }
 
 function memoriseMessage() {
@@ -101,19 +101,19 @@ function memoriseMessage() {
 }
 
 function repeatMessage() {
-    soundsLibrary[5].sound.play();
-    $("#feedback-text").html(`<h2>Repeat!!!!!!!</h2>`);
+    soundsLibrary.aa5.sound.play();
+    $("#feedback-text").html("<h2>Repeat!!!!!!!</h2>");
 }
 
 function gameOverMessage() {
-    soundsLibrary[8].sound.play();
+    soundsLibrary.aa8.sound.play();
     $(".game-button").addClass("gameover-button-color");
     return $("#feedback-text").html("<h2>You got it wrong!  Game Over!</h2>");
 }
 
 function colorOneButton(num) {
     //apply color once
-    var applyColor = `$('#button${randomlyGeneratedNumbers[num]}').addClass('button-color${randomlyGeneratedNumbers[num]}')`;
+    var applyColor = "$('#button" + randomlyGeneratedNumbers[num] + "').addClass('button-color" + randomlyGeneratedNumbers[num] + "')";
     setTimeout(applyColor, intervalOn);
 
     //remove color once
@@ -148,9 +148,9 @@ function resetGame() {
             console.log('I will unbind click so it doesnt fire twice');
         }
     );
-    
+
     $(".results-image").hide();
-    
+
     randomlyGeneratedNumbers = [];
     clickedButtons = [];
     removePictures();
@@ -273,10 +273,10 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
         // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
 
         if (correctAnswers === difficulty) {
-            soundsLibrary[10].sound.stop();
-            soundsLibrary[9].sound.play();
+            soundsLibrary.aa10.sound.stop();
+            soundsLibrary.aa9.sound.play();
             console.log("you won the game");
-            $("#feedback-text").html(`<h2>Congratulations! You won the game!</h2>`);
+            $("#feedback-text").html("<h2>Congratulations! You won the game!</h2>");
             $("#start").text("Play again?");
 
             appraisalOfPerformance();
@@ -296,15 +296,15 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
         else if (correctAnswers < gameLevel) {
             if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
                 checkanswerIndex++;
-                soundsLibrary[6].sound.play();
+                soundsLibrary.aa6.sound.play();
             }
         }
 
         // Check 2a - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
 
         else if (correctAnswers === gameLevel && difficulty - 1 === gameLevel) {
-            soundsLibrary[11].sound.play();
-            $("#feedback-text").html(`<h2>FINAL STAGE!</h2>`);
+            soundsLibrary.aa11.sound.play();
+            $("#feedback-text").html("<h2>FINAL STAGE!</h2>");
             console.log("next level!");
             correctAnswers = 0;
             gameLevel++;
@@ -323,11 +323,11 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
         }
 
         else if (correctAnswers === gameLevel) {
-            soundsLibrary[7].sound.play();
-            $("#feedback-text").html(`<h2>Well done!<br>Time for LEVEL ${gameLevel + 1}!</h2>`);
+            gameLevel++;
+            soundsLibrary.aa7.sound.play();
+            $("#feedback-text").html("<h2>Well done!<br>Time for LEVEL " + gameLevel + " !</h2>");
             console.log("next level!");
             correctAnswers = 0;
-            gameLevel++;
             clickedButtons = [];
             currentIndex = 0;
             checkanswerIndex = 0;
@@ -346,8 +346,8 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
     // Check 1b - if the answer is incorrect the game ends
 
     else {
-        soundsLibrary[10].sound.stop();
-        soundsLibrary[8].sound.play();
+        soundsLibrary.aa10.sound.stop();
+        soundsLibrary.aa8.sound.play();
 
         $(".sgb1").fadeOut(2000).hide();
         setTimeout(function() {
@@ -377,22 +377,22 @@ function appraisalOfPerformance() {
     if (gameLevel / difficulty < 0.5) {
         $(".results-para").text("You are worse than stupid! xD");
         $(".results-image").addClass("patrick");
-        $(".results-image").fadeIn(2000);
+        $(".results-image").show();
     }
     else if (gameLevel / difficulty < 0.76) {
         $(".results-para").text("You are just OKAY at this..! :p");
         $(".results-image").addClass("prescott");
-        $(".results-image").fadeIn(2000);
+        $(".results-image").show();
     }
     else if (gameLevel / difficulty < 0.99) {
         $(".results-para").text("Not bad, keep trying! :D");
         $(".results-image").addClass("clever");
-        $(".results-image").fadeIn(2000);
+        $(".results-image").show();
     }
     else {
         $(".results-para").text("You are the brainiest guy I know! xD");
         $(".results-image").addClass("einstein");
-        $(".results-image").fadeIn(2000);
+        $(".results-image").show();
     }
 }
 
@@ -413,7 +413,7 @@ $(document).ready(function() {
     // Welcome message menu...
 
     $(".play").click(function() {
-        soundsLibrary[6].sound.play();
+        soundsLibrary.aa6.sound.play();
         $(".welcome-box").fadeOut(2000).hide(2000);
         setTimeout(function() {
             $(".mode-box").fadeIn(2000).show();
@@ -421,7 +421,7 @@ $(document).ready(function() {
     });
 
     $("#single-player").click(function() {
-        soundsLibrary[6].sound.play();
+        soundsLibrary.aa6.sound.play();
         $(".mode-box").fadeOut(2000).hide(2000);
         setTimeout(function() {
             $(".start-box").fadeIn(2000).show();
@@ -432,7 +432,7 @@ $(document).ready(function() {
 
     $("#start").click(function() {
         $(".sgb1").fadeIn(2000).show();
-        soundsLibrary[6].sound.play();
+        soundsLibrary.aa6.sound.play();
         $(".start-box").fadeOut(2000).hide();
         $("#feedback-text").text("Are you ready?");
         setTimeout(function() {
@@ -440,7 +440,6 @@ $(document).ready(function() {
         }, 1000);
         $(".game-button").removeClass("gameover-button-color");
         setTimeout(resetGame, 2000);
-        soundsLibrary[10].sound.play();
+        soundsLibrary.aa10.sound.play();
     });
-
 });
