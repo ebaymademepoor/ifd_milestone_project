@@ -1,33 +1,48 @@
-/* ---------------------------------- Initial Test Styles */
-body {
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  font-family: 'Do Hyeon', sans-serif; }
+/*----------------- Colours*/
+.results-image {
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.row {
+  display: block;
+  position: static; }
+
+.inline {
+  width: 49.5%;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0 auto;
+  float: left; }
+
+/* ----------------Menu Buttons */
+button:focus {
+  outline: none; }
 
 button {
   margin: 10px;
   max-width: 120px; }
 
-.game-mode {
-  width: 95px;
-  height: 35px;
-  border-radius: 45%;
-  position: relative; }
-
 .start-btn {
   position: relative;
   top: 50px; }
 
-h1 {
-  font-size: 30px;
-  margin: 10px; }
+.game-mode {
+  color: #ffffff;
+  font-family: 'Do Hyeon', sans-serif;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  width: 95px;
+  height: 40px;
+  background-color: #e00ee6;
+  border: 2px solid #466c7d;
+  border-radius: 12%;
+  display: inline-block; }
 
-h2 {
-  font-size: 25px;
-  margin: 5px; }
-
+/* ----------------Game Buttons */
 .game-button {
   width: 40%;
   height: 100px; }
@@ -52,6 +67,51 @@ h2 {
 .bt4 {
   background-color: #3130d3; }
 
+.button-color1 {
+  background-color: #00ff00; }
+
+.button-color2 {
+  background-color: #ff0000; }
+
+.button-color3 {
+  background-color: #ffff00; }
+
+.button-color4 {
+  background-color: #8200ff; }
+
+.button-color5 {
+  background-color: #129cd6; }
+
+.gameover-button-color {
+  background-color: #000000; }
+
+/* ---------------------------------- Initial Styles */
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Do Hyeon', sans-serif; }
+
+header {
+  margin-bottom: 10px;
+  border-top: 13px solid #4a33d6;
+  border-bottom: 13px solid #4a33d6;
+  min-width: 250px; }
+
+h1 {
+  font-size: 30px;
+  color: #ffffff;
+  background-color: #d60b0b;
+  margin: 0;
+  padding: 5px;
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff; }
+
+h2 {
+  font-size: 24px;
+  margin: 5px; }
+
 .uppercase {
   text-transform: uppercase; }
 
@@ -60,7 +120,7 @@ h2 {
   left: 0;
   width: 100%;
   min-height: 150px;
-  min-width: 320px; }
+  min-width: 250px; }
 
 .welcome-area,
 .game-area,
@@ -83,18 +143,17 @@ h2 {
 
 .start-area {
   margin-bottom: 50px;
-  padding: 20px 0 0 0; }
-
-header {
-  margin-bottom: 30px; }
+  padding: 65px 0 0 0; }
 
 .section1-container {
   position: relative;
   min-height: 220px;
-  min-width: 320px; }
+  min-width: 250px;
+  margin-bottom: 10px; }
 
 .section2-container {
   position: relative;
+  min-width: 250px;
   min-height: 250px; }
 
 .sliding-game-box {
@@ -117,13 +176,7 @@ header {
   display: none;
   width: 130px;
   height: 130px;
-  margin: 0 auto;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center; }
+  margin: 0 auto; }
 
 .patrick {
   background-image: url("../pictures/patrick.jpg"); }
@@ -137,26 +190,15 @@ header {
 .clever {
   background-image: url("../pictures/clever.png"); }
 
-/*-----------------------------------  Page functionality*/
-.button-color1 {
-  background-color: #00ff00; }
+.big-num {
+  font-size: 90px;
+  margin: 50px 0 0; }
 
-.button-color2 {
-  background-color: #ff0000; }
+.game-play-message {
+  margin: 50px 5px 0;
+  font-size: 35px; }
 
-.button-color3 {
-  background-color: #ffff00; }
-
-.button-color4 {
-  background-color: #8200ff; }
-
-.button-color5 {
-  background-color: #129cd6; }
-
-.gameover-button-color {
-  background-color: #000; }
-
-button:focus {
-  outline: none; }
+.game-win-message {
+  font-size: 35px; }
 
 /*# sourceMappingURL=styles.css.map */

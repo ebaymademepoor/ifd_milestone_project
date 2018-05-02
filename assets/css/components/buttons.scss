@@ -1,0 +1,87 @@
+/* ----------------Menu Buttons */
+
+
+button:focus {
+    outline: none;
+}
+
+button {
+    margin: 10px;
+    max-width: 120px;
+}
+
+.start-btn {
+    position: relative;
+    top: 50px;
+}
+
+.game-mode {
+    color: $white;
+    font-family: 'Do Hyeon', sans-serif;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    width: 95px;
+    height: 40px;
+    background-color: $purple;
+    border: 2px solid $cyan;
+    border-radius: 12%;
+    display: inline-block;
+}
+
+/* ----------------Game Buttons */
+
+.game-button {
+    width: 40%;
+    height: 100px;
+}
+
+#button1,
+#button4 {
+    border-radius: 100% 40% 100% 40%;
+}
+
+#button2,
+#button3 {
+    border-radius: 40% 100% 40% 100%;
+}
+
+.bt1 {
+    background-color: $green;
+}
+
+.bt2 {
+    background-color: $red;
+}
+
+.bt3 {
+    background-color: $yellow;
+}
+
+.bt4 {
+    background-color: $blue;
+}
+
+
+.button-color1 {
+    background-color: $highlightedGreen;
+}
+
+.button-color2 {
+    background-color: $highlightedRed;
+}
+
+.button-color3 {
+    background-color: $highlightedYellow;
+}
+
+.button-color4 {
+    background-color: $highlightedBlue;
+}
+
+.button-color5 {
+    background-color: $highlightedCyan;
+}
+
+.gameover-button-color {
+    background-color: $black;
+}

@@ -1,4 +1,10 @@
-/* ---------------------------------- Initial Test Styles */
+@import "helpers/variables";
+@import "helpers/media-queries";
+@import "helpers/helpers";
+@import "components/buttons";
+
+
+/* ---------------------------------- Initial Styles */
 
 body {
     text-align: center;
@@ -8,62 +14,26 @@ body {
     font-family: 'Do Hyeon', sans-serif;
 }
 
-button {
-    margin: 10px;
-    max-width: 120px;
-}
-
-.game-mode {
-    width: 95px;
-    height: 35px;
-    border-radius: 45%;
-    position: relative;
-}
-
-.start-btn {
-    position: relative;
-    top: 50px;
+header {
+    margin-bottom: 10px;
+    border-top: 13px solid $purpleBlue;
+    border-bottom: 13px solid $purpleBlue;
+    min-width: 250px;
 }
 
 h1 {
     font-size: 30px;
-    margin: 10px;
+    color: $white;
+    background-color: $maroon;
+    margin: 0;
+    padding: 5px;
+    border-top: 2px solid $white;
+    border-bottom: 2px solid $white;
 }
 
 h2 {
-    font-size: 25px;
+    font-size: 24px;
     margin: 5px;
-}
-
-.game-button {
-    width: 40%;
-    height: 100px;
-}
-
-#button1,
-#button4 {
-    border-radius: 100% 40% 100% 40%;
-}
-
-#button2,
-#button3 {
-    border-radius: 40% 100% 40% 100%;
-}
-
-.bt1 {
-    background-color: #38d639;
-}
-
-.bt2 {
-    background-color: #d5393a;
-}
-
-.bt3 {
-    background-color: #d9d82e;
-}
-
-.bt4 {
-    background-color: #3130d3;
 }
 
 .uppercase {
@@ -75,7 +45,7 @@ h2 {
     left: 0;
     width: 100%;
     min-height: 150px;
-    min-width: 320px;
+    min-width: 250px;
 }
 
 .welcome-area,
@@ -103,21 +73,19 @@ h2 {
 
 .start-area {
     margin-bottom: 50px;
-    padding: 20px 0 0 0;
-}
-
-header {
-    margin-bottom: 30px;
+    padding: 65px 0 0 0;
 }
 
 .section1-container {
     position: relative;
     min-height: 220px;
-    min-width: 320px;
+    min-width: 250px;
+    margin-bottom: 10px;
 }
 
 .section2-container {
     position: relative;
+    min-width: 250px;
     min-height: 250px;
 }
 
@@ -146,12 +114,7 @@ header {
     width: 130px;
     height: 130px;
     margin: 0 auto;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    @extend %backgroundImages;
 }
 
 .patrick {
@@ -170,32 +133,16 @@ header {
     background-image: url("../pictures/clever.png");
 }
 
-/*-----------------------------------  Page functionality*/
-
-.button-color1 {
-    background-color: #00ff00;
+.big-num {
+    font-size: 90px;
+    margin: 50px 0 0;
 }
 
-.button-color2 {
-    background-color: #ff0000;
+.game-play-message {
+    margin: 50px 5px 0;
+    font-size: 35px;
 }
 
-.button-color3 {
-    background-color: #ffff00;
-}
-
-.button-color4 {
-    background-color: #8200ff;
-}
-
-.button-color5 {
-    background-color: #129cd6;
-}
-
-.gameover-button-color {
-    background-color: #000;
-}
-
-button:focus {
-    outline: none;
+.game-win-message {
+    font-size: 35px;
 }

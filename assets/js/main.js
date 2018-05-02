@@ -76,37 +76,37 @@ var soundsLibrary = {
 
 function getReadyMessage() {
     soundsLibrary.aa1.sound.play();
-    $("#feedback-text").html("<h2>Get Ready for <br>LEVEL " + gameLevel + " !</h2>");
+    $("#feedback-text").html("<h2 class='game-play-message'>Get Ready for <br>LEVEL " + gameLevel + " !</h2>");
 }
 
 function threeMessage() {
     soundsLibrary.aa2.sound.play();
-    $("#feedback-text").html("<h2>3</h2>");
+    $("#feedback-text").html("<h2 class='big-num'>3</h2>");
 }
 
 function twoMessage() {
     soundsLibrary.aa3.sound.play();
-    $("#feedback-text").html("<h2>2</h2>");
+    $("#feedback-text").html("<h2 class='big-num'>2</h2>");
 }
 
 function oneMessage() {
     soundsLibrary.aa4.sound.play();
-    $("#feedback-text").html("<h2>1</h2>");
+    $("#feedback-text").html("<h2 class='big-num'>1</h2>");
 }
 
 function memoriseMessage() {
-    return $("#feedback-text").html("<h2>Memorise!</h2>");
+    return $("#feedback-text").html("<h2 class='game-play-message'>Memorise!</h2>");
 }
 
 function repeatMessage() {
     soundsLibrary.aa5.sound.play();
-    $("#feedback-text").html("<h2>Repeat!!!!!!!</h2>");
+    $("#feedback-text").html("<h2 class='game-play-message'>Repeat!!!!!!!</h2>");
 }
 
 function gameOverMessage() {
     soundsLibrary.aa8.sound.play();
     $(".game-button").addClass("gameover-button-color");
-    return $("#feedback-text").html("<h2>You got it wrong!  Game Over!</h2>");
+    return $("#feedback-text").html("<h2>You got it wrong!<br class='game-play-message'>Game Over!</h2>");
 }
 
 function colorOneButton(num) {
@@ -274,7 +274,7 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
             soundsLibrary.aa10.sound.stop();
             soundsLibrary.aa9.sound.play();
             console.log("you won the game");
-            $("#feedback-text").html("<h2>Congratulations! You won the game!</h2>");
+            $("#feedback-text").html("<h2 class='game-win-message'>Congratulations! You won the game!</h2>");
             $("#start").text("Play again?");
 
             appraisalOfPerformance();
@@ -302,7 +302,7 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
 
         else if (correctAnswers === gameLevel && difficulty - 1 === gameLevel) {
             soundsLibrary.aa11.sound.play();
-            $("#feedback-text").html("<h2>FINAL STAGE!</h2>");
+            $("#feedback-text").html("<h2 class='game-play-message'>FINAL STAGE!</h2>");
             console.log("next level!");
             correctAnswers = 0;
             gameLevel++;
@@ -323,7 +323,7 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
         else if (correctAnswers === gameLevel) {
             gameLevel++;
             soundsLibrary.aa7.sound.play();
-            $("#feedback-text").html("<h2>Well done!<br>Time for LEVEL " + gameLevel + " !</h2>");
+            $("#feedback-text").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + " !</h2>");
             console.log("next level!");
             correctAnswers = 0;
             clickedButtons = [];
@@ -377,12 +377,12 @@ function appraisalOfPerformance() {
         $(".results-image").addClass("patrick");
         $(".results-image").show();
     }
-    else if (gameLevel / difficulty < 0.76) {
+    else if (gameLevel / difficulty < 0.75) {
         $(".results-para").text("You are just OKAY at this..! :p");
         $(".results-image").addClass("trump");
         $(".results-image").show();
     }
-    else if (gameLevel / difficulty < 0.99) {
+    else if (gameLevel / difficulty < 0.91) {
         $(".results-para").text("Not bad, keep trying! :D");
         $(".results-image").addClass("clever");
         $(".results-image").show();
@@ -418,7 +418,7 @@ $(document).ready(function() {
         }, 1000);
     });
 
-    $("#single-player").click(function() {
+    $("#classic").click(function() {
         soundsLibrary.aa6.sound.play();
         $(".mode-box").fadeOut(2000).hide(2000);
         setTimeout(function() {

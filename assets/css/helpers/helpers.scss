@@ -1,0 +1,21 @@
+%backgroundImages {
+        -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.row {
+    display: block;
+    position: static;
+}
+
+.inline {
+    width: 49.5%;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0 auto;
+    float: left;
+}
