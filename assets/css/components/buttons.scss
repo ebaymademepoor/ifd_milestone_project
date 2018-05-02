@@ -10,7 +10,8 @@ button {
     max-width: 120px;
 }
 
-.start-btn {
+.start-btn,
+.pic-mode-btn {
     position: relative;
     top: 50px;
 }
@@ -80,6 +81,114 @@ button {
 
 .button-color5 {
     background-color: $highlightedCyan;
+}
+
+.button-color6 {
+    background-color: $highlightedCyan;
+}
+
+.button-color7 {
+    background-color: $highlightedCyan;
+}
+
+.button-color8 {
+    background-color: $highlightedCyan;
+}
+
+.button-color9 {
+    background-color: $highlightedCyan;
+}
+
+.button-color10 {
+    background-color: $highlightedCyan;
+}
+
+.button-color11 {
+    background-color: $highlightedCyan;
+}
+
+.button-color12 {
+    background-color: $highlightedCyan;
+}
+
+.button-color13 {
+    background-color: $highlightedCyan;
+}
+
+
+
+
+/* ----------------Picture Game Buttons */
+
+.button-row {
+    display: block;
+    height: 83px;
+}
+
+.pic-game-button {
+    display: inline-block;
+    width: 25%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 83px;
+    border: 0;
+}
+
+.dissapear {
+    opacity: 0;
+}
+
+.pb1 {
+    background-color: $green;
+}
+
+.pb2 {
+    background-color: $red;
+}
+
+.pb3 {
+    background-color: $yellow;
+}
+
+.pb4 {
+    background-color: $blue;
+}
+
+.pb5 {
+    background-color: $aquaMarine;
+}
+
+.pb6 {
+    background-color: $glitter;
+}
+
+.pb7 {
+    background-color: $silk;
+}
+
+.pb8 {
+    background-color: $gainsboro;
+}
+
+.pb9 {
+    background-color: $antiFlashWhite;
+}
+
+.pb10 {
+    background-color: $deepCerise;
+}
+
+.pb11 {
+    background-color: $darkLavinder;
+}
+
+.pb12 {
+    background-color: $spaceCadet;
+}
+
+.pb13 {
+    background-color: #ffffff;
 }
 
 .gameover-button-color {

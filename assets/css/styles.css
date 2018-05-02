@@ -1,9 +1,20 @@
 /*----------------- Colours*/
+/* --- Button Starter Colors */
+/* --- Highlighted Colors */
+/* ---Theme Colors */
 .results-image {
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.picture {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center; }
 
@@ -26,7 +37,8 @@ button {
   margin: 10px;
   max-width: 120px; }
 
-.start-btn {
+.start-btn,
+.pic-mode-btn {
   position: relative;
   top: 50px; }
 
@@ -82,16 +94,114 @@ button {
 .button-color5 {
   background-color: #129cd6; }
 
+.button-color6 {
+  background-color: #129cd6; }
+
+.button-color7 {
+  background-color: #129cd6; }
+
+.button-color8 {
+  background-color: #129cd6; }
+
+.button-color9 {
+  background-color: #129cd6; }
+
+.button-color10 {
+  background-color: #129cd6; }
+
+.button-color11 {
+  background-color: #129cd6; }
+
+.button-color12 {
+  background-color: #129cd6; }
+
+.button-color13 {
+  background-color: #129cd6; }
+
+/* ----------------Picture Game Buttons */
+.button-row {
+  display: block;
+  height: 83px; }
+
+.pic-game-button {
+  display: inline-block;
+  width: 25%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 83px;
+  border: 0; }
+
+.dissapear {
+  opacity: 0; }
+
+.pb1 {
+  background-color: #38d639; }
+
+.pb2 {
+  background-color: #d5393a; }
+
+.pb3 {
+  background-color: #d9d82e; }
+
+.pb4 {
+  background-color: #3130d3; }
+
+.pb5 {
+  background-color: #73EEDC; }
+
+.pb6 {
+  background-color: #EAE8FF; }
+
+.pb7 {
+  background-color: #F9DEC9; }
+
+.pb8 {
+  background-color: #D8D5DB; }
+
+.pb9 {
+  background-color: #E2F3F5; }
+
+.pb10 {
+  background-color: #D93694; }
+
+.pb11 {
+  background-color: #734095; }
+
+.pb12 {
+  background-color: #262F4C; }
+
+.pb13 {
+  background-color: #ffffff; }
+
 .gameover-button-color {
   background-color: #000000; }
+
+/*------------------Evaluation Images */
+.patrick {
+  background-image: url("../pictures/patrick.jpg"); }
+
+.einstein {
+  background-image: url("../pictures/einstein.jpg"); }
+
+.trump {
+  background-image: url("../pictures/trump.jpg"); }
+
+.clever {
+  background-image: url("../pictures/clever.png"); }
+
+/*------------------ Picture game Images */
+.picture1 {
+  background-image: url("../pictures/spongebob.jpg"); }
 
 /* ---------------------------------- Initial Styles */
 body {
   text-align: center;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   overflow: hidden;
-  font-family: 'Do Hyeon', sans-serif; }
+  font-family: 'Do Hyeon', sans-serif;
+  max-width: 320px; }
 
 header {
   margin-bottom: 10px;
@@ -106,7 +216,8 @@ h1 {
   margin: 0;
   padding: 5px;
   border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff; }
+  border-bottom: 2px solid #ffffff;
+  text-shadow: 8px 5px 12px #2f2390; }
 
 h2 {
   font-size: 24px;
@@ -132,13 +243,16 @@ h2 {
 .welcome-box {
   z-index: 10; }
 
-.start-box {
+.start-box,
+.start-pic-mode-box {
   z-index: 5; }
 
 .mode-box,
 .start-box,
 .feedback-box,
-.sgb2 {
+.sgb2,
+.sgb3,
+.start-pic-mode-box {
   display: none; }
 
 .start-area {
@@ -162,11 +276,15 @@ h2 {
   padding: 0 0 0; }
 
 .sgb1 {
-  z-index: 2;
+  z-index: 3;
   background-color: #fff; }
 
 .sgb2 {
   z-index: 1;
+  background-color: #fff; }
+
+.sgb3 {
+  z-index: 2;
   background-color: #fff; }
 
 .results-para {
@@ -177,18 +295,6 @@ h2 {
   width: 130px;
   height: 130px;
   margin: 0 auto; }
-
-.patrick {
-  background-image: url("../pictures/patrick.jpg"); }
-
-.einstein {
-  background-image: url("../pictures/einstein.jpg"); }
-
-.trump {
-  background-image: url("../pictures/trump.jpg"); }
-
-.clever {
-  background-image: url("../pictures/clever.png"); }
 
 .big-num {
   font-size: 90px;

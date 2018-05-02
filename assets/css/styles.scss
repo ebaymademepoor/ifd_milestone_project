@@ -2,6 +2,7 @@
 @import "helpers/media-queries";
 @import "helpers/helpers";
 @import "components/buttons";
+@import "components/images";
 
 
 /* ---------------------------------- Initial Styles */
@@ -9,9 +10,10 @@
 body {
     text-align: center;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     overflow: hidden;
     font-family: 'Do Hyeon', sans-serif;
+    max-width: 320px;
 }
 
 header {
@@ -29,6 +31,7 @@ h1 {
     padding: 5px;
     border-top: 2px solid $white;
     border-bottom: 2px solid $white;
+    text-shadow: 8px 5px 12px rgb(47, 35, 144);
 }
 
 h2 {
@@ -60,14 +63,17 @@ h2 {
     z-index: 10;
 }
 
-.start-box {
+.start-box,
+.start-pic-mode-box {
     z-index: 5;
 }
 
 .mode-box,
 .start-box,
 .feedback-box,
-.sgb2 {
+.sgb2,
+.sgb3,
+.start-pic-mode-box {
     display: none;
 }
 
@@ -96,12 +102,17 @@ h2 {
 }
 
 .sgb1 {
-    z-index: 2;
+    z-index: 3;
     background-color: #fff;
 }
 
 .sgb2 {
     z-index: 1;
+    background-color: #fff;
+}
+
+.sgb3 {
+    z-index: 2;
     background-color: #fff;
 }
 
@@ -114,23 +125,11 @@ h2 {
     width: 130px;
     height: 130px;
     margin: 0 auto;
-    @extend %backgroundImages;
+    @extend %backgroundImagesContain;
 }
 
-.patrick {
-    background-image: url("../pictures/patrick.jpg");
-}
-
-.einstein {
-    background-image: url("../pictures/einstein.jpg");
-}
-
-.trump {
-    background-image: url("../pictures/trump.jpg");
-}
-
-.clever {
-    background-image: url("../pictures/clever.png");
+.picture {
+   @extend %backgroundImagesCover;
 }
 
 .big-num {
