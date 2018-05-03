@@ -23,9 +23,9 @@ var soundsLibrary = {
     aa7: { sound: new Howl({ src: ['assets/sounds/next-level.mp3', 'assets/sounds/correct-beep.mp3'] }) },
     aa8: { sound: new Howl({ src: ['assets/sounds/game-over.mp3', 'assets/sounds/correct-beep.mp3'], volume: 0.5 }) },
     aa9: { sound: new Howl({ src: ['assets/sounds/winner.mp3', 'assets/sounds/correct-beep.mp3'] }) },
-    aa10: { sound: new Howl({ src: ['assets/sounds/play-music.mp3', 'assets/sounds/correct-beep.mp3'], loop: true, volume: 0.5})},
+    aa10: { sound: new Howl({ src: ['assets/sounds/play-music.mp3', 'assets/sounds/correct-beep.mp3'], loop: true, volume: 0.5 }) },
     aa11: { sound: new Howl({ src: ['assets/sounds/final-stage.mp3', 'assets/sounds/correct-beep.mp3'] }) },
-    aa12: { sound: new Howl({ src: ['assets/sounds/grand-slam.mp3', 'assets/sounds/correct-beep.mp3'], loop: true, volume: 0.5})}
+    aa12: { sound: new Howl({ src: ['assets/sounds/grand-slam.mp3', 'assets/sounds/correct-beep.mp3'], loop: true, volume: 0.5 }) }
 };
 
 //Aesthetic Functions
@@ -61,7 +61,6 @@ function repeatMessage() {
 
 function gameOverMessage() {
     soundsLibrary.aa8.sound.play();
-    $(".game-button").addClass("gameover-button-color");
     return $("#feedback-text").html("<h2>You got it wrong!<br class='game-play-message'>Game Over!</h2>");
 }
 
@@ -96,17 +95,14 @@ function startSequence() {
     setTimeout(twoMessage, 5000);
     setTimeout(oneMessage, 6000);
     setTimeout(memoriseMessage, 7000);
-    timerBeforeSequenceStarts(7);
+    
 
-}
-
-function startSequencePic() {
-    setTimeout(getReadyMessage, 2000);
-    setTimeout(threeMessage, 4000);
-    setTimeout(twoMessage, 5000);
-    setTimeout(oneMessage, 6000);
-    setTimeout(memoriseMessage, 7000);
-    timerBeforeSequenceStartsPic(7);
+    if (gameMode === "classic") {
+        timerBeforeSequenceStarts(7);
+    }
+    else if (gameMode === "picture") {
+        timerBeforeSequenceStartsPic(7);
+    }
 
 }
 
@@ -144,7 +140,11 @@ function resetGame() {
     else if (gameMode === "picture") {
         removeClass();
         difficulty = 12;
-        startSequencePic();
+        
+        var newPic = '$(".picture").addClass("pic' + randomlyGeneratedNumbers[0] + '")';
+        
+        setTimeout(newPic, 1000);
+        startSequence();
     }
 }
 
@@ -558,10 +558,10 @@ function gameOver() {
             }
         );
     }
-    
-   // Add try again in here.........................
-   $(".game-selector-para").text("");
-   $(".game-selector-header").text("");
+
+    // Add try again in here.........................
+    $(".game-selector-para").text("");
+    $(".game-selector-header").text("");
     setTimeout(function() {
         $(".mode-box").fadeIn(2000).show();
     }, 2000);
@@ -598,6 +598,10 @@ function removePictures() {
     $(".results-image").removeClass("trump");
     $(".results-image").removeClass("clever");
     $(".results-image").removeClass("einstein");
+    for(i = 1; i < 13; i++){
+        var removePicClass = '$(".picture").removeClass("pic' + i + '")';
+        setTimeout(removePicClass, 500);
+    }
 }
 
 // Script 
@@ -605,7 +609,7 @@ function removePictures() {
 $(document).ready(function() {
     console.log("ready!");
 
-    // Glide through the set up menus...
+// Glide through the set up menus...
 
     // Welcome message menu...
 
@@ -640,7 +644,7 @@ $(document).ready(function() {
     });
 
 
-    // Start the play sequence....
+// Start the play sequence....
 
     // Classic Mode
 
@@ -654,7 +658,6 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".feedback-box").fadeIn(2000).show();
         }, 1000);
-        $(".game-button").removeClass("gameover-button-color");
         setTimeout(resetGame, 2000);
         soundsLibrary.aa10.sound.play();
     });
@@ -670,7 +673,6 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".feedback-box").fadeIn(2000).show();
         }, 1000);
-        $(".pic-game-button").removeClass("gameover-button-color");
         setTimeout(resetGame, 2000);
         soundsLibrary.aa12.sound.play();
     });
