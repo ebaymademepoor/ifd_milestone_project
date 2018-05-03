@@ -13,7 +13,7 @@ body {
     margin: 0 auto;
     overflow: hidden;
     font-family: 'Do Hyeon', sans-serif;
-    max-width: 320px;
+    max-width: 420px;
 }
 
 header {
@@ -66,6 +66,10 @@ h2 {
 .start-box,
 .start-pic-mode-box {
     z-index: 5;
+}
+
+.mode-box {
+    z-index: 12;
 }
 
 .mode-box,

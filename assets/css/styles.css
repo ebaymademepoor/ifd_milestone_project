@@ -18,9 +18,10 @@
   background-repeat: no-repeat;
   background-position: center; }
 
-.row {
+.mode-btn-row {
   display: block;
-  position: static; }
+  position: static;
+  margin-top: 80px; }
 
 .inline {
   width: 49.5%;
@@ -201,7 +202,7 @@ body {
   margin: 0 auto;
   overflow: hidden;
   font-family: 'Do Hyeon', sans-serif;
-  max-width: 320px; }
+  max-width: 420px; }
 
 header {
   margin-bottom: 10px;
@@ -246,6 +247,9 @@ h2 {
 .start-box,
 .start-pic-mode-box {
   z-index: 5; }
+
+.mode-box {
+  z-index: 12; }
 
 .mode-box,
 .start-box,
