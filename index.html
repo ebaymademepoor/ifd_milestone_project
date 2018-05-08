@@ -17,22 +17,23 @@
 </head>
 
 <body>
+    <div class="logo">
+        <img class="logo-pic" src="assets/pictures/logo.png"></img>
+        <h2 class="logo-para">Giancarlo Fiorletta<br>Productions Presents...</h2>
+    </div>
     <header>
         <h1 class="uppercase">Totally Recalled</h1>
     </header>
-    <div class="section1-container">
+    <section class="section1-container">
         <div class="sliding-box welcome-box">
-            <section class="welcome-area">
-                <h2 class="opening-header top">Welcome to the ultimate <br>memory game!</h2>
-                <button class="play game-mode middle">Play Now</button>
-                <p class="opening-para bottom">Test your memory skills and see how you compare to some of the worlds top brains...</p>
-            </section>
+                <h2 class="opening-header top uppercase">Welcome to the<br>ultimate memory game!</h2>
+                <p class="opening-para middle">Test your memory skills and see how you compare to some of the worlds top brains...</p>
+                <button class="play game-mode">Play Now</button>
         </div>
         <div class="sliding-box mode-box">
-            <section class="game-selector">
-                <h2 class="game-selector-header">Game type selector</h2>
-                <p class="game-selector-para">Please select which version you would like to play:</p>
-                <div class="mode-btn-row">
+                <h2 class="game-selector-header top uppercase">Game type selector</h2>
+                <p class="game-selector-para middle">Please select which version you would like to play:</p>
+                <div class="mode-btn-row bottom">
                     <div class="inline">
                         <button id="classic" class="game-mode">Classic</button>
                     </div>
@@ -40,7 +41,6 @@
                         <button id="picture" class="game-mode">Picture Mode</button>
                     </div>
                 </div>
-            </section>
         </div>
         <div class="sliding-box start-box">
             <section class="start-area">
@@ -49,7 +49,7 @@
         </div>
         <div class="sliding-box start-pic-mode-box">
             <section class="start-area">
-                <button id="pic-mode-start" class="game-mode pic-mode-btn" type="button">Start Game!</button>
+                <button id="pic-mode-start" class="game-mode pic-mode-btn" type="button">Start Game</button>
             </section>
         </div>
         <div class="sliding-box feedback-box">
@@ -57,11 +57,11 @@
                 <h2 id="feedback-text">Are you ready?...</h2>
             </section>
         </div>
-    </div>
+    </section>
     
-    <div class="section2-container">
+    <section class="section2-container">
         <div class="sliding-game-box sgb1">
-            <section id="game-area">
+            <div id="game-area">
                 <div class="button-pair-1">
                     <button id="button1" class="game-button bt1 quarter quarter1"></button>
                     <button id="button2" class="game-button bt2"></button>
@@ -70,10 +70,10 @@
                     <button id="button3" class="game-button bt3"></button>
                     <button id="button4" class="game-button bt4"></button>
                 </div>
-            </section>
+            </div>
         </div>
         <div class="sliding-game-box sgb3">
-            <section id="game2-area" class="picture">
+            <div id="game2-area" class="picture">
                 <div class="button-row br-1">
                     <button id="pic-button1" class="pic-game-button pb1"></button><!--
                  --><button id="pic-button2" class="pic-game-button pb2"></button><!--
@@ -92,7 +92,7 @@
                  --><button id="pic-button11" class="pic-game-button pb11"></button><!--
                  --><button id="pic-button12" class="pic-game-button pb12"></button>
                 </div>
-            </section>
+            </div>
         </div>
         <div class="sliding-game-box sgb2">
             <section class="results-section">
@@ -103,7 +103,7 @@
                 <div class="results-image"></div>
             </section>
         </div>
-    </div>
+    </section>
 </body>
 
 </html>

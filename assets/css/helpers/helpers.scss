@@ -16,16 +16,14 @@
     background-position: center;
 }
 
-.mode-btn-row {
-    display: block;
-    position: static;
-    margin-top: 80px;
-}
-
 .inline {
     width: 49.5%;
     box-sizing: border-box;
     display: inline-block;
     margin: 0 auto;
     float: left;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }

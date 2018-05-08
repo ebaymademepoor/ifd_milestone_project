@@ -30,7 +30,7 @@ var soundsLibrary = {
 
 function getReadyMessage() {
     soundsLibrary.aa1.sound.play();
-    $("#feedback-text").html("<h2 class='game-play-message'>Get Ready for <br>LEVEL " + gameLevel + " !</h2>");
+    $("#feedback-text").html("<h2 class='game-play-message'>Get Ready for <br>LEVEL " + gameLevel + "</h2>");
 }
 
 function threeMessage() {
@@ -59,7 +59,7 @@ function repeatMessage() {
 
 function gameOverMessage() {
     soundsLibrary.aa8.sound.play();
-    return $("#feedback-text").html("<h2>You got it wrong!<br class='game-play-message'>Game Over!</h2>");
+    return $("#feedback-text").html("<h2 class='top'>You got it wrong!<br class='game-play-message'>Game Over!</h2>");
 }
 
 // These functions will flash color on then off...
@@ -268,9 +268,9 @@ function levelUp() {
     intervalOn = 2000;
     intervalOff = 2500;
     intervalSpeed = 1000;
-
+    highlightButtonsSequence(gameLevel, currentIndex);
+    
     if (gameMode === "classic") {
-        highlightButtonsSequence(gameLevel, currentIndex);
         $(".game-button").unbind('click').click(
             function() {
                 console.log('I will unbind click so it doesnt fire twice');
@@ -279,7 +279,6 @@ function levelUp() {
     }
     else if (gameMode === "picture") {
         removeClass();
-        highlightButtonsSequence(gameLevel, currentIndex);
         $(".pic-game-button").unbind('click').click(
             function() {
                 console.log('I will unbind click so it doesnt fire twice');
@@ -292,11 +291,11 @@ function gameCompleted() {
     if (correctAnswers === difficulty) {
         if (gameMode === "classic") {
             soundsLibrary.aa10.sound.stop();
-            $(".sgb1").fadeOut(2000).hide();
+            $(".sgb1").fadeOut(2000);
         }
         else if (gameMode === "picture") {
             soundsLibrary.aa12.sound.stop();
-            $(".sgb3").fadeOut(2000).hide();
+            $(".sgb3").fadeOut(5000);
         }
 
         soundsLibrary.aa9.sound.play();
@@ -306,15 +305,15 @@ function gameCompleted() {
         appraisalOfPerformance();
 
         setTimeout(function() {
-            $(".sgb2").fadeIn(2000).show();
-        }, 2000);
+            $(".sgb2").fadeIn(2000);
+        }, 5000);
 
 
         // Play again message....
         $(".game-selector-para").text("");
         $(".game-selector-header").text("");
         setTimeout(function() {
-            $(".mode-box").fadeIn(2000).show();
+            $(".mode-box").fadeIn(2000);
         }, 2000);
 
     }
@@ -365,7 +364,7 @@ function recordButtonAndEvaluate(buttonClicked, answerIndex) {
         else if (correctAnswers === gameLevel) {
             levelUp();
             soundsLibrary.aa7.sound.play();
-            $("#feedback-text").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + " !</h2>");
+            $("#feedback-text").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + "</h2>");
         }
     }
 
@@ -420,8 +419,8 @@ function recordButtonAndEvaluatePic(buttonClicked, answerIndex) {
 
         else if (correctAnswers === gameLevel) {
             levelUp();
-
-            $("#feedback-text").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + " !</h2>");
+            soundsLibrary.aa7.sound.play();
+            $("#feedback-text").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + "</h2>");
         }
     }
 
@@ -438,7 +437,7 @@ function gameOver() {
     soundsLibrary.aa8.sound.play();
 
     setTimeout(function() {
-        $(".sgb2").fadeIn(2000).show();
+        $(".sgb2").fadeIn(2000);
     }, 2000);
 
     appraisalOfPerformance();
@@ -449,7 +448,7 @@ function gameOver() {
 
     if (gameMode === "classic") {
         soundsLibrary.aa10.sound.stop();
-        $(".sgb1").fadeOut(2000).hide();
+        $(".sgb1").fadeOut(2000);
         $(".game-button").unbind('click').click(
             function() {
                 console.log('I will unbind click so it doesnt fire twice');
@@ -459,7 +458,7 @@ function gameOver() {
     else if (gameMode === "picture") {
         soundsLibrary.aa12.sound.stop();
         removeClass();
-        $(".sgb3").fadeOut(2000).hide();
+        $(".sgb3").fadeOut(2000);
         $(".pic-game-button").unbind('click').click(
             function() {
                 console.log('I will unbind click so it doesnt fire twice');
@@ -471,14 +470,14 @@ function gameOver() {
     $(".game-selector-para").text("");
     $(".game-selector-header").text("");
     setTimeout(function() {
-        $(".mode-box").fadeIn(2000).show();
-    }, 2000);
+        $(".mode-box").fadeIn(2000);
+    }, 4000);
 }
 
 // Game performance evaluator
 
 function appraisalOfPerformance() {
-    $(".results-image").show();
+    $(".results-image").fadeIn(2000);
     if (gameLevel / difficulty < 0.5) {
         $(".results-para").text("You are worse than stupid! xD");
         $(".results-image").addClass("patrick");
@@ -513,37 +512,46 @@ function removePictures() {
 $(document).ready(function() {
     console.log("ready!");
 
+    // Logo displays on loadup
+    
+    soundsLibrary.aa9.sound.play();
+    setTimeout(function() {
+        $(".logo").fadeOut(2000);
+    }, 5000);
+
     // Glide through the set up menus...
 
     // Welcome message menu...
 
     $(".play").click(function() {
         soundsLibrary.aa6.sound.play();
-        $(".welcome-box").fadeOut(2000).hide(2000);
+        $(".welcome-box").fadeOut(2000);
         setTimeout(function() {
-            $(".mode-box").fadeIn(2000).show();
+            $(".mode-box").fadeIn(2000);
         }, 1000);
     });
 
     // Pick Mode...
 
     $("#picture").click(function() {
+        $("#feedback-text").html("<h2 class='top'><h2>");
         soundsLibrary.aa6.sound.play();
-        $(".mode-box").fadeOut(2000).hide(2000);
-        $(".sgb1").fadeOut(2000).hide(2000);
+        $(".mode-box").fadeOut(2000);
+        $(".sgb1").fadeOut(2000);
         setTimeout(function() {
-            $(".start-pic-mode-box").fadeIn(2000).show();
+            $(".start-pic-mode-box").fadeIn(2000);
         }, 1000);
         setTimeout(function() {
-            $(".sgb3").fadeIn(2000).show();
+            $(".sgb3").fadeIn(2000);
         }, 1000);
     });
 
     $("#classic").click(function() {
+        $("#feedback-text").html("<h2 class='top'><h2>");
         soundsLibrary.aa6.sound.play();
-        $(".mode-box").fadeOut(2000).hide(2000);
+        $(".mode-box").fadeOut(2000);
         setTimeout(function() {
-            $(".start-box").fadeIn(2000).show();
+            $(".start-box").fadeIn(2000);
         }, 1000);
     });
 
@@ -555,12 +563,12 @@ $(document).ready(function() {
     $("#start").click(function() {
         gameMode = "classic";
         difficulty = defaultDifficulty;
-        $(".sgb1").fadeIn(2000).show();
+        $(".sgb1").fadeIn(2000);
         soundsLibrary.aa6.sound.play();
-        $(".start-box").fadeOut(2000).hide();
+        $(".start-box").fadeOut(2000);
         $("#feedback-text").text("Are you ready?");
         setTimeout(function() {
-            $(".feedback-box").fadeIn(2000).show();
+            $(".feedback-box").fadeIn(2000);
         }, 1000);
         setTimeout(resetGame, 2000);
         soundsLibrary.aa10.sound.play();
@@ -570,12 +578,12 @@ $(document).ready(function() {
 
     $("#pic-mode-start").click(function() {
         gameMode = "picture";
-        $(".sgb3").fadeIn(2000).show();
+        $(".sgb3").fadeIn(2000);
         soundsLibrary.aa6.sound.play();
-        $(".start-pic-mode-box").fadeOut(2000).hide();
+        $(".start-pic-mode-box").fadeOut(2000);
         $("#feedback-text").text("Are you ready?");
         setTimeout(function() {
-            $(".feedback-box").fadeIn(2000).show();
+            $(".feedback-box").fadeIn(2000);
         }, 1000);
         setTimeout(resetGame, 2000);
         soundsLibrary.aa12.sound.play();
