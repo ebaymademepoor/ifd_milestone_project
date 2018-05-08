@@ -514,7 +514,6 @@ $(document).ready(function() {
 
     // Logo displays on loadup
     
-    soundsLibrary.aa9.sound.play();
     setTimeout(function() {
         $(".logo").fadeOut(2000);
     }, 5000);
