@@ -571,7 +571,7 @@ $(document).ready(function() {
         difficulty = defaultDifficulty;
         $(".sgb1").fadeIn(2000);
         soundsLibrary.aa6.sound.play();
-        $(".start-box").fadeOut(2000);
+        $(".start-box").hide();
         $("#feedback-text").text("Are you ready?");
         setTimeout(function() {
             $(".feedback-box").fadeIn(2000);
@@ -586,7 +586,7 @@ $(document).ready(function() {
         gameMode = "picture";
         $(".sgb3").fadeIn(2000);
         soundsLibrary.aa6.sound.play();
-        $(".start-pic-mode-box").fadeOut(2000);
+        $(".start-pic-mode-box").hide();
         $("#feedback-text").text("Are you ready?");
         setTimeout(function() {
             $(".feedback-box").fadeIn(2000);
