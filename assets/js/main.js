@@ -7,7 +7,7 @@ var intervalOn = 0;
 var intervalOff = 0;
 var intervalSpeed = 0;
 var difficulty = 10; // Could also be max level
-var defaultDifficulty = 10;
+var defaultDifficulty = 5;
 var correctAnswers = 0;
 var gameMode = 0;
 
@@ -269,7 +269,7 @@ function levelUp() {
     intervalOff = 2500;
     intervalSpeed = 1000;
     highlightButtonsSequence(gameLevel, currentIndex);
-    
+
     if (gameMode === "classic") {
         $(".game-button").unbind('click').click(
             function() {
@@ -299,13 +299,17 @@ function gameCompleted() {
         }
 
         soundsLibrary.aa9.sound.play();
+        console.log("result = " + (gameLevel - 1) / difficulty);
+        console.log("gamelevel = " + (gameLevel - 1));
+        console.log("difficulty = " + difficulty);
         console.log("you won the game");
         $("#feedback-text").html("<h2 class='game-win-message'>Congratulations! You won the game!</h2>");
-
+        
+        gameLevel = (difficulty + 1);
         appraisalOfPerformance();
 
         setTimeout(function() {
-            $(".sgb2").fadeIn(2000);
+            $(".sgb2").fadeIn(5000);
         }, 5000);
 
 
@@ -443,6 +447,9 @@ function gameOver() {
     appraisalOfPerformance();
 
     console.log("Game Over!");
+    console.log("result = " + (gameLevel - 1) / difficulty);
+    console.log("gamelevel = " + (gameLevel - 1));
+    console.log("difficulty = " + difficulty);
     randomlyGeneratedNumbers = [];
     gameOverMessage();
 
@@ -478,15 +485,15 @@ function gameOver() {
 
 function appraisalOfPerformance() {
     $(".results-image").fadeIn(2000);
-    if (gameLevel / difficulty < 0.5) {
+    if ((gameLevel - 1) / difficulty < 0.5) {
         $(".results-para").text("You are worse than stupid! xD");
         $(".results-image").addClass("patrick");
     }
-    else if (gameLevel / difficulty < 0.75) {
+    else if ((gameLevel - 1) / difficulty < 0.75) {
         $(".results-para").text("You are just OKAY at this..! :p");
         $(".results-image").addClass("trump");
     }
-    else if (gameLevel / difficulty < 1) {
+    else if ((gameLevel - 1) / difficulty < 1) {
         $(".results-para").text("Not bad, keep trying! :D");
         $(".results-image").addClass("clever");
     }
@@ -513,7 +520,7 @@ $(document).ready(function() {
     console.log("ready!");
 
     // Logo displays on loadup
-    
+
     setTimeout(function() {
         $(".logo").fadeOut(2000);
     }, 5000);
