@@ -110,6 +110,12 @@ function resetGame() {
         }
     );
 
+    $(".pic-game-button").unbind('click').click(
+        function() {
+            console.log('I will unbind click so it doesnt fire twice');
+        }
+    );
+
     $(".results-image").hide();
 
     randomlyGeneratedNumbers = [];
@@ -304,7 +310,7 @@ function gameCompleted() {
         console.log("difficulty = " + difficulty);
         console.log("you won the game");
         $("#feedback-text").html("<h2 class='game-win-message'>Congratulations! You won the game!</h2>");
-        
+
         gameLevel = (difficulty + 1);
         appraisalOfPerformance();
 
@@ -318,7 +324,7 @@ function gameCompleted() {
         $(".game-selector-header").text("");
         setTimeout(function() {
             $(".mode-box").fadeIn(2000);
-        }, 2000);
+        }, 5000);
 
     }
 }
@@ -473,7 +479,6 @@ function gameOver() {
         );
     }
 
-    // Add try again in here.........................
     $(".game-selector-para").text("");
     $(".game-selector-header").text("");
     setTimeout(function() {

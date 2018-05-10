@@ -18,6 +18,10 @@
 
 /*------------------ Picture game Images */
 
+.picture {
+    @extend %backgroundImagesCover;
+}
+
 .pic1 {
     background-image: url("../pictures/pic1.jpg");
 }
