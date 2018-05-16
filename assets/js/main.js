@@ -7,9 +7,11 @@ var intervalOn = 0;
 var intervalOff = 0;
 var intervalSpeed = 0;
 var difficulty = 10; // Could also be max level
-var defaultDifficulty = 10;
+var defaultDifficulty = 2;
 var correctAnswers = 0;
 var gameMode = 0;
+var endGame = false;
+var lastSquare = 0;
 
 var soundsLibrary = {
     aa1: { sound: new Howl({ src: ['assets/sounds/get-ready.mp3', 'assets/sounds/correct-beep.mp3'] }) },
@@ -118,6 +120,7 @@ function resetGame() {
 
     $(".results-image").hide();
 
+    endGame = false;
     randomlyGeneratedNumbers = [];
     clickedButtons = [];
     removePictures();
@@ -129,7 +132,6 @@ function resetGame() {
     intervalSpeed = 1000;
     correctAnswers = 0;
     createANumber(difficulty);
-    console.log("Game Reset");
 
     if (gameMode === "classic") {
         startSequence();
@@ -165,9 +167,8 @@ function createANumber(difficulty) {
             else {
                 createANumber();
             }
-        }
-        else {
-            console.log(randomlyGeneratedNumbers);
+        } else {
+            lastSquare = randomlyGeneratedNumbers[randomlyGeneratedNumbers.length - 1]
         }
     }
 }
@@ -248,7 +249,9 @@ function playClassicGame(answerIndex) {
 function playPictureGame(answerIndex) {
     $(".pic-game-button").click(function() {
         recordButtonAndEvaluatePic(this.id, checkanswerIndex);
-        $(this).addClass("dissapear");
+        if (endGame === false) {
+            $(this).addClass("disappear");
+        }
     });
 }
 
@@ -258,7 +261,7 @@ function removeClass() {
     }
     else if (gameMode === "picture") {
         setTimeout(function() {
-            $(".pic-game-button").removeClass("dissapear");
+            $(".pic-game-button").removeClass("disappear");
         }, 500);
     }
 }
@@ -266,7 +269,6 @@ function removeClass() {
 
 function levelUp() {
     gameLevel++;
-    console.log("next level!");
     correctAnswers = 0;
     clickedButtons = [];
     currentIndex = 0;
@@ -294,94 +296,84 @@ function levelUp() {
 }
 
 function gameCompleted() {
-    if (correctAnswers === difficulty) {
-        if (gameMode === "classic") {
-            soundsLibrary.aa10.sound.stop();
-            $(".sgb1").fadeOut(2000);
-        }
-        else if (gameMode === "picture") {
-            soundsLibrary.aa12.sound.stop();
-            $(".sgb3").fadeOut(5000);
-        }
-
-        soundsLibrary.aa9.sound.play();
-        console.log("result = " + (gameLevel - 1) / difficulty);
-        console.log("gamelevel = " + (gameLevel - 1));
-        console.log("difficulty = " + difficulty);
-        console.log("you won the game");
-        $("#feedback-text").html("<h2 class='game-win-message'>Congratulations! You won the game!</h2>");
-
-        gameLevel = (difficulty + 1);
-        appraisalOfPerformance();
-
-        setTimeout(function() {
-            $(".sgb2").fadeIn(5000);
-        }, 5000);
-
-
-        // Play again message....
-        $(".game-selector-para").text("");
-        $(".game-selector-header").text("");
-        setTimeout(function() {
-            $(".mode-box").fadeIn(2000);
-        }, 5000);
-
+    endGame = true;
+    if (gameMode === "classic") {
+        soundsLibrary.aa10.sound.stop();
+        $(".sgb1").fadeOut(2000);
     }
+    else if (gameMode === "picture") {
+        soundsLibrary.aa12.sound.stop();
+        $(".sgb3").fadeOut(5000);
+        $('#pic-button' + lastSquare).addClass("disappear");
+    }
+
+    randomlyGeneratedNumbers = [];
+    soundsLibrary.aa9.sound.play();
+    $("#feedback-text").html("<h2 class='game-win-message'>Congratulations! You won the game!</h2>");
+
+    gameLevel = (difficulty + 1);
+    appraisalOfPerformance();
+    
+    $(".mode-btn-row").show();
+    setTimeout(function() {
+        $(".sgb2").fadeIn(5000);
+    }, 5000);
+
+
+    // Play again message....
+    $(".game-selector-para").text("");
+    $(".game-selector-header").text("");
+    setTimeout(function() {
+        $(".mode-box").fadeIn(2000);
+    }, 5000);
 }
 
 function recordButtonAndEvaluate(buttonClicked, answerIndex) {
     var clickedButton = buttonClicked;
 
     clickedButtons.push(clickedButton);
+    if (endGame === false) {
 
-    console.log("clickedButton =" + clickedButton);
-    console.log("Answer Index =" + answerIndex);
-    console.log("checkanswerIndex =" + checkanswerIndex);
-    console.log("clickedButtons =" + clickedButtons);
-    console.log("currentIndex =" + currentIndex);
-    console.log("randomlyGeneratedNumbers =" + randomlyGeneratedNumbers);
-    console.log("correctAnswers =" + correctAnswers);
-    console.log("-----------------------------------------------");
+        // Check 1a - if the answer is correct we move on to evaluate what we need to do next in the game
 
-    // Check 1a - if the answer is correct we move on to evaluate what we need to do next in the game
+        if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
+            correctAnswers++;
 
-    if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
-        correctAnswers++;
+            // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
 
-        // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
+            if (correctAnswers === difficulty) {
+                gameCompleted();
+            }
 
-        if (correctAnswers === difficulty) {
-            gameCompleted();
-        }
+            // Check 2b - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
 
-        // Check 2a - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
+            else if (correctAnswers < gameLevel) {
+                if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
+                    checkanswerIndex++;
+                    soundsLibrary.aa6.sound.play();
+                }
+            }
 
-        else if (correctAnswers < gameLevel) {
-            if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
-                checkanswerIndex++;
-                soundsLibrary.aa6.sound.play();
+            // Check 2c - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
+
+            else if (correctAnswers === gameLevel && difficulty - 1 === gameLevel) {
+                levelUp();
+                soundsLibrary.aa11.sound.play();
+                $("#feedback-text").html("<h2 class='game-play-message'>FINAL STAGE!</h2>");
+            }
+
+            else if (correctAnswers === gameLevel) {
+                levelUp();
+                soundsLibrary.aa7.sound.play();
+                $("#feedback-text").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + "</h2>");
             }
         }
 
-        // Check 2a - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
+        // Check 1b - if the answer is incorrect the game ends
 
-        else if (correctAnswers === gameLevel && difficulty - 1 === gameLevel) {
-            levelUp();
-            soundsLibrary.aa11.sound.play();
-            $("#feedback-text").html("<h2 class='game-play-message'>FINAL STAGE!</h2>");
+        else {
+            gameOver();
         }
-
-        else if (correctAnswers === gameLevel) {
-            levelUp();
-            soundsLibrary.aa7.sound.play();
-            $("#feedback-text").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + "</h2>");
-        }
-    }
-
-    // Check 1b - if the answer is incorrect the game ends
-
-    else {
-        gameOver();
     }
 }
 
@@ -389,94 +381,75 @@ function recordButtonAndEvaluatePic(buttonClicked, answerIndex) {
     var clickedButton = buttonClicked;
 
     clickedButtons.push(clickedButton);
+    if (endGame === false) {
+        // Check 1a - if the answer is correct we move on to evaluate what we need to do next in the game
 
-    console.log("clickedButton =" + clickedButton);
-    console.log("Answer Index =" + answerIndex);
-    console.log("checkanswerIndex =" + checkanswerIndex);
-    console.log("clickedButtons =" + clickedButtons);
-    console.log("currentIndex =" + currentIndex);
-    console.log("randomlyGeneratedNumbers =" + randomlyGeneratedNumbers);
-    console.log("correctAnswers =" + correctAnswers);
-    console.log("-----------------------------------------------");
+        if (clickedButtons[answerIndex] === "pic-button" + randomlyGeneratedNumbers[answerIndex]) {
+            correctAnswers++;
 
-    // Check 1a - if the answer is correct we move on to evaluate what we need to do next in the game
+            // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
 
-    if (clickedButtons[answerIndex] === "pic-button" + randomlyGeneratedNumbers[answerIndex]) {
-        correctAnswers++;
+            if (correctAnswers === difficulty) {
+                randomlyGeneratedNumbers = [];
+                gameCompleted();
+            }
 
-        // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
+            // Check 2a - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
 
-        if (correctAnswers === difficulty) {
-            gameCompleted();
-        }
+            else if (correctAnswers < gameLevel) {
+                if (clickedButtons[answerIndex] === "pic-button" + randomlyGeneratedNumbers[answerIndex]) {
+                    checkanswerIndex++;
+                    soundsLibrary.aa6.sound.play();
+                }
+            }
 
-        // Check 2a - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
+            // Check 2a - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
 
-        else if (correctAnswers < gameLevel) {
-            if (clickedButtons[answerIndex] === "pic-button" + randomlyGeneratedNumbers[answerIndex]) {
-                checkanswerIndex++;
-                soundsLibrary.aa6.sound.play();
+            else if (correctAnswers === gameLevel && difficulty - 1 === gameLevel) {
+                levelUp();
+                soundsLibrary.aa11.sound.play();
+                $("#feedback-text").html("<h2 class='game-play-message'>FINAL STAGE!</h2>");
+            }
+
+            else if (correctAnswers === gameLevel) {
+                levelUp();
+                soundsLibrary.aa7.sound.play();
+                $("#feedback-text").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + "</h2>");
             }
         }
 
-        // Check 2a - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
+        // Check 1b - if the answer is incorrect the game ends
 
-        else if (correctAnswers === gameLevel && difficulty - 1 === gameLevel) {
-            levelUp();
-            soundsLibrary.aa11.sound.play();
-            $("#feedback-text").html("<h2 class='game-play-message'>FINAL STAGE!</h2>");
+        else {
+            randomlyGeneratedNumbers = [];
+            gameOver();
         }
-
-        else if (correctAnswers === gameLevel) {
-            levelUp();
-            soundsLibrary.aa7.sound.play();
-            $("#feedback-text").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + "</h2>");
-        }
-    }
-
-    // Check 1b - if the answer is incorrect the game ends
-
-    else {
-        gameOver();
     }
 }
 
 // Game Over Sequence....
 
 function gameOver() {
+    endGame = true;
     soundsLibrary.aa8.sound.play();
-
+    
+    $(".mode-btn-row").show();
     setTimeout(function() {
         $(".sgb2").fadeIn(2000);
     }, 2000);
 
     appraisalOfPerformance();
 
-    console.log("Game Over!");
-    console.log("result = " + (gameLevel - 1) / difficulty);
-    console.log("gamelevel = " + (gameLevel - 1));
-    console.log("difficulty = " + difficulty);
-    randomlyGeneratedNumbers = [];
     gameOverMessage();
 
     if (gameMode === "classic") {
         soundsLibrary.aa10.sound.stop();
         $(".sgb1").fadeOut(2000);
-        $(".game-button").unbind('click').click(
-            function() {
-                console.log('I will unbind click so it doesnt fire twice');
-            }
-        );
     }
     else if (gameMode === "picture") {
         soundsLibrary.aa12.sound.stop();
         removeClass();
         $(".sgb3").fadeOut(2000);
-        $(".pic-game-button").unbind('click').click(
-            function() {
-                console.log('I will unbind click so it doesnt fire twice');
-            }
-        );
     }
 
     $(".game-selector-para").text("");
@@ -547,6 +520,7 @@ $(document).ready(function() {
     $("#picture").click(function() {
         $("#feedback-text").html("<h2 class='top'><h2>");
         soundsLibrary.aa6.sound.play();
+        $(".mode-btn-row").hide();
         $(".mode-box").fadeOut(2000);
         $(".sgb1").fadeOut(2000);
         setTimeout(function() {
@@ -560,6 +534,7 @@ $(document).ready(function() {
     $("#classic").click(function() {
         $("#feedback-text").html("<h2 class='top'><h2>");
         soundsLibrary.aa6.sound.play();
+        $(".mode-btn-row").hide();
         $(".mode-box").fadeOut(2000);
         setTimeout(function() {
             $(".start-box").fadeIn(2000);
@@ -581,7 +556,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".feedback-box").fadeIn(2000);
         }, 1000);
-        setTimeout(resetGame, 2000);
+        resetGame();
         soundsLibrary.aa10.sound.play();
     });
 
@@ -596,7 +571,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".feedback-box").fadeIn(2000);
         }, 1000);
-        setTimeout(resetGame, 2000);
+        resetGame();
         soundsLibrary.aa12.sound.play();
     });
 });
