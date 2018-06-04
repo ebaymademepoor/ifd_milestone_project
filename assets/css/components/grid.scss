@@ -1,0 +1,101 @@
+/* ----------------------------------------------------------------Grid Sizes */
+
+$section-min-height: 250px;
+$section-min-width: 250px;
+
+/* ---------------------------------------------------------------Grid Layout */
+
+.welcome-area,
+.mode-box,
+.start-box,
+.start-pic-mode-box,
+.feedback-box {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.mode-box {
+    z-index: 6;
+}
+
+.welcome-box {
+    z-index: 5;
+}
+
+.start-box,
+.start-pic-mode-box {
+    z-index: 4;
+}
+
+.sgb1 {
+    z-index: 3;
+    background-color: #fff;
+}
+
+.sgb3 {
+    z-index: 2;
+    background-color: #fff;
+}
+
+.sgb2 {
+    z-index: 1;
+    background-color: #fff;
+}
+
+.mode-box,
+.start-box,
+.feedback-box,
+.sgb2,
+.sgb3,
+.start-pic-mode-box {
+    display: none;
+}
+
+.start-area {
+    margin-bottom: 50px;
+    padding: 65px 0 0 0;
+}
+
+.section1-container {
+    position: relative;
+    min-height: $section-min-height;
+    min-width: $section-min-width;
+    padding: 0 10px;
+
+    .sliding-box {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        min-height: $section-min-height;
+    }
+}
+
+.section2-container {
+    position: relative;
+    min-width: 250px;
+    min-height: $section-min-height;
+
+    .sliding-game-box {
+        width: 100%;
+        position: absolute;
+        padding: 0 0 0;
+        min-height: $section-min-height;
+    }
+}
+
+.top,
+.middle,
+.bottom {
+    min-height: $section-min-height / 3;
+    box-sizing: border-box;
+}
+
+.top-sec2,
+.middle-sec2 {
+    min-height: $section-min-height / 5;
+    box-sizing: border-box;
+}
+
+.bottom-sec2 {
+    min-height: $section-min-height - (($section-min-height / 5)*2);
+}

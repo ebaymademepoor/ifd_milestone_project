@@ -3,6 +3,7 @@
 /* --- Highlighted Colors */
 /* ---Theme Colors */
 /* --- Widths */
+/* ---------------------------------------------------------------    Helpers */
 .results-image {
   -webkit-background-size: contain;
   -moz-background-size: contain;
@@ -28,6 +29,85 @@
 
 .uppercase {
   text-transform: uppercase; }
+
+/* ----------------------------------------------------------------Grid Sizes */
+/* ---------------------------------------------------------------Grid Layout */
+.welcome-area,
+.mode-box,
+.start-box,
+.start-pic-mode-box,
+.feedback-box {
+  width: 100%;
+  margin: 0 auto; }
+
+.mode-box {
+  z-index: 6; }
+
+.welcome-box {
+  z-index: 5; }
+
+.start-box,
+.start-pic-mode-box {
+  z-index: 4; }
+
+.sgb1 {
+  z-index: 3;
+  background-color: #fff; }
+
+.sgb3 {
+  z-index: 2;
+  background-color: #fff; }
+
+.sgb2 {
+  z-index: 1;
+  background-color: #fff; }
+
+.mode-box,
+.start-box,
+.feedback-box,
+.sgb2,
+.sgb3,
+.start-pic-mode-box {
+  display: none; }
+
+.start-area {
+  margin-bottom: 50px;
+  padding: 65px 0 0 0; }
+
+.section1-container {
+  position: relative;
+  min-height: 250px;
+  min-width: 250px;
+  padding: 0 10px; }
+  .section1-container .sliding-box {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    min-height: 250px; }
+
+.section2-container {
+  position: relative;
+  min-width: 250px;
+  min-height: 250px; }
+  .section2-container .sliding-game-box {
+    width: 100%;
+    position: absolute;
+    padding: 0 0 0;
+    min-height: 250px; }
+
+.top,
+.middle,
+.bottom {
+  min-height: 83.33333px;
+  box-sizing: border-box; }
+
+.top-sec2,
+.middle-sec2 {
+  min-height: 50px;
+  box-sizing: border-box; }
+
+.bottom-sec2 {
+  min-height: 150px; }
 
 /* ----------------Menu Buttons */
 button:focus {
@@ -228,157 +308,7 @@ button {
 .pic12 {
   background-image: url("../pictures/pic12.jpg"); }
 
-/* ---------------------------------- Initial Styles */
-html,
-body {
-  text-align: center;
-  padding: 0;
-  margin: 0 auto;
-  overflow: hidden;
-  font-family: 'Roboto', sans-serif;
-  max-width: 320px; }
-
-body {
-  padding: 10px 10px; }
-
-.logo {
-  background-color: #000;
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  z-index: 100;
-  left: 0; }
-
-.logo-pic {
-  width: 50%;
-  max-width: 150px;
-  height: 24vh;
-  margin: 33.3vh 0 0; }
-
-header {
-  box-sizing: border-box;
-  margin: 10px auto 30px;
-  min-width: 280px; }
-
-h1 {
-  font-size: 30px;
-  max-width: 320px;
-  color: #ffffff;
-  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  margin: 0 auto;
-  padding: 5px;
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-  text-shadow: 8px 5px 12px #2f2390;
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: 'Do Hyeon', sans-serif; }
-
-h2 {
-  font-size: 20px;
-  margin: 5px; }
-
-.uppercase {
-  text-transform: uppercase; }
-
-.sliding-box {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  min-width: 250px; }
-
-.welcome-area,
-.mode-box,
-.start-box,
-.start-pic-mode-box,
-.feedback-box {
-  width: 100%;
-  margin: 0 auto; }
-
-.welcome-box {
-  z-index: 10; }
-
-.start-box,
-.start-pic-mode-box {
-  z-index: 5; }
-
-.mode-box {
-  z-index: 12; }
-
-.mode-box,
-.start-box,
-.feedback-box,
-.sgb2,
-.sgb3,
-.start-pic-mode-box {
-  display: none; }
-
-.start-area {
-  margin-bottom: 50px;
-  padding: 65px 0 0 0; }
-
-.section1-container {
-  position: relative;
-  min-height: 210px;
-  min-width: 250px;
-  padding: 0 10px; }
-
-.section2-container {
-  position: relative;
-  min-width: 250px;
-  min-height: 250px; }
-
-.sliding-game-box {
-  width: 100%;
-  position: absolute;
-  padding: 0 0 0; }
-
-.sgb1 {
-  z-index: 3;
-  background-color: #fff; }
-
-.sgb2 {
-  z-index: 1;
-  background-color: #fff; }
-
-.sgb3 {
-  z-index: 2;
-  background-color: #fff; }
-
-.results-para {
-  font-size: 20px; }
-
-.results-image {
-  display: none;
-  width: 130px;
-  height: 130px;
-  margin: 0 auto; }
-
-.big-num {
-  font-size: 90px;
-  margin: 50px 0 0; }
-
-.game-play-message {
-  margin: 50px 5px 0;
-  font-size: 35px; }
-
-.game-win-message {
-  font-size: 35px; }
-
-.logo-para {
-  color: #fff; }
-
-.top,
-.middle,
-.bottom {
-  min-height: 50px;
-  box-sizing: border-box; }
-
+/* -------------------------------------------------------------   Animations */
 .flipInX {
   animation-name: flipInX;
   animation-duration: 3s;
@@ -411,5 +341,87 @@ h2 {
   to {
     -webkit-transform: perspective(400px);
     transform: perspective(400px); } }
+/* ---------------------------------- General Styles */
+html,
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  max-width: 360px; }
+
+body {
+  padding: 10px 10px; }
+
+header {
+  box-sizing: border-box;
+  margin: 10px auto 30px;
+  min-width: 315px; }
+
+h1 {
+  font-size: 30px;
+  max-width: 360px;
+  color: #ffffff;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  margin: 0 auto;
+  padding: 5px;
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  text-shadow: 8px 5px 12px #2f2390;
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: 'Do Hyeon', sans-serif; }
+
+h2 {
+  font-size: 20px;
+  margin: 0 auto; }
+
+p {
+  margin: 0 auto; }
+
+.results-para {
+  font-size: 20px; }
+
+.results-image {
+  display: none;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto; }
+
+.big-num {
+  font-size: 90px;
+  margin: 35px 0 0; }
+
+.game-play-message {
+  margin: 50px 5px 0;
+  font-size: 35px; }
+
+.game-win-message {
+  font-size: 35px; }
+
+.logo-para {
+  color: #fff; }
+
+/* ----------------------------------- Opening Logo Page */
+.logo {
+  background-color: #000;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  top: 0; }
+
+.logo-pic {
+  width: 50%;
+  max-width: 240px;
+  height: 24vh;
+  margin: 33.3vh 0 0; }
 
 /*# sourceMappingURL=styles.css.map */

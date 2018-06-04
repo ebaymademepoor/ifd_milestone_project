@@ -12,7 +12,7 @@
 
     <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="assets/js/howler.min.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/scripts/main.js"></script>
 
 </head>
 
@@ -26,9 +26,15 @@
     </header>
     <section class="section1-container">
         <div class="sliding-box welcome-box">
-                <h2 class="opening-header top uppercase">Welcome to the<br>ultimate memory game!</h2>
-                <p class="opening-para middle">Test your memory skills and see how you compare to some of the worlds top brains...</p>
-                <button class="play game-mode">Play Now</button>
+            <div class="top">
+                <h2 class="opening-header uppercase">Welcome to the<br>ultimate memory game!</h2>
+            </div>
+            <div class="middle">
+                <p class="opening-para">Test your memory skills and see how you compare to some of the worlds top brains...</p>
+            </div>
+            <div class="bottom">
+                <button id="play" class="play game-mode">Play Now</button>
+            </div>
         </div>
         <div class="sliding-box mode-box">
                 <h2 class="game-selector-header top uppercase">Game type selector</h2>
@@ -43,19 +49,19 @@
                 </div>
         </div>
         <div class="sliding-box start-box">
-            <section class="start-area">
+            <div class="start-area">
                 <button id="start" class="game-mode start-btn" type="button">Start Game!</button>
-            </section>
+            </div>
         </div>
         <div class="sliding-box start-pic-mode-box">
-            <section class="start-area">
+            <div class="start-area">
                 <button id="pic-mode-start" class="game-mode pic-mode-btn" type="button">Start Game</button>
-            </section>
+            </div>
         </div>
-        <div class="sliding-box feedback-box">
-            <section id="feedback-area">
+        <div class="sliding-box feedback-box top">
+            <div id="feedback-area">
                 <h2 id="feedback-text">Are you ready?...</h2>
-            </section>
+            </div>
         </div>
     </section>
     
@@ -95,13 +101,20 @@
             </div>
         </div>
         <div class="sliding-game-box sgb2">
-            <section class="results-section">
-                <div class="results-text">
-                    <p>Your result is...</p>
-                    <p class="results-para"></p>
+            <div class="results-section">
+                <div class="top-sec2">
+                    <div class="results-text">
+                        <p>Your result is...</p>
+                    </div>
                 </div>
-                <div class="results-image"></div>
-            </section>
+                    <div class="middle-sec2">
+                        <p class="results-para"></p>
+                    </div>
+                </div>
+                <div class="bottom-sec2">
+                    <div class="results-image"></div>
+                </div>    
+            </div>
         </div>
     </section>
 </body>
