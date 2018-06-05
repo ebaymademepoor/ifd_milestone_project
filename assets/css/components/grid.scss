@@ -6,8 +6,8 @@ $small-font-size: 14px;
 
 $scale-to-lg-mobile: 1.1;
 $scale-to-tablet: 1.7;
-$scale-to-lg-tablet: 2;
-$scale-to-desktop: 2.1;
+$scale-to-lg-tablet: 2.2;
+$scale-to-desktop: 1.6;
 
 $mobile-padding: 10px;
 
@@ -71,9 +71,11 @@ body {
     }
     @include large-tablet {
         min-height: $section-height-mob * $scale-to-lg-tablet;
+        max-width: $section-max-width * $scale-to-lg-tablet;
     }
     @include desktop {
         min-height: $section-height-mob * $scale-to-desktop;
+        max-width: $section-max-width * $scale-to-desktop;
     }
 }
 

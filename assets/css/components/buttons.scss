@@ -6,7 +6,7 @@ button:focus {
 
 button {
     margin: 10px auto;
-    max-width: $application-max-width - 100px;
+    max-width: 230px;
 }
 
 .game-mode {
@@ -135,7 +135,6 @@ button {
 
 .button-row {
     display: block;
-    height: 83px;
 }
 
 .pic-game-button {
@@ -144,8 +143,25 @@ button {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    height: 83px;
     border: 0;
+}
+
+.button-row,
+.pic-game-button {
+    height: $section-height-mob / 3;
+    
+    @include large-mobile {
+        height: ($section-height-mob / 3) * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        height: ($section-height-mob / 3) * $scale-to-tablet;
+    }
+    @include large-tablet {
+        height: ($section-height-mob / 3) * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        height: ($section-height-mob / 3) * $scale-to-desktop;
+    }
 }
 
 .disappear {
