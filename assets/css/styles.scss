@@ -6,7 +6,6 @@
 @import "components/images";
 @import "components/animations";
 
-
 /* ---------------------------------- General Styles */
 
 html, 
@@ -16,22 +15,29 @@ body {
     margin: 0 auto;
     overflow: hidden;
     font-family: 'Roboto', sans-serif;
-    max-width: $mobileMaxWidth;
+    max-width: $application-max-width;
 }
 
 body {
-    padding: 10px 10px;
-}
-
-header {
-    box-sizing: border-box;
-    margin: 10px auto 30px;
-    min-width: $mobileMaxWidth *.875;
+    padding: $mobile-padding $mobile-padding;
+    
+    @include large-mobile {
+        padding: $mobile-padding * $scale-to-lg-mobile $mobile-padding * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        padding: $mobile-padding * $scale-to-tablet $mobile-padding * $scale-to-tablet;
+    }
+    @include large-tablet {
+        padding: $mobile-padding * $scale-to-lg-tablet $mobile-padding * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        padding: $mobile-padding * $scale-to-desktop $mobile-padding * $scale-to-desktop;
+    }
+    
 }
 
 h1 {
-    font-size: 30px;
-    max-width: $mobileMaxWidth;
+    font-size: $large-font-size;
     color: $white;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
     background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -47,27 +53,57 @@ h1 {
     -moz-border-radius: 28;
     border-radius: 28px;
     font-family: 'Do Hyeon', sans-serif;
+    
+    
+    @include large-mobile {
+        font-size: $large-font-size * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        font-size: $large-font-size * $scale-to-tablet;
+    }
+    @include large-tablet {
+        font-size: $large-font-size * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        font-size: $large-font-size * $scale-to-desktop;
+    }
 }
 
 h2 {
-    font-size: 20px;
+    font-size: $medium-font-size;
     margin: 0 auto;
+    
+    @include large-mobile {
+        font-size: $medium-font-size * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        font-size: $medium-font-size * $scale-to-tablet;
+    }
+    @include large-tablet {
+        font-size: $medium-font-size * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        font-size: $medium-font-size * $scale-to-desktop;
+    }
 }
 
-p {
-    margin: 0 auto;
-}
-
+p,
 .results-para {
-    font-size: 20px;
-}
-
-.results-image {
-    display: none;
-    width: 130px;
-    height: 130px;
+    font-size: $small-font-size;
     margin: 0 auto;
-    @extend %backgroundImagesContain;
+    
+    @include large-mobile {
+        font-size: $small-font-size * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        font-size: $small-font-size * $scale-to-tablet;
+    }
+    @include large-tablet {
+        font-size: $small-font-size * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        font-size: $small-font-size * $scale-to-desktop;
+    }
 }
 
 .big-num {
@@ -102,7 +138,7 @@ p {
 
 .logo-pic {
     width: 50%;
-    max-width: $desktopMaxWidth * 0.2;
-    height: 24vh;
+    max-width: 175px;
+    max-height: 24vh;
     margin: 33.3vh 0 0;
 }

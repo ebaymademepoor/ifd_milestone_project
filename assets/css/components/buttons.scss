@@ -6,15 +6,12 @@ button:focus {
 
 button {
     margin: 10px auto;
-    max-width: 120px;
+    max-width: $application-max-width - 100px;
 }
 
 .game-mode {
     color: $white;
-    letter-spacing: 1.5px;
-    width: 120px;
     display: inline-block;
-    font-size: 12px;
     background-image: -webkit-linear-gradient(top, #777777, #000);
     background-image: -moz-linear-gradient(top, #777777, #000);
     background-image: -ms-linear-gradient(top, #777777, #000);
@@ -24,15 +21,64 @@ button {
     -moz-border-radius: 28;
     border-radius: 28px;
     font-family: 'Do Hyeon', sans-serif;
+
+    letter-spacing: 1.5px;
+    width: $menu-btn-width;
+    font-size: $small-font-size;
     padding: 5px;
+
+    @include large-mobile {
+        letter-spacing: 1.5px * $scale-to-lg-mobile;
+        width: $menu-btn-width * $scale-to-lg-mobile;
+        font-size: $small-font-size * $scale-to-lg-mobile;
+        padding: 5px * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        letter-spacing: 1.5px * $scale-to-tablet;
+        width: $menu-btn-width * $scale-to-tablet;
+        font-size: $small-font-size * $scale-to-tablet;
+        padding: 5px * $scale-to-tablet;
+    }
+    @include large-tablet {
+        letter-spacing: 1.5px * $scale-to-lg-tablet;
+        width: $menu-btn-width * $scale-to-lg-tablet;
+        font-size: $small-font-size * $scale-to-lg-tablet;
+        padding: 5px * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        letter-spacing: 1.5px * $scale-to-desktop;
+        width: $menu-btn-width * $scale-to-desktop;
+        font-size: $small-font-size * $scale-to-desktop;
+        padding: 5px * $scale-to-desktop;
+    }
 }
 
 /* ----------------Game Buttons */
 
 .game-button {
     width: 40%;
-    height: 100px;
+    height: $game-btn-height;
     margin: 10px 5px;
+
+    @include large-mobile {
+        height: $game-btn-height * $scale-to-lg-mobile;
+        margin: 10px * $scale-to-lg-mobile 5px * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        height: $game-btn-height * $scale-to-tablet;
+        margin: 10px* $scale-to-tablet 5px * $scale-to-tablet;
+        width: 45%;
+    }
+    @include large-tablet {
+        height: $game-btn-height * $scale-to-lg-tablet;
+        margin: 10px * $scale-to-lg-tablet 5px * $scale-to-lg-tablet;
+        width: 45%;
+    }
+    @include desktop {
+        height: $game-btn-height * $scale-to-desktop;
+        margin: 10px * $scale-to-desktop 5px * $scale-to-desktop;
+        width: 45%;
+    }
 }
 
 #button1,
@@ -76,38 +122,6 @@ button {
 
 .button-color4 {
     background-color: $highlightedBlue;
-}
-
-.button-color5 {
-    background-color: $highlightedCyan;
-}
-
-.button-color6 {
-    background-color: $highlightedCyan;
-}
-
-.button-color7 {
-    background-color: $highlightedCyan;
-}
-
-.button-color8 {
-    background-color: $highlightedCyan;
-}
-
-.button-color9 {
-    background-color: $highlightedCyan;
-}
-
-.button-color10 {
-    background-color: $highlightedCyan;
-}
-
-.button-color11 {
-    background-color: $highlightedCyan;
-}
-
-.button-color12 {
-    background-color: $highlightedCyan;
 }
 
 .button-color13 {

@@ -1,3 +1,14 @@
+/*------------------ Image Display */
+
+.results-image {
+    display: none;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    @extend %backgroundImagesContain;
+}
+
+
 /*------------------Evaluation Images */
 
 .patrick {

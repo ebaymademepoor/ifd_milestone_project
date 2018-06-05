@@ -30,8 +30,140 @@
 .uppercase {
   text-transform: uppercase; }
 
+/* --- General Sizes Variables & Scaling--- */
 /* ----------------------------------------------------------------Grid Sizes */
+/* --- heights --- */
+/* --- widths --- */
 /* ---------------------------------------------------------------Grid Layout */
+body {
+  min-height: 568px; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    body {
+      min-height: 624.8px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    body {
+      min-height: 965.6px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    body {
+      min-height: 1136px; } }
+  @media (min-width: 1025px) {
+    body {
+      min-height: 1192.8px; } }
+
+.header-section {
+  box-sizing: border-box;
+  margin: 10px auto 30px;
+  min-width: 288px; }
+
+.section1-container,
+.section2-container,
+.sliding-box,
+.sliding-game-box {
+  min-height: 213px;
+  max-width: 500px;
+  margin: 0 auto; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    .section1-container,
+    .section2-container,
+    .sliding-box,
+    .sliding-game-box {
+      min-height: 234.3px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    .section1-container,
+    .section2-container,
+    .sliding-box,
+    .sliding-game-box {
+      min-height: 362.1px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .section1-container,
+    .section2-container,
+    .sliding-box,
+    .sliding-game-box {
+      min-height: 426px; } }
+  @media (min-width: 1025px) {
+    .section1-container,
+    .section2-container,
+    .sliding-box,
+    .sliding-game-box {
+      min-height: 447.3px; } }
+
+.section1-container .sliding-box {
+  left: 0; }
+
+.section1-container,
+.section2-container {
+  position: relative;
+  min-width: 250px; }
+  .section1-container .sliding-box,
+  .section1-container .sliding-game-box,
+  .section2-container .sliding-box,
+  .section2-container .sliding-game-box {
+    width: 100%;
+    position: absolute;
+    padding: 0 0 0; }
+
+.top,
+.middle,
+.bottom {
+  min-height: 71px;
+  box-sizing: border-box; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    .top,
+    .middle,
+    .bottom {
+      min-height: 78.1px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    .top,
+    .middle,
+    .bottom {
+      min-height: 120.7px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .top,
+    .middle,
+    .bottom {
+      min-height: 142px; } }
+  @media (min-width: 1025px) {
+    .top,
+    .middle,
+    .bottom {
+      min-height: 149.1px; } }
+
+.top-sec2,
+.middle-sec2 {
+  min-height: 42.6px;
+  box-sizing: border-box; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    .top-sec2,
+    .middle-sec2 {
+      min-height: 46.86px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    .top-sec2,
+    .middle-sec2 {
+      min-height: 72.42px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .top-sec2,
+    .middle-sec2 {
+      min-height: 85.2px; } }
+  @media (min-width: 1025px) {
+    .top-sec2,
+    .middle-sec2 {
+      min-height: 89.46px; } }
+
+.bottom-sec2 {
+  min-height: 127.8px; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    .bottom-sec2 {
+      min-height: 93.72px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    .bottom-sec2 {
+      min-height: 144.84px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .bottom-sec2 {
+      min-height: 170.4px; } }
+  @media (min-width: 1025px) {
+    .bottom-sec2 {
+      min-height: 178.92px; } }
+
 .welcome-area,
 .mode-box,
 .start-box,
@@ -74,55 +206,17 @@
   margin-bottom: 50px;
   padding: 65px 0 0 0; }
 
-.section1-container {
-  position: relative;
-  min-height: 250px;
-  min-width: 250px;
-  padding: 0 10px; }
-  .section1-container .sliding-box {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    min-height: 250px; }
-
-.section2-container {
-  position: relative;
-  min-width: 250px;
-  min-height: 250px; }
-  .section2-container .sliding-game-box {
-    width: 100%;
-    position: absolute;
-    padding: 0 0 0;
-    min-height: 250px; }
-
-.top,
-.middle,
-.bottom {
-  min-height: 83.33333px;
-  box-sizing: border-box; }
-
-.top-sec2,
-.middle-sec2 {
-  min-height: 50px;
-  box-sizing: border-box; }
-
-.bottom-sec2 {
-  min-height: 150px; }
-
 /* ----------------Menu Buttons */
 button:focus {
   outline: none; }
 
 button {
   margin: 10px auto;
-  max-width: 120px; }
+  max-width: 750px; }
 
 .game-mode {
   color: #ffffff;
-  letter-spacing: 1.5px;
-  width: 120px;
   display: inline-block;
-  font-size: 12px;
   background-image: -webkit-linear-gradient(top, #777777, #000);
   background-image: -moz-linear-gradient(top, #777777, #000);
   background-image: -ms-linear-gradient(top, #777777, #000);
@@ -132,13 +226,59 @@ button {
   -moz-border-radius: 28;
   border-radius: 28px;
   font-family: 'Do Hyeon', sans-serif;
+  letter-spacing: 1.5px;
+  width: 120px;
+  font-size: 14px;
   padding: 5px; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    .game-mode {
+      letter-spacing: 1.65px;
+      width: 132px;
+      font-size: 15.4px;
+      padding: 5.5px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    .game-mode {
+      letter-spacing: 2.55px;
+      width: 204px;
+      font-size: 23.8px;
+      padding: 8.5px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .game-mode {
+      letter-spacing: 3px;
+      width: 240px;
+      font-size: 28px;
+      padding: 10px; } }
+  @media (min-width: 1025px) {
+    .game-mode {
+      letter-spacing: 3.15px;
+      width: 252px;
+      font-size: 29.4px;
+      padding: 10.5px; } }
 
 /* ----------------Game Buttons */
 .game-button {
   width: 40%;
   height: 100px;
   margin: 10px 5px; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    .game-button {
+      height: 110px;
+      margin: 11px 5.5px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    .game-button {
+      height: 170px;
+      margin: 17px 8.5px;
+      width: 45%; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .game-button {
+      height: 200px;
+      margin: 20px 10px;
+      width: 45%; } }
+  @media (min-width: 1025px) {
+    .game-button {
+      height: 210px;
+      margin: 21px 10.5px;
+      width: 45%; } }
 
 #button1,
 #button4 {
@@ -171,30 +311,6 @@ button {
 
 .button-color4 {
   background-color: #8200ff; }
-
-.button-color5 {
-  background-color: #129cd6; }
-
-.button-color6 {
-  background-color: #129cd6; }
-
-.button-color7 {
-  background-color: #129cd6; }
-
-.button-color8 {
-  background-color: #129cd6; }
-
-.button-color9 {
-  background-color: #129cd6; }
-
-.button-color10 {
-  background-color: #129cd6; }
-
-.button-color11 {
-  background-color: #129cd6; }
-
-.button-color12 {
-  background-color: #129cd6; }
 
 .button-color13 {
   background-color: #129cd6; }
@@ -257,6 +373,13 @@ button {
 
 .gameover-button-color {
   background-color: #000000; }
+
+/*------------------ Image Display */
+.results-image {
+  display: none;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto; }
 
 /*------------------Evaluation Images */
 .patrick {
@@ -349,19 +472,25 @@ body {
   margin: 0 auto;
   overflow: hidden;
   font-family: 'Roboto', sans-serif;
-  max-width: 360px; }
+  max-width: 850px; }
 
 body {
   padding: 10px 10px; }
-
-header {
-  box-sizing: border-box;
-  margin: 10px auto 30px;
-  min-width: 315px; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    body {
+      padding: 11px 11px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    body {
+      padding: 17px 17px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    body {
+      padding: 20px 20px; } }
+  @media (min-width: 1025px) {
+    body {
+      padding: 21px 21px; } }
 
 h1 {
   font-size: 30px;
-  max-width: 360px;
   color: #ffffff;
   background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -377,22 +506,55 @@ h1 {
   -moz-border-radius: 28;
   border-radius: 28px;
   font-family: 'Do Hyeon', sans-serif; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    h1 {
+      font-size: 33px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    h1 {
+      font-size: 51px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    h1 {
+      font-size: 60px; } }
+  @media (min-width: 1025px) {
+    h1 {
+      font-size: 63px; } }
 
 h2 {
   font-size: 20px;
   margin: 0 auto; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    h2 {
+      font-size: 22px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    h2 {
+      font-size: 34px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    h2 {
+      font-size: 40px; } }
+  @media (min-width: 1025px) {
+    h2 {
+      font-size: 42px; } }
 
-p {
-  margin: 0 auto; }
-
+p,
 .results-para {
-  font-size: 20px; }
-
-.results-image {
-  display: none;
-  width: 130px;
-  height: 130px;
+  font-size: 14px;
   margin: 0 auto; }
+  @media (min-width: 321px) and (max-width: 500px) {
+    p,
+    .results-para {
+      font-size: 15.4px; } }
+  @media (min-width: 501px) and (max-width: 768px) {
+    p,
+    .results-para {
+      font-size: 23.8px; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    p,
+    .results-para {
+      font-size: 28px; } }
+  @media (min-width: 1025px) {
+    p,
+    .results-para {
+      font-size: 29.4px; } }
 
 .big-num {
   font-size: 90px;
@@ -420,8 +582,8 @@ p {
 
 .logo-pic {
   width: 50%;
-  max-width: 240px;
-  height: 24vh;
+  max-width: 175px;
+  max-height: 24vh;
   margin: 33.3vh 0 0; }
 
 /*# sourceMappingURL=styles.css.map */

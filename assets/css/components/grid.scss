@@ -1,9 +1,159 @@
+/* --- General Sizes Variables & Scaling--- */
+
+$large-font-size: 30px;
+$medium-font-size: 20px;
+$small-font-size: 14px;
+
+$scale-to-lg-mobile: 1.1;
+$scale-to-tablet: 1.7;
+$scale-to-lg-tablet: 2;
+$scale-to-desktop: 2.1;
+
+$mobile-padding: 10px;
+
+$game-btn-height: 100px;
+$menu-btn-width: 120px;
+
 /* ----------------------------------------------------------------Grid Sizes */
 
-$section-min-height: 250px;
-$section-min-width: 250px;
+/* --- heights --- */
+
+$device-height-mob: 568px;
+$header-height-mob: $device-height-mob * 0.2;
+$section-height-mob: ($device-height-mob * 0.75) / 2;
+
+/* --- widths --- */
+
+$application-max-width: 850px;
+$device-width-mob: 320px;
+$section-width-mob: 250px;
+$section-max-width: 500px;
+
 
 /* ---------------------------------------------------------------Grid Layout */
+
+body {
+    min-height: $device-height-mob;
+
+    @include large-mobile {
+        min-height: $device-height-mob * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        min-height: $device-height-mob * $scale-to-tablet;
+    }
+    @include large-tablet {
+        min-height: $device-height-mob * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        min-height: $device-height-mob * $scale-to-desktop;
+    }
+}
+
+.header-section {
+    box-sizing: border-box;
+    margin: 10px auto 30px;
+    min-width: $device-width-mob * 0.9;
+}
+
+.section1-container,
+.section2-container,
+.sliding-box,
+.sliding-game-box {
+    min-height: $section-height-mob;
+    max-width: $section-max-width;
+    margin: 0 auto;
+
+    @include large-mobile {
+        min-height: $section-height-mob * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        min-height: $section-height-mob * $scale-to-tablet;
+    }
+    @include large-tablet {
+        min-height: $section-height-mob * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        min-height: $section-height-mob * $scale-to-desktop;
+    }
+}
+
+.section1-container {
+
+    .sliding-box {
+        left: 0;
+    }
+}
+
+.section1-container,
+.section2-container {
+    position: relative;
+    min-width: $section-width-mob;
+
+
+    .sliding-box,
+    .sliding-game-box {
+        width: 100%;
+        position: absolute;
+        padding: 0 0 0;
+    }
+}
+
+.top,
+.middle,
+.bottom {
+    min-height: $section-height-mob / 3;
+    box-sizing: border-box;
+
+    @include large-mobile {
+        min-height: ($section-height-mob / 3) * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        min-height: ($section-height-mob / 3) * $scale-to-tablet;
+    }
+    @include large-tablet {
+        min-height: ($section-height-mob / 3) * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        min-height: ($section-height-mob / 3) * $scale-to-desktop;
+    }
+
+}
+
+.top-sec2,
+.middle-sec2 {
+    min-height: $section-height-mob / 5;
+    box-sizing: border-box;
+
+    @include large-mobile {
+        min-height: ($section-height-mob / 5) * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        min-height: ($section-height-mob / 5) * $scale-to-tablet;
+    }
+    @include large-tablet {
+        min-height: ($section-height-mob / 5) * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        min-height: ($section-height-mob / 5) * $scale-to-desktop;
+    }
+}
+
+.bottom-sec2 {
+    min-height: $section-height-mob - (($section-height-mob / 5)*2);
+
+    @include large-mobile {
+        min-height: (($section-height-mob / 5)*2) * $scale-to-lg-mobile;
+    }
+    @include tablet {
+        min-height: (($section-height-mob / 5)*2) * $scale-to-tablet;
+    }
+    @include large-tablet {
+        min-height: (($section-height-mob / 5)*2) * $scale-to-lg-tablet;
+    }
+    @include desktop {
+        min-height: (($section-height-mob / 5)*2) * $scale-to-desktop;
+    }
+}
 
 .welcome-area,
 .mode-box,
@@ -54,48 +204,4 @@ $section-min-width: 250px;
 .start-area {
     margin-bottom: 50px;
     padding: 65px 0 0 0;
-}
-
-.section1-container {
-    position: relative;
-    min-height: $section-min-height;
-    min-width: $section-min-width;
-    padding: 0 10px;
-
-    .sliding-box {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        min-height: $section-min-height;
-    }
-}
-
-.section2-container {
-    position: relative;
-    min-width: 250px;
-    min-height: $section-min-height;
-
-    .sliding-game-box {
-        width: 100%;
-        position: absolute;
-        padding: 0 0 0;
-        min-height: $section-min-height;
-    }
-}
-
-.top,
-.middle,
-.bottom {
-    min-height: $section-min-height / 3;
-    box-sizing: border-box;
-}
-
-.top-sec2,
-.middle-sec2 {
-    min-height: $section-min-height / 5;
-    box-sizing: border-box;
-}
-
-.bottom-sec2 {
-    min-height: $section-min-height - (($section-min-height / 5)*2);
 }
