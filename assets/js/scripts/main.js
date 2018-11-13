@@ -3,15 +3,22 @@ var clickedButtons = [];
 var gameLevel = 1;
 var currentIndex = 0; // where we are in the randomlyGeneratedNumbers array
 var checkanswerIndex = 0; // where we are in the clickedButtons array
-var intervalOn = 0;
-var intervalOff = 0;
-var intervalSpeed = 0;
+var intervalOn = 2000;
+var intervalOff = 2500;
+var intervalSpeed = 1000;
+var defaultIntervalOn = 2000;
+var defaultintervalOff = 2500;
+var defaultintervalSpeed = 1000;
 var difficulty = 10; // Could also be max level
 var defaultDifficulty = 10;
 var correctAnswers = 0;
 var gameMode = 0;
 var endGame = false;
 var lastSquare = 0;
+var musicVol = 0.7;
+var soundVol = 0.8;
+var musicStatus = true;
+var soundStatus = true;
 
 var gameOutcomes = {
     wonTheGame: function() {
@@ -29,7 +36,7 @@ function showResultsBox() {
     $(".mode-btn-row").show();
     setTimeout(function() {
         $(".sgb2").fadeIn(5000);
-    }, 5000);
+    }, 3000);
 }
 
 function victory() {
@@ -67,18 +74,18 @@ function victory() {
 }
 
 var soundsLibrary = {
-    aa1: { sound: new Howl({ src: ['assets/sounds/get-ready.mp3', 'assets/sounds/correct-beep.mp3'] }) },
-    aa2: { sound: new Howl({ src: ['assets/sounds/three.mp3', 'assets/sounds/correct-beep.mp3'] }) },
-    aa3: { sound: new Howl({ src: ['assets/sounds/two.mp3', 'assets/sounds/correct-beep.mp3'] }) },
-    aa4: { sound: new Howl({ src: ['assets/sounds/one.mp3', 'assets/sounds/correct-beep.mp3'] }) },
-    aa5: { sound: new Howl({ src: ['assets/sounds/go.mp3', 'assets/sounds/correct-beep.mp3'] }) },
-    aa6: { sound: new Howl({ src: ['assets/sounds/correct-beep.mp3', 'assets/sounds/correct-beep.mp3'], volume: 0.7 }) },
-    aa7: { sound: new Howl({ src: ['assets/sounds/next-level.mp3', 'assets/sounds/correct-beep.mp3'], volume: 0.7 }) },
-    aa8: { sound: new Howl({ src: ['assets/sounds/game-over.mp3', 'assets/sounds/correct-beep.mp3'], volume: 0.8 }) },
-    aa9: { sound: new Howl({ src: ['assets/sounds/winner.mp3', 'assets/sounds/correct-beep.mp3'] }) },
-    aa10: { sound: new Howl({ src: ['assets/sounds/play-music.mp3', 'assets/sounds/correct-beep.mp3'], loop: true, volume: 0.8 }) },
-    aa11: { sound: new Howl({ src: ['assets/sounds/final-stage.mp3', 'assets/sounds/correct-beep.mp3'] }) },
-    aa12: { sound: new Howl({ src: ['assets/sounds/grand-slam.mp3', 'assets/sounds/correct-beep.mp3'], loop: true, volume: 0.8 }) }
+    aa1: { sound: new Howl({ src: ['assets/sounds/get-ready.mp3', 'assets/sounds/correct-beep.mp3'], volume: soundVol }) },
+    aa2: { sound: new Howl({ src: ['assets/sounds/three.mp3', 'assets/sounds/correct-beep.mp3'], volume: soundVol }) },
+    aa3: { sound: new Howl({ src: ['assets/sounds/two.mp3', 'assets/sounds/correct-beep.mp3'], volume: soundVol }) },
+    aa4: { sound: new Howl({ src: ['assets/sounds/one.mp3', 'assets/sounds/correct-beep.mp3'], volume: soundVol }) },
+    aa5: { sound: new Howl({ src: ['assets/sounds/go.mp3', 'assets/sounds/correct-beep.mp3'], volume: soundVol }) },
+    aa6: { sound: new Howl({ src: ['assets/sounds/correct-beep.mp3', 'assets/sounds/correct-beep.mp3'], volume: soundVol }) },
+    aa7: { sound: new Howl({ src: ['assets/sounds/next-level.mp3', 'assets/sounds/correct-beep.mp3'], volume: soundVol }) },
+    aa8: { sound: new Howl({ src: ['assets/sounds/game-over.mp3', 'assets/sounds/correct-beep.mp3'], volume: musicVol }) },
+    aa9: { sound: new Howl({ src: ['assets/sounds/winner.mp3', 'assets/sounds/correct-beep.mp3'], volume: musicVol }) },
+    aa10: { sound: new Howl({ src: ['assets/sounds/play-music.mp3', 'assets/sounds/correct-beep.mp3'], loop: true, volume: musicVol }) },
+    aa11: { sound: new Howl({ src: ['assets/sounds/final-stage.mp3', 'assets/sounds/correct-beep.mp3'], volume: soundVol }) },
+    aa12: { sound: new Howl({ src: ['assets/sounds/grand-slam.mp3', 'assets/sounds/correct-beep.mp3'], loop: true, volume: musicVol }) }
 };
 
 //Aesthetic Functions
@@ -135,8 +142,7 @@ function colorOneButton(num) {
 
         var applyColor = "$('#button" + randomlyGeneratedNumbers[num] + "').addClass('button-color" + randomlyGeneratedNumbers[num] + "')";
         setTimeout(applyColor, intervalOn);
-    }
-    else if (gameMode === "picture") {
+    } else if (gameMode === "picture") {
         var applyColor = "$('#pic-button" + randomlyGeneratedNumbers[num] + "').addClass('pb13')";
         setTimeout(applyColor, intervalOn);
     }
@@ -189,9 +195,9 @@ function resetGame() {
     gameLevel = 1;
     currentIndex = 0;
     checkanswerIndex = 0;
-    intervalOn = 2000;
-    intervalOff = 2500;
-    intervalSpeed = 1000;
+    intervalOn = defaultIntervalOn;
+    intervalOff = defaultintervalOff;
+    intervalSpeed = defaultintervalSpeed;
     correctAnswers = 0;
     pushRandomNumber(gameMode);
     startSequence();
@@ -338,9 +344,9 @@ function levelUp() {
     clickedButtons = [];
     currentIndex = 0;
     checkanswerIndex = 0;
-    intervalOn = 2000;
-    intervalOff = 2500;
-    intervalSpeed = 1000;
+    intervalOn = defaultIntervalOn;
+    intervalOff = defaultintervalOff;
+    intervalSpeed = defaultintervalSpeed;
     highlightButtonsSequence(gameLevel, currentIndex);
 
     if (gameMode === "classic") {
@@ -520,6 +526,11 @@ function removePictures() {
     }
 }
 
+function selectButtonToHighlight(btnRow, selectedBtn){
+    $(btnRow + " button").removeClass('btn-on');
+    $(selectedBtn).addClass('btn-on');
+}
+
 function nextAction() {
     $("button").click(function() {
         switch (this.id) {
@@ -581,11 +592,89 @@ function nextAction() {
                 resetGame();
                 soundsLibrary.aa12.sound.play();
                 break;
+            case "close-instructions":
+                $('.instructions-container').hide();
+                break;
+            case "close-settings":
+                $('.settings-container').hide();
+                break;
+            case "music":
+                if (musicStatus == true){
+                    musicStatus = false;
+                    $('#music').removeClass('btn-on');
+                } else {
+                    musicStatus = true;
+                    $('#music').addClass('btn-on');
+                }
+                soundsLibrary.aa8.sound.mute(!musicStatus);
+                soundsLibrary.aa9.sound.mute(!musicStatus);
+                soundsLibrary.aa10.sound.mute(!musicStatus);
+                soundsLibrary.aa12.sound.mute(!musicStatus);
+                break;
+            case "sounds":
+                if (soundStatus == true){
+                    soundStatus = false;
+                    $('#sounds').removeClass('btn-on');
+                } else {
+                    soundStatus = true;
+                    $('#sounds').addClass('btn-on');
+                }
+                soundsLibrary.aa1.sound.mute(!soundStatus);
+                soundsLibrary.aa2.sound.mute(!soundStatus);
+                soundsLibrary.aa3.sound.mute(!soundStatus);
+                soundsLibrary.aa4.sound.mute(!soundStatus);
+                soundsLibrary.aa5.sound.mute(!soundStatus);
+                soundsLibrary.aa6.sound.mute(!soundStatus);
+                soundsLibrary.aa7.sound.mute(!soundStatus);
+                soundsLibrary.aa11.sound.mute(!soundStatus);
+                break;
+            case "easy":
+                defaultDifficulty = 6;
+                selectButtonToHighlight(".difficulty", this);
+                break;
+            case "normal":
+                defaultDifficulty = 10;
+                selectButtonToHighlight(".difficulty", this);
+                break;
+            case "hard":
+                defaultDifficulty = 15;
+                selectButtonToHighlight(".difficulty", this);
+                break;
+            case "slow":
+                defaultIntervalOn = 2000;
+                defaultintervalOff = 3000;
+                defaultintervalSpeed = 1500;
+                selectButtonToHighlight(".speed", this);
+                break;
+            case "medium":
+                defaultIntervalOn = 2000;
+                defaultintervalOff = 2500;
+                defaultintervalSpeed = 1000;
+                selectButtonToHighlight(".speed", this);
+                break;
+            case "fast":
+                defaultIntervalOn = 1000;
+                defaultintervalOff = 1500;
+                defaultintervalSpeed = 700;
+                selectButtonToHighlight(".speed", this);
+                break;  
             default:
                 console.log('No action Available');
         }
     });
-}
+    
+    $("i").click(function() {
+        switch (this.id) {
+            case "show-instructions":
+                $('.instructions-container').show();
+                break;
+            case "show-settings":
+                $('.settings-container').show();
+                break;
+            default:
+                console.log('No action Available');
+        }
+})}
 
 // Script 
 
@@ -595,8 +684,8 @@ $(document).ready(function() {
     // Logo screen displays on loadup
 
     setTimeout(function() {
-        $(".logo").fadeOut(2000);
-    }, 5000);
+        $(".logo").fadeOut(2000); 
+    }, 4000); 
 
     // Next action will allow option buttons to decide which game is played and work through the menus...
     nextAction();

@@ -18,33 +18,19 @@ body {
     overflow-x: hidden;
 }
 
-body {
-    padding: $mobile-padding $mobile-padding;
-    
-    @include large-mobile {
-        padding: $mobile-padding * $scale-to-lg-mobile $mobile-padding * $scale-to-lg-mobile;
-    }
-    @include tablet {
-        padding: $mobile-padding * $scale-to-tablet $mobile-padding * $scale-to-tablet;
-    }
-    @include large-tablet {
-        padding: $mobile-padding * $scale-to-lg-tablet $mobile-padding * $scale-to-lg-tablet;
-    }
-    @include desktop {
-        padding: $mobile-padding * $scale-to-desktop $mobile-padding * $scale-to-desktop;
-    }
-    
+a, a:visited {
+    text-decoration: none;
 }
 
 h1 {
     font-size: $large-font-size;
     color: $white;
-    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-    background-image: -o-linear-gradient(top, #3498db, #2980b9);
-    background-image: linear-gradient(to bottom, #3498db, #2980b9);
-    margin: 0 auto;
+    background-image: -webkit-linear-gradient(top, $header-blue-1 , $header-blue-2);
+    background-image: -moz-linear-gradient(top, $header-blue-1 , $header-blue-2);
+    background-image: -ms-linear-gradient(top, $header-blue-1 , $header-blue-2);
+    background-image: -o-linear-gradient(top, $header-blue-1 , $header-blue-2);
+    background-image: linear-gradient(top, $header-blue-1 , $header-blue-2);
+    margin: 14px 10px;
     padding: 5px;
     border-top: 2px solid $white;
     border-bottom: 2px solid $white;
@@ -91,6 +77,8 @@ p,
 .results-para {
     font-size: $small-font-size;
     margin: 0 auto;
+    padding: 0 10px;
+    max-width: 600px;
     
     @include large-mobile {
         font-size: $small-font-size * $scale-to-lg-mobile;
@@ -129,9 +117,16 @@ p,
     margin-top: 12px;
 }
 
+.sliding-game-box:after,
+section:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
 /* ----------------------------------- Opening Logo Page */
 
-.logo{
+.logo {
     background-color: #000;
     width: 100%;
     height: 100vh;
@@ -146,4 +141,37 @@ p,
     max-width: 175px;
     max-height: 24vh;
     margin: 33.3vh 0 0;
+}
+
+/* ----------------------------------- Instructions / Settings Boxes */
+
+.settings-container,
+.instructions-container {
+    display: none;
+}
+
+.settings,
+.instructions {
+    max-width: $application-max-width;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: $header-blue-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+}
+
+.instructions-box p {
+    margin: 26px 0;
+}
+
+.settings-box .row {
+    margin: 40px auto;
+}
+
+.settings-box p {
+    margin: 20px auto;
 }

@@ -70,20 +70,5 @@ describe("Game Functions", function() {
                 expect(gameOutcomes.gameOver).not.toHaveBeenCalled();
             });
         });
-        // describe("Player selects the correct button on final level and wins the game", function() {
-        //     it("Should call the wonTheGame method and end the game, no other outcome should be called", function() {
-        //         spyOn(gameOutcomes, "levelUp");
-        //         spyOn(gameOutcomes, "gameOver");
-        //         spyOn(gameOutcomes, "wonTheGame");
-        //         randomlyGeneratedNumbers = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2];
-        //         clickedButtons = [1, 2, 3, 4, 1, 2, 3, 4, 1];
-        //         gameMode = "classic";
-        //         correctAnswers = difficulty - 1;
-        //         recordButtonAndEvaluate("button" + randomlyGeneratedNumbers[0], 1);
-        //         expect(gameOutcomes.wonTheGame).not.toHaveBeenCalled();
-        //         expect(gameOutcomes.levelUp).not.toHaveBeenCalled();
-        //         expect(gameOutcomes.gameOver).not.toHaveBeenCalled();
-        //     });
-        // });
     });
 });

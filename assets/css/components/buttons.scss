@@ -7,6 +7,7 @@ button:focus {
 button {
     margin: 10px auto;
     max-width: 230px;
+    cursor: pointer;
 }
 
 .game-mode {
@@ -129,12 +130,11 @@ button {
 }
 
 
-
-
 /* ----------------Picture Game Buttons */
 
 .button-row {
     display: block;
+    font-size: 0;
 }
 
 .pic-game-button {
@@ -160,7 +160,7 @@ button {
         height: ($section-height-mob / 3) * $scale-to-lg-tablet;
     }
     @include desktop {
-        height: ($section-height-mob / 3) * $scale-to-desktop;
+        height: 140px;
     }
 }
 
@@ -222,4 +222,67 @@ button {
 
 .gameover-button-color {
     background-color: $black;
+}
+
+/* ----------------Settings Buttons */
+
+.settings-buttons-row {
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+}
+
+.settings-buttons-row i {
+    background-color: $header-blue-1;
+    color: $white;
+    padding: 4px;
+    width: 17px;
+    border-radius: 3px;
+    margin: 0 10px;
+}
+
+.fa-cog {
+    float: left;
+}
+
+.fa-question {
+    float: right;
+}
+
+.close-settings,
+.close-instructions {
+    background-color: $black;
+    color: $white;
+}
+
+.close-settings:hover,
+.close-instructions:hover {
+    background-color: #d7d6d6;
+}
+
+.close-settings,
+.close-instructions,
+.settings-btn {
+    margin: 0 5px;
+    width: 100px;
+    border: none;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-on {
+    background-color: #11ff11 !important;
+}
+
+.settings-btn {
+    background-color: red;
+    color: $white;
+}
+
+i {
+    cursor: pointer;
+}
+
+i:hover {
+ background-color: $header-blue-2;   
 }

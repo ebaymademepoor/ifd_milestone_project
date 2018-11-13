@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="assets/js/howler.min.js"></script>
@@ -21,11 +22,50 @@
         <img class="logo-pic" src="assets/pictures/logo.png"></img>
         <h2 class="logo-para">Giancarlo Fiorletta<br>Productions Presents...</h2>
     </div>
-    <header class="header-section">
-        <h1 class="uppercase flipInX">Totally Recalled</h1>
-    </header>
     
+    <div class="instructions-container">
+        <div class="instructions">
+            <div class="instructions-box">
+                <h2 class="uppercase">How to play</h2>
+                <p><span class="uppercase">Totally recalled</span> is based on the Simon memory game of old and is oh so simple!</p>
+                <p>When the game starts you will see a MEMORISE message display, watch which buttons flash and the order they flash in.</p>
+                <p>When you see the REPEAT message, click on the buttons that flashed in the correct order.</p>
+                <p>Each round will become harder as an extra button will flash everytime you gain a level! The game ends when you click on the wrong button, or when you make it to the end which completes the game.</p>
+                <p>When the game finishes, your performance will be evaluated and a review will be displayed!</p>
+                <p><strong>Good luck and happy playing!</strong></p>
+                <button id="close-instructions" class="close-instructions">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="settings-container">
+        <div class="settings">
+            <div class="settings-box">
+                <h2 class="uppercase">Game settings</h2>
+                <div class="row speed">
+                    <p>Game speed</p><button id="slow" class="slow settings-btn">Slow</button><button id="medium" class="medium settings-btn btn-on">Medium</button><button id="fast" class="fast settings-btn">Fast</button>
+                </div>
+                <div class="row difficulty">
+                    <p>Classic Difficulty</p><button id="easy" class="easy settings-btn">Easy</button><button id="normal" class="normal settings-btn btn-on">Normal</button><button id="hard" class="fast settings-btn">Hard</button>
+                </div>
+                <div class="row">
+                    <p>Sound Effects</p><button id="music" class="music settings-btn btn-on">Music</button><button id="sounds" class="sounds settings-btn btn-on">Sounds</button>
+                </div>
+                <button id="close-settings" class="close-settings">Close</button>
+            </div>
+        </div>
+    </div>
+    <header class="header-section">
+        <a href="/">
+            <h1 class="uppercase flipInX">Totally Recalled</h1>
+        </a>
+    </header>
+
     <section class="section1-container">
+        <div class="row settings-buttons-row">
+            <i id="show-settings"class="fas fa-cog"></i>
+            <i id="show-instructions" class="fas fa-question"></i>
+        </div>
         <div class="sliding-box welcome-box">
             <div class="top">
                 <h2 class="opening-header uppercase">Welcome to the<br>ultimate memory game!</h2>
@@ -38,16 +78,16 @@
             </div>
         </div>
         <div class="sliding-box mode-box">
-                <h2 class="game-selector-header top uppercase">Game type selector</h2>
-                <p class="game-selector-para middle">Please select which version you would like to play:</p>
-                <div class="mode-btn-row bottom">
-                    <div class="inline">
-                        <button id="classic" class="game-mode">Classic</button>
-                    </div>
-                    <div class="inline">
-                        <button id="picture" class="game-mode">Picture Mode</button>
-                    </div>
+            <h2 class="game-selector-header top uppercase">Game type selector</h2>
+            <p class="game-selector-para middle">Please select which version you would like to play:</p>
+            <div class="mode-btn-row bottom">
+                <div class="inline">
+                    <button id="classic" class="game-mode">Classic</button>
                 </div>
+                <div class="inline">
+                    <button id="picture" class="game-mode">Picture Mode</button>
+                </div>
+            </div>
         </div>
         <div class="sliding-box start-box">
             <div class="start-area">
@@ -65,7 +105,7 @@
             <div class="bottom game-message-bottom"></div>
         </div>
     </section>
-    
+
     <section class="section2-container">
         <div class="sliding-game-box sgb1">
             <div id="game-area">
@@ -82,22 +122,22 @@
         <div class="sliding-game-box sgb3">
             <div id="game2-area" class="picture">
                 <div class="button-row br-1">
-                    <button id="pic-button1" class="pic-game-button pb1"></button><!--
-                 --><button id="pic-button2" class="pic-game-button pb2"></button><!--
-                 --><button id="pic-button3" class="pic-game-button pb3"></button><!--
-                 --><button id="pic-button4" class="pic-game-button pb4"></button>
+                    <button id="pic-button1" class="pic-game-button pb1"></button>
+                    <button id="pic-button2" class="pic-game-button pb2"></button>
+                    <button id="pic-button3" class="pic-game-button pb3"></button>
+                    <button id="pic-button4" class="pic-game-button pb4"></button>
                 </div>
                 <div class="button-row br-2">
-                    <button id="pic-button5" class="pic-game-button pb5"></button><!--
-                 --><button id="pic-button6" class="pic-game-button pb6"></button><!--
-                 --><button id="pic-button7" class="pic-game-button pb7"></button><!--
-                 --><button id="pic-button8" class="pic-game-button pb8"></button>
+                    <button id="pic-button5" class="pic-game-button pb5"></button>
+                    <button id="pic-button6" class="pic-game-button pb6"></button>
+                    <button id="pic-button7" class="pic-game-button pb7"></button>
+                    <button id="pic-button8" class="pic-game-button pb8"></button>
                 </div>
                 <div class="button-row br-3">
-                    <button id="pic-button9" class="pic-game-button pb9"></button><!--
-                 --><button id="pic-button10" class="pic-game-button pb10"></button><!--
-                 --><button id="pic-button11" class="pic-game-button pb11"></button><!--
-                 --><button id="pic-button12" class="pic-game-button pb12"></button>
+                    <button id="pic-button9" class="pic-game-button pb9"></button>
+                    <button id="pic-button10" class="pic-game-button pb10"></button>
+                    <button id="pic-button11" class="pic-game-button pb11"></button>
+                    <button id="pic-button12" class="pic-game-button pb12"></button>
                 </div>
             </div>
         </div>
@@ -108,14 +148,14 @@
                         <p>Your result is...</p>
                     </div>
                 </div>
-                    <div class="middle-sec2">
-                        <p class="results-para"></p>
-                    </div>
+                <div class="middle-sec2">
+                    <p class="results-para"></p>
                 </div>
-                <div class="bottom-sec2">
-                    <div class="results-image"></div>
-                </div>    
             </div>
+            <div class="bottom-sec2">
+                <div class="results-image"></div>
+            </div>
+        </div>
         </div>
     </section>
 </body>

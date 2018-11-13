@@ -218,7 +218,8 @@ button:focus {
 
 button {
   margin: 10px auto;
-  max-width: 230px; }
+  max-width: 230px;
+  cursor: pointer; }
 
 .game-mode {
   color: #ffffff;
@@ -323,7 +324,8 @@ button {
 
 /* ----------------Picture Game Buttons */
 .button-row {
-  display: block; }
+  display: block;
+  font-size: 0; }
 
 .pic-game-button {
   display: inline-block;
@@ -351,7 +353,7 @@ button {
   @media (min-width: 1025px) {
     .button-row,
     .pic-game-button {
-      height: 113.6px; } }
+      height: 140px; } }
 
 .disappear {
   opacity: 0; }
@@ -397,6 +399,57 @@ button {
 
 .gameover-button-color {
   background-color: #000000; }
+
+/* ----------------Settings Buttons */
+.settings-buttons-row {
+  position: absolute;
+  width: 100%;
+  z-index: 50; }
+
+.settings-buttons-row i {
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 4px;
+  width: 17px;
+  border-radius: 3px;
+  margin: 0 10px; }
+
+.fa-cog {
+  float: left; }
+
+.fa-question {
+  float: right; }
+
+.close-settings,
+.close-instructions {
+  background-color: #000000;
+  color: #ffffff; }
+
+.close-settings:hover,
+.close-instructions:hover {
+  background-color: #d7d6d6; }
+
+.close-settings,
+.close-instructions,
+.settings-btn {
+  margin: 0 5px;
+  width: 100px;
+  border: none;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif; }
+
+.btn-on {
+  background-color: #11ff11 !important; }
+
+.settings-btn {
+  background-color: red;
+  color: #ffffff; }
+
+i {
+  cursor: pointer; }
+
+i:hover {
+  background-color: #2980b9; }
 
 /*------------------ Image Display */
 .results-image {
@@ -498,20 +551,8 @@ body {
   max-width: 850px;
   overflow-x: hidden; }
 
-body {
-  padding: 10px 10px; }
-  @media (min-width: 321px) and (max-width: 500px) {
-    body {
-      padding: 11px 11px; } }
-  @media (min-width: 501px) and (max-width: 768px) {
-    body {
-      padding: 17px 17px; } }
-  @media (min-width: 769px) and (max-width: 1024px) {
-    body {
-      padding: 22px 22px; } }
-  @media (min-width: 1025px) {
-    body {
-      padding: 16px 16px; } }
+a, a:visited {
+  text-decoration: none; }
 
 h1 {
   font-size: 30px;
@@ -520,8 +561,8 @@ h1 {
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
   background-image: -ms-linear-gradient(top, #3498db, #2980b9);
   background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  margin: 0 auto;
+  background-image: linear-gradient(top, #3498db, #2980b9);
+  margin: 14px 10px;
   padding: 5px;
   border-top: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
@@ -562,7 +603,9 @@ h2 {
 p,
 .results-para {
   font-size: 14px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 0 10px;
+  max-width: 600px; }
   @media (min-width: 321px) and (max-width: 500px) {
     p,
     .results-para {
@@ -598,6 +641,12 @@ p,
   color: #e00ee6;
   margin-top: 12px; }
 
+.sliding-game-box:after,
+section:after {
+  clear: both;
+  content: "";
+  display: block; }
+
 /* ----------------------------------- Opening Logo Page */
 .logo {
   background-color: #000;
@@ -613,5 +662,32 @@ p,
   max-width: 175px;
   max-height: 24vh;
   margin: 33.3vh 0 0; }
+
+/* ----------------------------------- Instructions / Settings Boxes */
+.setttings-container,
+.instructions-container {
+  display: none; }
+
+.settings,
+.instructions {
+  max-width: 850px;
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: #2980b9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff; }
+
+.instructions-box p {
+  margin: 26px 0; }
+
+.settings-box .row {
+  margin: 40px auto; }
+
+.settings-box p {
+  margin: 20px auto; }
 
 /*# sourceMappingURL=styles.css.map */
