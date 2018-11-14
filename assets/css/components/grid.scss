@@ -1,81 +1,46 @@
 /* --- General Sizes Variables & Scaling--- */
 
-$large-font-size: 30px;
-$medium-font-size: 20px;
-$small-font-size: 14px;
-
-$scale-to-lg-mobile: 1.1;
-$scale-to-tablet: 1.7;
-$scale-to-lg-tablet: 2.2;
-$scale-to-desktop: 1.6;
-
-$mobile-padding: 10px;
-
-$game-btn-height: 100px;
-$menu-btn-width: 120px;
-
 /* ----------------------------------------------------------------Grid Sizes */
-
-/* --- heights --- */
-
-$device-height-mob: 568px;
-$header-height-mob: $device-height-mob * 0.2;
-$section-height-mob: ($device-height-mob * 0.75) / 2;
 
 /* --- widths --- */
 
 $application-max-width: 850px;
 $device-width-mob: 320px;
-$section-width-mob: 250px;
-$section-max-width: 500px;
+
+/* --- heights --- */
+
+$min-application-height: 530px;
 
 /* ---------------------------------------------------------------Grid Layout */
 
-body {
-    min-height: $device-height-mob;
-
-    @include large-mobile {
-        min-height: $device-height-mob * $scale-to-lg-mobile;
-    }
-    @include tablet {
-        min-height: $device-height-mob * $scale-to-tablet;
-    }
-    @include large-tablet {
-        min-height: $device-height-mob * $scale-to-lg-tablet;
-    }
-    @include desktop {
-        min-height: $device-height-mob * $scale-to-desktop;
-    }
+html,
+body,
+.settings-container,
+.instructions-container,
+.logo {
+    height: 100%;
+    min-height: $min-application-height;
 }
 
 .header-section {
-    box-sizing: border-box;
-    margin: 10px auto 30px;
+    margin: 0 auto 0;
     min-width: $device-width-mob * 0.9;
+    min-height: 6%;
+    padding: 10px;
+}
+
+.section1-container,
+.section2-container {
+    min-height: 42%;
 }
 
 .section1-container,
 .section2-container,
 .sliding-box,
 .sliding-game-box {
-    min-height: $section-height-mob;
-    max-width: $section-max-width;
+    padding-top: 5px;
+    max-width: 100%;
     margin: 0 auto;
-
-    @include large-mobile {
-        min-height: $section-height-mob * $scale-to-lg-mobile;
-    }
-    @include tablet {
-        min-height: $section-height-mob * $scale-to-tablet;
-    }
-    @include large-tablet {
-        min-height: $section-height-mob * $scale-to-lg-tablet;
-        max-width: $section-max-width * $scale-to-lg-tablet;
-    }
-    @include desktop {
-        min-height: $section-height-mob * $scale-to-desktop;
-        max-width: $section-max-width * $scale-to-desktop;
-    }
 }
 
 .section1-container {
@@ -88,72 +53,38 @@ body {
 .section1-container,
 .section2-container {
     position: relative;
-    min-width: $section-width-mob;
-
+    min-width: 100%;
 
     .sliding-box,
     .sliding-game-box {
         width: 100%;
+        height: 100%;
         position: absolute;
+
         padding: 0 0 0;
+    }
+}
+
+.section2-container {
+    @include desktop {
+        min-width: unset;
+        width: 40%;
     }
 }
 
 .top,
 .middle,
-.bottom {
-    min-height: $section-height-mob / 3;
-    box-sizing: border-box;
-
-    @include large-mobile {
-        min-height: ($section-height-mob / 3) * $scale-to-lg-mobile;
-    }
-    @include tablet {
-        min-height: ($section-height-mob / 3) * $scale-to-tablet;
-    }
-    @include large-tablet {
-        min-height: ($section-height-mob / 3) * $scale-to-lg-tablet;
-    }
-    @include desktop {
-        min-height: ($section-height-mob / 3) * $scale-to-desktop;
-    }
-
-}
-
+.bottom,
 .top-sec2,
-.middle-sec2 {
-    min-height: $section-height-mob / 5;
-    box-sizing: border-box;
-
-    @include large-mobile {
-        min-height: ($section-height-mob / 5) * $scale-to-lg-mobile;
-    }
-    @include tablet {
-        min-height: ($section-height-mob / 5) * $scale-to-tablet;
-    }
-    @include large-tablet {
-        min-height: ($section-height-mob / 5) * $scale-to-lg-tablet;
-    }
-    @include desktop {
-        min-height: ($section-height-mob / 5) * $scale-to-desktop;
-    }
+.middle-sec2, 
+.bottom-sec2 {
+    height: 30%;
+    min-height: 30%;
+    padding-top: 18px;
 }
 
-.bottom-sec2 {
-    min-height: $section-height-mob - (($section-height-mob / 5)*2);
-
-    @include large-mobile {
-        min-height: (($section-height-mob / 5)*2) * $scale-to-lg-mobile;
-    }
-    @include tablet {
-        min-height: (($section-height-mob / 5)*2) * $scale-to-tablet;
-    }
-    @include large-tablet {
-        min-height: (($section-height-mob / 5)*2) * $scale-to-lg-tablet;
-    }
-    @include desktop {
-        min-height: (($section-height-mob / 5)*2) * $scale-to-desktop;
-    }
+.bottom {
+    padding-top: 0px;
 }
 
 .welcome-area,
@@ -163,6 +94,10 @@ body {
 .feedback-box {
     width: 100%;
     margin: 0 auto;
+}
+
+.game-area {
+    height: 100%;
 }
 
 .mode-box {
@@ -188,6 +123,10 @@ body {
     background-color: #fff;
 }
 
+.picture {
+    height: 100%;
+}
+
 .sgb2 {
     z-index: 1;
     background-color: #fff;
@@ -205,9 +144,16 @@ body {
 .start-area {
     margin-bottom: 50px;
     padding: 65px 0 0 0;
+    height: 100%;
+     @extend %center-container;
+    
 }
 
 .mode-btn-row {
     max-width: 500px;
     margin: 0 auto;
+}
+
+.results-section{
+    height: 100%;
 }

@@ -19,18 +19,21 @@
 
 <body>
     <div class="logo">
-        <img class="logo-pic" src="assets/pictures/logo.png"></img>
-        <h2 class="logo-para">Giancarlo Fiorletta<br>Productions Presents...</h2>
+        <div class="container">
+            <div class="container-content">
+                <img class="logo-pic" src="assets/pictures/logo.png"></img>
+                <h2 class="logo-para">Giancarlo Fiorletta<br>Productions Presents...</h2>
+            </div>
+        </div>
     </div>
-    
     <div class="instructions-container">
         <div class="instructions">
             <div class="instructions-box">
                 <h2 class="uppercase">How to play</h2>
                 <p><span class="uppercase">Totally recalled</span> is based on the Simon memory game of old and is oh so simple!</p>
-                <p>When the game starts you will see a MEMORISE message display, watch which buttons flash and the order they flash in.</p>
+                <p>When the game starts you will see a MEMORISE message display, observe which buttons flash and the order they flash in.</p>
                 <p>When you see the REPEAT message, click on the buttons that flashed in the correct order.</p>
-                <p>Each round will become harder as an extra button will flash everytime you gain a level! The game ends when you click on the wrong button, or when you make it to the end which completes the game.</p>
+                <p>Each round will become harder as an extra button will flash every time you gain a level! The game ends when you click on the wrong button, or when you make it to the end which completes the game.</p>
                 <p>When the game finishes, your performance will be evaluated and a review will be displayed!</p>
                 <p><strong>Good luck and happy playing!</strong></p>
                 <button id="close-instructions" class="close-instructions">Close</button>
@@ -56,7 +59,7 @@
         </div>
     </div>
     <header class="header-section">
-        <a href="/">
+        <a href="index.html">
             <h1 class="uppercase flipInX">Totally Recalled</h1>
         </a>
     </header>
@@ -108,7 +111,7 @@
 
     <section class="section2-container">
         <div class="sliding-game-box sgb1">
-            <div id="game-area">
+            <div id="game-area" class="game-area">
                 <div class="button-pair-1">
                     <button id="button1" class="game-button bt1 quarter quarter1"></button>
                     <button id="button2" class="game-button bt2"></button>
@@ -151,11 +154,10 @@
                 <div class="middle-sec2">
                     <p class="results-para"></p>
                 </div>
+                <div class="bottom-sec2">
+                    <div class="results-image"></div>
+                </div>
             </div>
-            <div class="bottom-sec2">
-                <div class="results-image"></div>
-            </div>
-        </div>
         </div>
     </section>
 </body>

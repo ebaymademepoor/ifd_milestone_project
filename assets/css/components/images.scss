@@ -2,8 +2,7 @@
 
 .results-image {
     display: none;
-    width: 130px;
-    height: 130px;
+    height: 100%;
     margin: 0 auto;
     @extend %backgroundImagesContain;
 }

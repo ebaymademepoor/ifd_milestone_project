@@ -2,15 +2,25 @@
 
 button:focus {
     outline: none;
+    border:none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 button {
+    box-sizing: border-box;
     margin: 10px auto;
     max-width: 230px;
     cursor: pointer;
 }
 
 .game-mode {
+    box-sizing: border-box;
     color: $white;
     display: inline-block;
     background-image: -webkit-linear-gradient(top, #777777, #000);
@@ -24,60 +34,36 @@ button {
     font-family: 'Do Hyeon', sans-serif;
 
     letter-spacing: 1.5px;
-    width: $menu-btn-width;
-    font-size: $small-font-size;
+    width: 126px;
+    font-size: 14px;
     padding: 5px;
 
     @include large-mobile {
-        letter-spacing: 1.5px * $scale-to-lg-mobile;
-        width: $menu-btn-width * $scale-to-lg-mobile;
-        font-size: $small-font-size * $scale-to-lg-mobile;
-        padding: 5px * $scale-to-lg-mobile;
+        width: 132px;
     }
     @include tablet {
-        letter-spacing: 1.5px * $scale-to-tablet;
-        width: $menu-btn-width * $scale-to-tablet;
-        font-size: $small-font-size * $scale-to-tablet;
-        padding: 5px * $scale-to-tablet;
+        width: 160px;
     }
     @include large-tablet {
-        letter-spacing: 1.5px * $scale-to-lg-tablet;
-        width: $menu-btn-width * $scale-to-lg-tablet;
-        font-size: $small-font-size * $scale-to-lg-tablet;
-        padding: 5px * $scale-to-lg-tablet;
-    }
-    @include desktop {
-        letter-spacing: 1.5px * $scale-to-desktop;
-        width: $menu-btn-width * $scale-to-desktop;
-        font-size: $small-font-size * $scale-to-desktop;
-        padding: 5px * $scale-to-desktop;
+        width: 200px;
     }
 }
 
 /* ----------------Game Buttons */
 
+.button-pair-1,
+.button-pair-2 {
+    height: 48%;
+    width: 100%;
+}
+
 .game-button {
     width: 40%;
-    height: $game-btn-height;
-    margin: 10px 5px;
+    height: 92%;
+    margin: 0;
+    padding: 0;
 
-    @include large-mobile {
-        height: $game-btn-height * $scale-to-lg-mobile;
-        margin: 10px * $scale-to-lg-mobile 5px * $scale-to-lg-mobile;
-    }
     @include tablet {
-        height: $game-btn-height * $scale-to-tablet;
-        margin: 10px* $scale-to-tablet 5px * $scale-to-tablet;
-        width: 45%;
-    }
-    @include large-tablet {
-        height: $game-btn-height * $scale-to-lg-tablet;
-        margin: 10px * $scale-to-lg-tablet 5px * $scale-to-lg-tablet;
-        width: 45%;
-    }
-    @include desktop {
-        height: $game-btn-height * $scale-to-desktop;
-        margin: 10px * $scale-to-desktop 5px * $scale-to-desktop;
         width: 45%;
     }
 }
@@ -129,12 +115,35 @@ button {
     background-color: $highlightedCyan;
 }
 
+.bt1,
+.bt3 {
+ 
+     @include tablet {
+         margin-right: 15px;
+     }
+    
+}
+
+.bt2,
+.bt4 {
+ 
+     @include tablet {
+         margin-left: 15px;
+     }
+    
+}
+
+.bt1,
+.bt3 {
+    
+}
 
 /* ----------------Picture Game Buttons */
 
 .button-row {
     display: block;
     font-size: 0;
+    height: 33.34%;
 }
 
 .pic-game-button {
@@ -146,22 +155,8 @@ button {
     border: 0;
 }
 
-.button-row,
 .pic-game-button {
-    height: $section-height-mob / 3;
-    
-    @include large-mobile {
-        height: ($section-height-mob / 3) * $scale-to-lg-mobile;
-    }
-    @include tablet {
-        height: ($section-height-mob / 3) * $scale-to-tablet;
-    }
-    @include large-tablet {
-        height: ($section-height-mob / 3) * $scale-to-lg-tablet;
-    }
-    @include desktop {
-        height: 140px;
-    }
+    height: 100%;
 }
 
 .disappear {
@@ -233,12 +228,19 @@ button {
 }
 
 .settings-buttons-row i {
+    box-sizing: border-box;
     background-color: $header-blue-1;
     color: $white;
     padding: 4px;
-    width: 17px;
+    width: 25px;
     border-radius: 3px;
     margin: 0 10px;
+    
+    @include tablet {
+        width: 40px;
+        font-size: 30px;
+        margin: 40px;
+    }
 }
 
 .fa-cog {
@@ -263,6 +265,7 @@ button {
 .close-settings,
 .close-instructions,
 .settings-btn {
+    box-sizing: border-box;
     margin: 0 5px;
     width: 100px;
     border: none;
@@ -277,6 +280,9 @@ button {
 .settings-btn {
     background-color: red;
     color: $white;
+    width: 30%;
+    max-width: 100px;
+    border-radius: 18px;
 }
 
 i {

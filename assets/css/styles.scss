@@ -15,7 +15,13 @@ body {
     margin: 0 auto;
     font-family: 'Roboto', sans-serif;
     max-width: $application-max-width;
-    overflow-x: hidden;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 a, a:visited {
@@ -23,14 +29,14 @@ a, a:visited {
 }
 
 h1 {
-    font-size: $large-font-size;
+    font-size: 30px;
     color: $white;
     background-image: -webkit-linear-gradient(top, $header-blue-1 , $header-blue-2);
     background-image: -moz-linear-gradient(top, $header-blue-1 , $header-blue-2);
     background-image: -ms-linear-gradient(top, $header-blue-1 , $header-blue-2);
     background-image: -o-linear-gradient(top, $header-blue-1 , $header-blue-2);
     background-image: linear-gradient(top, $header-blue-1 , $header-blue-2);
-    margin: 14px 10px;
+    margin: 0 10px;
     padding: 5px;
     border-top: 2px solid $white;
     border-bottom: 2px solid $white;
@@ -42,55 +48,55 @@ h1 {
     
     
     @include large-mobile {
-        font-size: $large-font-size * $scale-to-lg-mobile;
+        font-size: 34px;
     }
     @include tablet {
-        font-size: $large-font-size * $scale-to-tablet;
+        font-size: 62px;
     }
     @include large-tablet {
-        font-size: $large-font-size * $scale-to-lg-tablet;
+        font-size: 64px;
     }
     @include desktop {
-        font-size: $large-font-size * $scale-to-desktop;
+        font-size: 36px;
     }
 }
 
 h2 {
-    font-size: $medium-font-size;
+    font-size: 22px;
     margin: 0 auto;
     
     @include large-mobile {
-        font-size: $medium-font-size * $scale-to-lg-mobile;
+        font-size: 24px;
     }
     @include tablet {
-        font-size: $medium-font-size * $scale-to-tablet;
+        font-size: 26px;
     }
     @include large-tablet {
-        font-size: $medium-font-size * $scale-to-lg-tablet;
+        font-size: 28px;
     }
     @include desktop {
-        font-size: $medium-font-size * $scale-to-desktop;
+        font-size: 16px;
     }
 }
 
 p,
 .results-para {
-    font-size: $small-font-size;
+    font-size: 14px;
     margin: 0 auto;
     padding: 0 10px;
     max-width: 600px;
     
     @include large-mobile {
-        font-size: $small-font-size * $scale-to-lg-mobile;
+        font-size: 16px;
     }
     @include tablet {
-        font-size: $small-font-size * $scale-to-tablet;
+        font-size: 18px;
     }
     @include large-tablet {
-        font-size: $small-font-size * $scale-to-lg-tablet;
+        font-size: 20px;
     }
     @include desktop {
-        font-size: $small-font-size * $scale-to-desktop;
+        font-size: 12px;
     }
 }
 
@@ -105,11 +111,8 @@ p,
 }
 
 .game-win-message {
-    font-size: 35px;
-}
-
-.logo-para {
-    color: #fff;
+    font-size: 25px;
+    max-width: 78%;
 }
 
 .try-again {
@@ -117,6 +120,7 @@ p,
     margin-top: 12px;
 }
 
+.settings-container,
 .sliding-game-box:after,
 section:after {
     clear: both;
@@ -129,18 +133,24 @@ section:after {
 .logo {
     background-color: #000;
     width: 100%;
-    height: 100vh;
     position: absolute;
     z-index: 100;
     left: 0;
     top: 0;
 }
 
+.logo .container {
+    @extend %center-container;
+    height: 100%;
+}
+
 .logo-pic {
     width: 50%;
     max-width: 175px;
-    max-height: 24vh;
-    margin: 33.3vh 0 0;
+}
+
+.logo-para {
+    color: #fff;
 }
 
 /* ----------------------------------- Instructions / Settings Boxes */
@@ -148,28 +158,32 @@ section:after {
 .settings-container,
 .instructions-container {
     display: none;
-}
-
-.settings,
-.instructions {
     max-width: $application-max-width;
     position: absolute;
     z-index: 100;
     width: 100%;
-    height: 100%;
     background-color: $header-blue-2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
+}
+
+.settings,
+.instructions {
+    @extend %center-container;
     color: $white;
+    height: 100%;
 }
 
 .instructions-box p {
     margin: 26px 0;
 }
 
+.settings-box {
+    width: 100%;
+}
+
 .settings-box .row {
     margin: 40px auto;
+    width: 100%;
 }
 
 .settings-box p {

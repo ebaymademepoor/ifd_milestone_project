@@ -7,19 +7,19 @@ $lgTabletMaxWidth: 1024px;
 
 
 @mixin large-mobile {
-     @media (min-width: $mobileMaxWidth + 1px) and (max-width: $lgMobileMaxWidth){
+     @media (min-width: $lgMobileMaxWidth){
         @content
     }
 }
 
 @mixin tablet {
-     @media (min-width: $lgMobileMaxWidth + 1px) and (max-width: $tabletMaxWidth){
+     @media (min-width: $tabletMaxWidth){
         @content
     }
 }
 
 @mixin large-tablet {
-     @media (min-width: $tabletMaxWidth + 1px) and (max-width: $lgTabletMaxWidth){
+     @media (min-width: $lgTabletMaxWidth){
         @content
     }
 }
