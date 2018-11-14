@@ -674,7 +674,7 @@ function nextAction() {
             default:
                 console.log('No action Available');
         }
-})}
+})};
 
 // Script 
 

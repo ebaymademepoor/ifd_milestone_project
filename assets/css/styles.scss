@@ -31,11 +31,11 @@ a, a:visited {
 h1 {
     font-size: 30px;
     color: $white;
-    background-image: -webkit-linear-gradient(top, $header-blue-1 , $header-blue-2);
-    background-image: -moz-linear-gradient(top, $header-blue-1 , $header-blue-2);
-    background-image: -ms-linear-gradient(top, $header-blue-1 , $header-blue-2);
-    background-image: -o-linear-gradient(top, $header-blue-1 , $header-blue-2);
-    background-image: linear-gradient(top, $header-blue-1 , $header-blue-2);
+    background-image: -webkit-linear-gradient(to top, $header-blue-1 , $header-blue-2);
+    background-image: -moz-linear-gradient(to top, $header-blue-1 , $header-blue-2);
+    background-image: -ms-linear-gradient(to top, $header-blue-1 , $header-blue-2);
+    background-image: -o-linear-gradient(to top, $header-blue-1 , $header-blue-2);
+    background-image: linear-gradient(to top, $header-blue-1 , $header-blue-2);
     margin: 0 10px;
     padding: 5px;
     border-top: 2px solid $white;

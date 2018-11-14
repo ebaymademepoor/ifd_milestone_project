@@ -495,11 +495,11 @@ a, a:visited {
 h1 {
   font-size: 30px;
   color: #ffffff;
-  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(top, #3498db, #2980b9);
+  background-image: -webkit-linear-gradient(to top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(to top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(to top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(to top, #3498db, #2980b9);
+  background-image: linear-gradient(to top, #3498db, #2980b9);
   margin: 0 10px;
   padding: 5px;
   border-top: 2px solid #ffffff;
