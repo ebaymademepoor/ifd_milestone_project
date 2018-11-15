@@ -1,42 +1,40 @@
-# MILESTONE PROJECT NAME:  INTERACTIVE FRONTEND DEVELOPMENT - THE MONKEES.COM
+# MILESTONE PROJECT NAME:  INTERACTIVE FRONTEND DEVELOPMENT - TOTALLY RECALLED.COM
 ## NAME:  GIANCARLO FIORLETTA
 
 
 ## INTRODUCTION:
-In this project I have created a frontend website to meet the needs of my clients, The Monkees.
-The website should be fun and allow fans the opportunity to enjoy various forms of media to promote the band and remind people of their 
-qualities.  In turn this should encourage people to invest in the band in the form of hiring them for gigs or buying new material which
-they will be informed about via a mailing list.
+In this project I have created a frontend website to host my new game which is based on the SIMON memory game.
+The game itself needs to be fun and keep the users interest for a few games at least!  It needs to be robust,
+unbreakable and give the user different gameplay modes and options.
 
 ## UX
 
 ### AIMS:
 The main aims of the project are as follows...
 
-1)  To make a website that appeals to fans of the Monkees 
-2)  To allow fans to get access to music, video and pictures from the band
-3)  To allow users to be contacted and informed of any new music from the band
-4)  To enable users to hire the band for events
+1)  To allow the user to play a few game modes for them to enjoy 
+2)  To give feedback to the user on their performance in the game dependant on how they perform
+3)  To use the site as a way of showcasing the music I made for the project using FL Studio
+4)  To ensure that I have javascript code that is as fullproof as possible
 
 The website should also be responsive so that it works across all devices and media sizes.  It should be intuitive and easy for the user to use.
 
 USER STORIES:
-To understand what fans of the Monkees might be looking for from the band I have created a number of user stories to help guide the content of 
-the website.
+To understand why people might choose to use this site and therefore provide direction on its creation, I created a number of user stories as follows...
 
-Story 1:  As a fan of the Monkees, I want to see pictures of the band because I was fond of how they looked in their early career and am interested 
-to see how they've changed.
+Story 1:  As a member of the older generation, I want to play a memory game to keep my memory sharp!
 
-Story 2: As a music lover, I want to hire a famous band so that I can have a memorable anniversary party and impress my friends.
+Story 2: As a gamer, I want to play a new easy going game to relax.
 
-Story 3:  As a fan of the Monkees, I want to listen to some of their music and see their videos because they make me happy.
+Story 3:  As a lover of gaming music, I want to play a game that has some ear catching tunes.
 
-Story 4:  As a fan of the Monkees, I want to know if the Monkees release any new material as I loved their old tracks.
+Story 4:  As a gaming enthusiast, I want to play a game that tells me how great I am!
 
-The above user stories justify the proposed content requested by the band and on the basis of the above it will be important to include a
-landing page that highlights all of the content available, a page to host their music, one containing their video supplied, another to showcase their
-photos and a method for fans to both sign up to their mailing list and get in touch to request them for hire.  Having access to all of this media 
-should help fans relive fond memories and want more of the same, as well as encouraging new fans to want to find out more about this band.
+A memory game is perfect for the majority of these users.  Memory games have been proven to help keep the memory sharp and are reliably stress and hassle free.  
+It will incorporate two game modes to keep it interesting.  "Classic", which will mirror the original SIMON game, and "Picture", which will allow the user
+to see a part of the picture for every square they click correctly.  THere will be 12 buttons in this mode and 12 pictures for the user to uncover.  There will be 
+a music track for each game mode. There should also be options for the user to experiment with such as game speed and game difficulty.  
+
 
 WIREFRAMES:
 I have created a number of wireframe sketches (see Monkees UX Wireframes folder) to try to get an idea of what the layout of the landing page might look like, 

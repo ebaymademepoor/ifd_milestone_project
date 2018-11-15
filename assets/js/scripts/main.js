@@ -1,8 +1,5 @@
-var randomlyGeneratedNumbers = [];
-var clickedButtons = [];
-var gameLevel = 1;
-var currentIndex = 0; // where we are in the randomlyGeneratedNumbers array
-var checkanswerIndex = 0; // where we are in the clickedButtons array
+// Game option variables.........
+
 var intervalOn = 2000;
 var intervalOff = 2500;
 var intervalSpeed = 1000;
@@ -11,67 +8,24 @@ var defaultintervalOff = 2500;
 var defaultintervalSpeed = 1000;
 var difficulty = 10; // Could also be max level
 var defaultDifficulty = 10;
-var correctAnswers = 0;
-var gameMode = 0;
-var endGame = false;
-var lastSquare = 0;
 var musicVol = 0.7;
 var soundVol = 0.8;
 var musicStatus = true;
 var soundStatus = true;
 
-var gameOutcomes = {
-    wonTheGame: function() {
-        victory();
-    },
-    gameOver: function() {
-        gameOver();
-    },
-    levelUp: function() {
-        levelUp();
-    }
-};
+// Game mechanics variables........
 
-function showResultsBox() {
-    $(".mode-btn-row").show();
-    setTimeout(function() {
-        $(".sgb2").fadeIn(5000);
-    }, 3000);
-}
+var randomlyGeneratedNumbers = [];
+var clickedButtons = [];
+var gameLevel = 1;
+var currentIndex = 0; // where we are in the randomlyGeneratedNumbers array
+var checkanswerIndex = 0; // where we are in the clickedButtons array
+var correctAnswers = 0;
+var gameMode = 0;
+var endGame = false;
+var lastSquare = 0;
 
-function victory() {
-    endGame = true;
-    if (gameMode === "classic") {
-        soundsLibrary.aa10.sound.stop();
-        $(".sgb1").fadeOut(2000);
-    }
-    else if (gameMode === "picture") {
-        soundsLibrary.aa12.sound.stop();
-        $(".sgb3").fadeOut(5000);
-        $('#pic-button' + lastSquare).addClass("disappear");
-    }
-
-    randomlyGeneratedNumbers = [];
-    soundsLibrary.aa9.sound.play();
-    $(".game-message-top").append("<h2 class='game-win-message'>Congratulations! You won the game!</h2>");
-
-    gameLevel = (difficulty + 1);
-    appraisalOfPerformance();
-
-    showResultsBox();
-
-    // Play again message....
-    $(".game-message-middle").html("<h2 class='middle try-again'>Try again?</h2>");
-    $(".game-message-middle").hide();
-    setTimeout(function() {
-        $(".game-message-middle").fadeIn(2000);
-    }, 3500);
-    $(".game-selector-para").text("");
-    $(".game-selector-header").text("");
-    setTimeout(function() {
-        $(".mode-box").fadeIn(3000);
-    }, 4000);
-}
+// Game sounds using Howler.js to manage....
 
 var soundsLibrary = {
     aa1: { sound: new Howl({ src: ['assets/sounds/get-ready.mp3', 'assets/sounds/correct-beep.mp3'], volume: soundVol }) },
@@ -88,50 +42,27 @@ var soundsLibrary = {
     aa12: { sound: new Howl({ src: ['assets/sounds/grand-slam.mp3', 'assets/sounds/correct-beep.mp3'], loop: true, volume: musicVol }) }
 };
 
-//Aesthetic Functions
+// A test to ensure Jasmine is hooked up correctly...
 
 function onePlusOne() {
     return 2;
 }
 
-function getReadyMessage() {
-    soundsLibrary.aa1.sound.play();
-    $(".game-message-middle").html("<h2 class='game-play-message'>Get Ready for <br>LEVEL " + gameLevel + "</h2>");
-}
+// gameOutcomes sets up a callable method for each of the 3 functions that could be activated during the game to help with Jasmine testing...
 
-function threeMessage() {
-    soundsLibrary.aa2.sound.play();
-    $(".game-message-middle").html("<h2 class='big-num'>3</h2>");
-}
+var gameOutcomes = {
+    wonTheGame: function() {
+        victory();
+    },
+    gameOver: function() {
+        gameOver();
+    },
+    levelUp: function() {
+        levelUp();
+    }
+};
 
-function twoMessage() {
-    soundsLibrary.aa3.sound.play();
-    $(".game-message-middle").html("<h2 class='big-num'>2</h2>");
-}
-
-function oneMessage() {
-    soundsLibrary.aa4.sound.play();
-    $(".game-message-middle").html("<h2 class='big-num'>1</h2>");
-}
-
-function memoriseMessage() {
-    return $(".game-message-middle").html("<h2 class='game-play-message'>Memorise!</h2>");
-}
-
-function repeatMessage() {
-    soundsLibrary.aa5.sound.play();
-    $(".game-message-middle").html("<h2 class='game-play-message'>Repeat!!!!!!!</h2>");
-}
-
-function gameOverMessage() {
-    soundsLibrary.aa8.sound.play();
-    $(".game-message-top").html("<h2 class='top'>You got it wrong!<br>Game Over!</h2>");
-    $(".game-message-middle").html("<h2 class='middle try-again'>Try again?</h2>");
-    $(".game-message-middle").hide();
-    setTimeout(function() {
-        $(".game-message-middle").fadeIn(2000);
-    }, 2000);
-}
+// SET UP FUNCTIONS:
 
 // These functions will flash color on then off...
 
@@ -167,7 +98,7 @@ function startSequence() {
     timerBeforeSequenceStarts(8);
 }
 
-// Gameplay Functions
+// GAMEPLAY FUNCTIONS
 
 // Step 1 - When start is clicked, all game parameters are set to zero and a new game begins...
 
@@ -212,7 +143,7 @@ function resetGame() {
     }
 }
 
-// Step 2 - this creates your new numbers array with the correct sequence
+// Step 2 - this creates your new numbers array with the correct sequence and is activated in resetGame()
 
 function createANumber(highestNum) {
     var randomNumber = Math.floor(Math.random() * highestNum) + 1;
@@ -221,7 +152,7 @@ function createANumber(highestNum) {
 
 function pushRandomNumber(gameMode) {
     if (gameMode === "classic") {
-        for (i = 1; i <= difficulty; i++) {
+        for (i = 1; i <= defaultDifficulty; i++) {
             var newNumber = createANumber(4);
             randomlyGeneratedNumbers.push(newNumber);
         }
@@ -287,7 +218,7 @@ function timerBeforeClickingStarts(countFrom) {
     }
 }
 
-// Sequence timer Function - this ensures the player cannot play until the color sequence is complete
+// Sequence timer Function - this function creates a delay while the messages are displayed before the color sequence begins
 
 var seqTimeLeft = 0;
 
@@ -319,24 +250,73 @@ function playClassicGame(answerIndex) {
 
 function playPictureGame(answerIndex) {
     $(".pic-game-button").click(function() {
-        recordButtonAndEvaluatePic(this.id, checkanswerIndex);
+        recordButtonAndEvaluate(this.id, checkanswerIndex);
         if (endGame === false) {
             $(this).addClass("disappear");
         }
     });
 }
 
-function removeClass() {
-    if (gameMode === "classic") {
-        return $(".game-button").removeClass("button-color13");
+// Step 4 - Once player has clicked a button it is pushed into an array and then the logic begins on what the next step or the outcome should be...
+
+function recordButtonAndEvaluate(buttonClicked, answerIndex) {
+    var clickedButton = buttonClicked;
+    
+    if (gameMode === "classic"){
+        var button = "button";
+    } else {
+        var button = "pic-button";
     }
-    else if (gameMode === "picture") {
-        setTimeout(function() {
-            $(".pic-game-button").removeClass("disappear");
-        }, 500);
+
+    clickedButtons.push(clickedButton);
+    if (endGame === false) {
+
+        // Check 1a - if the answer is correct we move on to evaluate what we need to do next in the game
+        
+        if (clickedButtons[answerIndex] === button + randomlyGeneratedNumbers[answerIndex]) {
+            correctAnswers++;
+
+            // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
+
+            if (correctAnswers === difficulty) {
+                gameOutcomes.wonTheGame();
+            }
+
+            // Check 2b - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
+
+            else if (correctAnswers < gameLevel) {
+                if (clickedButtons[answerIndex] === button + randomlyGeneratedNumbers[answerIndex]) {
+                    checkanswerIndex++;
+                    soundsLibrary.aa6.sound.play();
+                }
+            }
+
+            // Check 2c - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!  If it's the last level a FINAL STAGE message appears...
+
+            else if (correctAnswers === gameLevel && difficulty - 1 === gameLevel) {
+                gameOutcomes.levelUp();
+                soundsLibrary.aa11.sound.play();
+                $(".game-message-middle").html("<h2 class='game-play-message'>FINAL STAGE!</h2>");
+            }
+
+            else if (correctAnswers === gameLevel) {
+                gameOutcomes.levelUp();
+                soundsLibrary.aa7.sound.play();
+                $(".game-message-middle").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + "</h2>");
+            }
+        }
+
+        // Check 1b - if the answer is incorrect the game ends
+
+        else {
+            gameOutcomes.gameOver();
+        }
     }
 }
-// Step 4 - Once player has clicked a button it is pushed into an array and then the logic begins dependant on the outcome
+
+// Game outcomes...
+
+// Level up moves the player to the next level, adding one to the previous button sequence and starting the sequence again...
 
 function levelUp() {
     gameLevel++;
@@ -366,103 +346,40 @@ function levelUp() {
     }
 }
 
-function recordButtonAndEvaluate(buttonClicked, answerIndex) {
-    var clickedButton = buttonClicked;
+// Victory sequence if all answers were correct ...
 
-    clickedButtons.push(clickedButton);
-    if (endGame === false) {
-
-        // Check 1a - if the answer is correct we move on to evaluate what we need to do next in the game
-
-        if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
-            correctAnswers++;
-
-            // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
-
-            if (correctAnswers === difficulty) {
-                gameOutcomes.wonTheGame();
-            }
-
-            // Check 2b - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
-
-            else if (correctAnswers < gameLevel) {
-                if (clickedButtons[answerIndex] === "button" + randomlyGeneratedNumbers[answerIndex]) {
-                    checkanswerIndex++;
-                    soundsLibrary.aa6.sound.play();
-                }
-            }
-
-            // Check 2c - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
-
-            else if (correctAnswers === gameLevel && difficulty - 1 === gameLevel) {
-                gameOutcomes.levelUp();
-                soundsLibrary.aa11.sound.play();
-                $(".game-message-middle").html("<h2 class='game-play-message'>FINAL STAGE!</h2>");
-            }
-
-            else if (correctAnswers === gameLevel) {
-                gameOutcomes.levelUp();
-                soundsLibrary.aa7.sound.play();
-                $(".game-message-middle").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + "</h2>");
-            }
-        }
-
-        // Check 1b - if the answer is incorrect the game ends
-
-        else {
-            gameOutcomes.gameOver();
-        }
+function victory() {
+    endGame = true;
+    if (gameMode === "classic") {
+        soundsLibrary.aa10.sound.stop();
+        $(".sgb1").fadeOut(2000);
     }
-}
-
-function recordButtonAndEvaluatePic(buttonClicked, answerIndex) {
-    var clickedButton = buttonClicked;
-
-    clickedButtons.push(clickedButton);
-    if (endGame === false) {
-        // Check 1a - if the answer is correct we move on to evaluate what we need to do next in the game
-
-        if (clickedButtons[answerIndex] === "pic-button" + randomlyGeneratedNumbers[answerIndex]) {
-            correctAnswers++;
-
-            // Check 2a - if the answer is correct and the difficulty(max level) matches the correct answers, the player has won!
-
-            if (correctAnswers === difficulty) {
-                randomlyGeneratedNumbers = [];
-                gameOutcomes.wonTheGame();
-            }
-
-            // Check 2a - if the answer is correct but the correct answers are less than the game level, we repeat the check for the next click!
-
-            else if (correctAnswers < gameLevel) {
-                if (clickedButtons[answerIndex] === "pic-button" + randomlyGeneratedNumbers[answerIndex]) {
-                    checkanswerIndex++;
-                    soundsLibrary.aa6.sound.play();
-                }
-            }
-
-            // Check 2a - if the answer is correct and the correct answers are the same as the game level, we start the process again for the next level!
-
-            else if (correctAnswers === gameLevel && difficulty - 1 === gameLevel) {
-                gameOutcomes.levelUp();
-                soundsLibrary.aa11.sound.play();
-                $(".game-message-middle").html("<h2 class='game-play-message'>FINAL STAGE!</h2>");
-            }
-
-            else if (correctAnswers === gameLevel) {
-                gameOutcomes.levelUp();
-                soundsLibrary.aa7.sound.play();
-                $(".game-message-middle").html("<h2 class='game-play-message'>Well done!<br>Time for LEVEL " + gameLevel + "</h2>");
-            }
-        }
-
-        // Check 1b - if the answer is incorrect the game ends
-
-        else {
-            randomlyGeneratedNumbers = [];
-            gameOutcomes.gameOver();
-        }
+    else if (gameMode === "picture") {
+        soundsLibrary.aa12.sound.stop();
+        $(".sgb3").fadeOut(5000);
+        $('#pic-button' + lastSquare).addClass("disappear");
     }
+
+    randomlyGeneratedNumbers = [];
+    soundsLibrary.aa9.sound.play();
+    $(".game-message-top").append("<h2 class='game-win-message'>Congratulations! You won the game!</h2>");
+
+    gameLevel = (difficulty + 1);
+    appraisalOfPerformance();
+
+    showResultsBox();
+
+    // Play again message....
+    $(".game-message-middle").html("<h2 class='middle try-again'>Try again?</h2>");
+    $(".game-message-middle").hide();
+    setTimeout(function() {
+        $(".game-message-middle").fadeIn(2000);
+    }, 3500);
+    $(".game-selector-para").text("");
+    $(".game-selector-header").text("");
+    setTimeout(function() {
+        $(".mode-box").fadeIn(3000);
+    }, 4000);
 }
 
 // Game Over Sequence....
@@ -493,7 +410,7 @@ function gameOver() {
     }, 4000);
 }
 
-// Game performance evaluator
+// Game performance evaluator - When the game has finished one of these 4 messages will be displayed dependant on performance...
 
 function appraisalOfPerformance() {
     $(".results-image").fadeIn(2000);
@@ -510,10 +427,23 @@ function appraisalOfPerformance() {
         $(".results-image").addClass("clever");
     }
     else {
-        $(".results-para").text("You are the brainiest guy I know! xD");
+        $(".results-para").text("You are the brainiest kid I know! xD");
         $(".results-image").addClass("einstein");
     }
 }
+
+// AESTHETIC FUNCTIONS:
+
+// Will display the users evaluation feedback when called...
+
+function showResultsBox() {
+    $(".mode-btn-row").show();
+    setTimeout(function() {
+        $(".sgb2").fadeIn(5000);
+    }, 3000);
+}
+
+// The evaluation picture displayed will then be removed ready for the next attempt using this function as well as any picture game picture previously applied....
 
 function removePictures() {
     $(".results-image").removeClass("patrick");
@@ -530,6 +460,58 @@ function selectButtonToHighlight(btnRow, selectedBtn){
     $(btnRow + " button").removeClass('btn-on');
     $(selectedBtn).addClass('btn-on');
 }
+
+function getReadyMessage() {
+    soundsLibrary.aa1.sound.play();
+    $(".game-message-middle").html("<h2 class='game-play-message'>Get Ready for <br>LEVEL " + gameLevel + "</h2>");
+}
+
+function threeMessage() {
+    soundsLibrary.aa2.sound.play();
+    $(".game-message-middle").html("<h2 class='big-num'>3</h2>");
+}
+
+function twoMessage() {
+    soundsLibrary.aa3.sound.play();
+    $(".game-message-middle").html("<h2 class='big-num'>2</h2>");
+}
+
+function oneMessage() {
+    soundsLibrary.aa4.sound.play();
+    $(".game-message-middle").html("<h2 class='big-num'>1</h2>");
+}
+
+function memoriseMessage() {
+    return $(".game-message-middle").html("<h2 class='game-play-message'>Memorise!</h2>");
+}
+
+function repeatMessage() {
+    soundsLibrary.aa5.sound.play();
+    $(".game-message-middle").html("<h2 class='game-play-message'>Repeat!!!!!!!</h2>");
+}
+
+function gameOverMessage() {
+    soundsLibrary.aa8.sound.play();
+    $(".game-message-top").html("<h2 class='top'>You got it wrong!<br>Game Over!</h2>");
+    $(".game-message-middle").html("<h2 class='middle try-again'>Try again?</h2>");
+    $(".game-message-middle").hide();
+    setTimeout(function() {
+        $(".game-message-middle").fadeIn(2000);
+    }, 2000);
+}
+
+function removeClass() {
+    if (gameMode === "classic") {
+        return $(".game-button").removeClass("button-color13");
+    }
+    else if (gameMode === "picture") {
+        setTimeout(function() {
+            $(".pic-game-button").removeClass("disappear");
+        }, 500);
+    }
+}
+
+// The next action function manages all none game buttons / icons and will help navigate between 'screens' or sliding boxes.  This also incorporates the settings buttons.
 
 function nextAction() {
     $("button").click(function() {
@@ -679,7 +661,6 @@ function nextAction() {
 // Script 
 
 $(document).ready(function() {
-    console.log("ready!");
 
     // Logo screen displays on loadup
 
@@ -687,7 +668,7 @@ $(document).ready(function() {
         $(".logo").fadeOut(2000); 
     }, 4000); 
 
-    // Next action will allow option buttons to decide which game is played and work through the menus...
+    // Next action will allow option buttons to decide which game is played and work through the menus as above...
     nextAction();
 
 });

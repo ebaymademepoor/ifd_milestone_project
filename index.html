@@ -18,6 +18,8 @@
 </head>
 
 <body>
+    
+    <!--The logo box will display on load and will fade out via the js file...-->
     <div class="logo">
         <div class="container">
             <div class="container-content">
@@ -26,6 +28,8 @@
             </div>
         </div>
     </div>
+    
+    <!--The instructions container will cover the whole screen when clicked on and can be closed via the button to take you back to the game-->
     <div class="instructions-container">
         <div class="instructions">
             <div class="instructions-box">
@@ -41,6 +45,7 @@
         </div>
     </div>
     
+    <!--The settings container will cover the whole screen when clicked on and can be closed via the button to take you back to the game-->
     <div class="settings-container">
         <div class="settings">
             <div class="settings-box">
@@ -58,17 +63,24 @@
             </div>
         </div>
     </div>
+    
+    <!--The header is the first of 3 defined sections of this game and only takes up a small proportion of the top of the screen-->
     <header class="header-section">
         <a href="index.html">
             <h1 class="uppercase flipInX">Totally Recalled</h1>
         </a>
     </header>
 
+    <!--Section 1 container is the second defined box that takes up the middle of the display and switches between various mode boxes within using js-->
     <section class="section1-container">
+        
+        <!--This row will house the settings and instructions icons-->
         <div class="row settings-buttons-row">
             <i id="show-settings" class="fas fa-cog"></i>
             <i id="show-instructions" class="fas fa-question"></i>
         </div>
+        
+        <!--Each sliding box will display dependant on where the game is based on previous button click selections-->
         <div class="sliding-box welcome-box">
             <div class="top">
                 <h2 class="opening-header uppercase">Welcome to the<br>ultimate memory game!</h2>
@@ -80,6 +92,7 @@
                 <button id="play" class="play game-mode">Play Now</button>
             </div>
         </div>
+        
         <div class="sliding-box mode-box">
             <h2 class="game-selector-header top uppercase">Game type selector</h2>
             <p class="game-selector-para middle">Please select which version you would like to play:</p>
@@ -92,24 +105,30 @@
                 </div>
             </div>
         </div>
+        
         <div class="sliding-box start-box">
             <div class="start-area">
                 <button id="start" class="game-mode start-btn" type="button">Start Game!</button>
             </div>
         </div>
+        
         <div class="sliding-box start-pic-mode-box">
             <div class="start-area">
                 <button id="pic-mode-start" class="game-mode pic-mode-btn" type="button">Start Game</button>
             </div>
         </div>
+        
         <div class="sliding-box feedback-box">
             <div class="top game-message-top"></div>
             <div class="middle game-message-middle"></div>
             <div class="bottom game-message-bottom"></div>
         </div>
     </section>
-
+    
+    <!--Section 2 container is the third defined box that takes up the bottom of the display and switches between various mode boxes within using js-->
     <section class="section2-container">
+        
+        <!--These are the classic game mode buttons-->
         <div class="sliding-game-box sgb1">
             <div id="game-area" class="game-area">
                 <div class="button-pair-1">
@@ -122,6 +141,8 @@
                 </div>
             </div>
         </div>
+        
+        <!--This is the picture game mode display-->
         <div class="sliding-game-box sgb3">
             <div id="game2-area" class="picture">
                 <div class="button-row br-1">
@@ -144,6 +165,8 @@
                 </div>
             </div>
         </div>
+        
+        <!--This area will apear via js and display the results-->
         <div class="sliding-game-box sgb2">
             <div class="results-section">
                 <div class="top-sec2">
