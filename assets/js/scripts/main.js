@@ -576,9 +576,11 @@ function nextAction() {
                 break;
             case "close-instructions":
                 $('.instructions-container').hide();
+                $('h1').addClass('flipInX');
                 break;
             case "close-settings":
                 $('.settings-container').hide();
+                $('h1').addClass('flipInX');
                 break;
             case "music":
                 if (musicStatus == true){
@@ -649,9 +651,11 @@ function nextAction() {
         switch (this.id) {
             case "show-instructions":
                 $('.instructions-container').show();
+                $('h1').removeClass('flipInX');
                 break;
             case "show-settings":
                 $('.settings-container').show();
+                $('h1').removeClass('flipInX');
                 break;
             default:
                 console.log('No action Available');
