@@ -153,17 +153,29 @@ As previously stated, the design of this single page site is very straight forwa
 Each element on the site has been tested to ensure it functions as intended as follows:
 
 **Test 1** - On Page Load - Company Logo appears and fades out after a few moments - SUCCESS
+
 **Test 2** - Header is clicked - Page reloads - SUCCESS
+
 **Test 3** - Cog icon clicked - Game settings appear on full screen - SUCCESS
+
 **Test 4** - Game settings close button clicked - Game settings close and main screen appears - SUCCESS
+
 **Test 5** - Question mark icon clicked - How to play page appears on full screen - SUCCESS
+
 **Test 6** - Instructions close button clicked - Instructions close and main screen appears - SUCCESS
+
 **Test 7** - Play now button is clicked - Game mode buttons appear - SUCCESS
+
 **Test 8** - Classic button is clicked - Start button appears - SUCCESS
+
 **Test 9** - Start button is clicked - Game begins - SUCCESS
+
 **Test 10** - Game button is clicked until game ends - Feedback messages appear and try again mode buttons - SUCCESS
+
 **Test 11** - Picture Mode button is clicked - Start button appears, game mode changes in bottom section - SUCCESS
+
 **Test 12** - Start button is clicked - Game begins - SUCCESS
+
 **Test 13** - Game button is clicked until game ends - Feedback messages appear and try again mode buttons - SUCCESS
 
 These tests have also been performed in different orders to ensure the result and the way the game is displayed is always as intended and no errors have been found.
