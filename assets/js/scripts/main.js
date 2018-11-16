@@ -415,7 +415,7 @@ function gameOver() {
 function appraisalOfPerformance() {
     $(".results-image").fadeIn(2000);
     if ((gameLevel - 1) / difficulty < 0.5) {
-        $(".results-para").text("You are worse than stupid! xD");
+        $(".results-para").text("Oh dear!  Keep trying anyway! :/");
         $(".results-image").addClass("patrick");
     }
     else if ((gameLevel - 1) / difficulty < 0.75) {
@@ -423,7 +423,7 @@ function appraisalOfPerformance() {
         $(".results-image").addClass("trump");
     }
     else if ((gameLevel - 1) / difficulty < 1) {
-        $(".results-para").text("Not bad, keep trying! :D");
+        $(".results-para").text("So close, keep trying! :D");
         $(".results-image").addClass("clever");
     }
     else {

@@ -12,14 +12,14 @@ unbreakable and give the user different gameplay modes and options.
 ### AIMS:
 The main aims of the project are as follows...
 
-1)  To allow the user to play a few game modes for them to enjoy 
+1)  To allow the user to play a few different game modes for them to enjoy
 2)  To give feedback to the user on their performance in the game dependant on how they perform
 3)  To use the site as a way of showcasing the music I made for the project using FL Studio
 4)  To ensure that I have javascript code that is as fullproof as possible
 
 The website should also be responsive so that it works across all devices and media sizes.  It should be intuitive and easy for the user to use.
 
-USER STORIES:
+### USER STORIES:
 To understand why people might choose to use this site and therefore provide direction on its creation, I created a number of user stories as follows...
 
 Story 1:  As a member of the older generation, I want to play a memory game to keep my memory sharp!
@@ -31,110 +31,104 @@ Story 3:  As a lover of gaming music, I want to play a game that has some ear ca
 Story 4:  As a gaming enthusiast, I want to play a game that tells me how great I am!
 
 A memory game is perfect for the majority of these users.  Memory games have been proven to help keep the memory sharp and are reliably stress and hassle free.  
-It will incorporate two game modes to keep it interesting.  "Classic", which will mirror the original SIMON game, and "Picture", which will allow the user
-to see a part of the picture for every square they click correctly.  THere will be 12 buttons in this mode and 12 pictures for the user to uncover.  There will be 
-a music track for each game mode. There should also be options for the user to experiment with such as game speed and game difficulty.  
+It will incorporate two game modes to keep it interesting.  'Classic', which will mirror the original SIMON game, and 'Picture', which will allow the user
+to see a part of the picture for every square they click correctly.  There will be 12 buttons in this mode and 12 pictures for the user to uncover.  There will be 
+a music track for each game mode. There should also be options for the user to experiment with such as game speed and game difficulty.  The game will feature a scoring 
+system of sorts and will apply a category to a user dependant on their progress which will then display a message on completion.
 
 
-WIREFRAMES:
-I have created a number of wireframe sketches (see Monkees UX Wireframes folder) to try to get an idea of what the layout of the landing page might look like, 
-both mobile and desktop formats.  The landing page would be broken into multiple sections, a sign up section call out above the navbar, the navbar itself, the 
-title header consisting of a picture of the four band members and a welcome statement.  This would be followed by a section to introduce the music available, 
-followed by the video and then the pictures.  There would be a section that followed to highlight the bands availability and finally a footer with some 
-information about the band and links to their social media.
+### WIREFRAMES:
+This will be a Single-Page Application with the game being the only focus.  I have designed it to be very simple and have decided it should be split into 3 sections, the header, the game mode box for selecting
+which game to play and the game buttons themselves, which will switch to being the feedback area at the end of each game.  As it is a single page application I would like it to keep the same format on 
+all devices and simply scale down to maintain and hold the whole content to the size of the users screen, so what you will see on mobile will be the same as you would see on desktop.  This is a simple
+pick up and play on the go game in principle and therefore I have chosen to go with a mobile first approach.  **Please see the Wireframes folder for the design.**
 
-Having mapped out the landing page, I considered how I might use the media provided on the featured pages and created wireframes for each one of these including the 
-music page, pictures page and video page.  As there are 4 music tracks to use, on desktop these will be lined up two by two in the form of records that spin on playback.
-The video will be kept simple and will be displayed as a large screen for visitors to playback.  The pictures page will have each picture lined up 3 by 3 with the 
-opportunity to view each one individually on selection.
+## FEATURES
 
-Having viewed these pages via the wireframes, I have decided that on mobile, the content will stack on item per line which seems like a more straight forward method than 
-having multiple items on each line via the desktop and therefore I have decided to take a mobile first approach, focusing on the desktop styles once I am happy with 
-the positioning of the mobile content.
+### EXISTING FEATURES:
+#### PAGE 1 - SINGLE PAGE APPLICATION (index.html):
 
-EXISTING FEATURES:
-PAGE 1 - LANDING PAGE (index.html):
+All of the contents of this site will sit within index.html.  As the page loads, a logo that I have designed will appear as it an app was loading on a smartphone to shopw the user who the game is made by.
+This logo quickly fades out and displays the main contents of the site.
 
-The landing page provides access to all of the sites content and introduces both the website and each individual section.  Importantly, a sign up modal has been added to the top of the site
-to allow users to provide their details so that they can be contacted with updates.  Please note - this modal cannot submit data as it is not part of this module.  The navbar has been positioned as 'sticky'
-both on mobile and desktop to enable users to easily select other content at any time without overly obscuring the content on view.  On mobile a burger icon has been added using bootstrap to 
-condense the navbar.
+There is a h1 at the top of the screen which can also be used to redirect to the page, effectively reseting the game.  It spins vertically too, the majority of the boxes have not motion, they just simply
+fade in and out in sync with each other, so the animation on the header just provides something interesting and eye catching on the page.  
 
-Animation has been used to capture the users attention.  A picture of each member of the band flies and fades in upon loading and a beating heart has been used as the band were seen as heart-throbs 
-in their day.  Each icon moves to capture the users glance at the top of each section and the links move to encourage being clicked.  They are also responsive and grow on hover to allow the user to know 
-they are there to be clicked.  The picture in the gallery section changes intermittently to display a photo of the band in their hay day and a more recent photo.
+In the second part of the page is the first sliding box.  At the top of this box are two icons that are utilised as buttons.  When clicked, the first box displays the game settings and allows the user to choose 
+the speed and difficulty of the game, as well as whether or not to allow the application to play the sounds or in game music.  The difficulty applies to the classic mode of the game and will set the maximum
+number of levels the player needs to complete to win, this is initially set at 6 levels for easy, 10 for normal and 15 for hard (these were chosen after user testing and those numbers felt right).  The second icon will
+display the rules of the game when clicked.  Both displays cover the whole screen.
 
-The footer has links that change to brand colours when hovered on and redirect you to the social media sites the band is associated with.
+In the center of the first sliding box a welcome message displays and a 'play now' button.  On click, a sound effect plays and changes to the mode selection box.  Here, 'classic' or 'picture' modes can be selected.
+If the mode selected is not the same as the game mode ready to be played, the bottom section will change between 4 buttons (classic mode) and 12 (picture mode).  A button will also appear in the first section
+for the player to click when ready to start the game.
 
-PAGE 2 - MUSIC CATALOGUE (listen-now.html):
+On start, a series of messages will be displayed before the player can click a game button.  When the 'repeat' mesage is displayed, the player cn then chose the button/s they wish to click.  When the game is over,
+a message is displayed in the upper box as well as an option to try either mode again, and a feedback box is displayed in the bottom section to tell the player how they have performed.
 
-This page contains 4 music tracks that users can listen to.  Upon hovering over the play button, an animation will activate and the records will spin.  This works particularly well on 
-mobile as when the play button is clicked the pointer effectively stays in the box and the record will continue to spin unless the user clicks elsewhere.  On desktop the record will stop spinning 
-if the user moves their mouse out of the media box.  This could be improved using javascript but appears difficult to improve via pure css.  However, this does not cause the user any 
-particular issues and works as a nice visual feature if not perfectly.
+### FUTURE FEATURES:
 
-PAGE 3 - VIDEO (video.html):
+#### Endless game mode:
+Another mode that could be incorporated for the classic mode is endless mode where the player keeps playing to clock upo the highest score.  This could then lead to a leaderboard and provide more incentive to return to 
+the game.  This would work best of a database was added so that the score could be stored permanently as currently they would be reset everytime the user refreshes the site but this could be incorporated in the future.
 
-The video page is simple and follows the design of each of the other pages.  It has a video with an 'ipad' style border around it which when clicks plays the video provided.
-This can be enlarged to full screen on all devices where required.
+#### Picture Game difficulty:
+To make the picture game more accessable a difficult level could be set to dictate how many boxes covered the picture.  12 boxes is currently moderately difficult so an 8 and 15 box version could be applied.
 
-PAGE 4 - GALLERY (gallery.html):
-The gallery consists of 12 pictures of the band both past and present.  The user can click on each of these to view them at their original aspect ratio.
+#### All out memory game:
+If the scoring system was improved and the endless mode was incorporated, the game could be used as an all out memory game and users could be score from E to A+ on their memory abilities with additional feedback on
+their performance.  Tips could also be displayed on how to sharpen your memory at each grading which the user may find generally useful and hopefully help them with the game.
 
-HIRE US MODAL
-
-On every page there is a modal which can be accessed from the navbar that allows a user to send some details requesting the band to play at their event.  It is also accessible in the Hire Us section 
-of the landing page. Please note - this modal cannot submit data as it is not part of this module.  This is an essential part of the website as it will allow the band to pick up extra revenues directly
-from the functionality of the website.
-
-FUTURE FEATURES:
-The website already has included everything requested by the band in the spec but it would be easy to add additional content as and when it became available.
-In terms of ideas for future additions there could be the potential to add a message board and perhaps a Monkees interactive music based game in the future, should the client be interested in further
-heightening interest in their site.
-
-TECHNOLOGIES USED:
+## TECHNOLOGIES USED:
 
 1:
-NAME - Bootstrap
-LINK - https://getbootstrap.com/
-REASON - Bootstrap was mainly used for the modal and as a template for the default navbar but both have been amended to suit layout and style. It has also assisted in the structuring of some sections
-via the columns and rows classes.
-
-2:
 NAME - JQuery
 LINK - https://jquery.com/
-REASON - Although Javascript is not part of this module, jquery has been used as it is essential to the functionality of the Bootstrap modal.
+REASON - Jquery has been used as it provides some very useful methods when working with javascript and these have often been utilised throughout my javascript code.
 
-3:
+2:
 NAME - Google Fonts
 LINK - https://fonts.google.com/
 REASON - Used to style the two types of fonts incorporated into the style of the site.
 
-4:  
+3:  
 NAME - Font Awesome
 LINK - https://fontawesome.com/
-REASON - Font awesome has been used to incorporate its icons onto the site as it has multiple options to ensure that the icon used is relevant to the content it is being used for.
+REASON - Font awesome has been used to incorporate its icons onto the site as it has multiple options to ensure that the icon used is relevant to the content it is being used for, in this case a cog for the settings box
+and a question mark for the instructions box.
+
+4: 
+NAME - Howler.JS
+LINK - https://howlerjs.com/
+REASON - I wanted to incorporate resposive sounds and music into my game.  Having played around with this in vanilla javascript I found there were delays when playing sounds which didn't allow them to sync with the 
+things that were happening in the game.  After some research I found howler js and started experimenting.  Not only does this audio library allow sounds to be played when required, it also allows attributes like volume 
+to be easily amended and helped these settings to be implemented easily.
+
+5:
+NAME - SASS
+LINK - https://sass-lang.com/
+REASON - Sass has really helped me to organise my css code and has some really useful features such as the way it handles media queries which makes this part of styling much less painfull.  It also helps the site to load 
+faster through the use of placeholders which are only used when called upon.
 
 WEBSITE TESTING:
 
 The website has been designed to meet the needs of the users described in the user stories section.  Here is a brief run down of how each has been met - 
 
-Story 1:  As a fan of the Monkees, I want to see pictures of the band because I was fond of how they looked in their early career and am interested 
-to see how they've changed.
+Story 1:  
 
-REQUIREMENT MET - The site has an easily accessable pictures page that can be selected at any time via the navbar.
+REQUIREMENT MET - 
 
-Story 2: As a music lover, I want to hire a famous band so that I can have a memorable anniversary party and impress my friends.
+Story 2: 
 
-REQUIREMENT MET - The site has an easily accessible 'hire us' modal that can be selected at any time via the navbar or any the bottom of the landing page.
+REQUIREMENT MET - 
 
-Story 3:  As a fan of the Monkees, I want to listen to some of their music and see their videos because they make me happy.
+Story 3:  
 
-REQUIREMENT MET - The site has an easily accessible music page and video page that can be selected at any time via the navbar.
+REQUIREMENT MET - 
 
-Story 4:  As a fan of the Monkees, I want to know if the Monkees release any new material as I loved their old tracks.
+Story 4:  
 
-REQUIREMENT MET - The site has a 'sign up' modal that can be selected on the landing page and is visible immediately upon the first visit.
+REQUIREMENT MET - 
 
 The functionality of the site is fairly basic and mainly consists of ensuring that the links work to each page, that the modals fire up, and that the animations activate correctly where applicable.
 These have all been manually tested page by page as follows:
